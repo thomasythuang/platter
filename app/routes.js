@@ -137,6 +137,18 @@ module.exports = function(app, passport){
 				});
 			});
 		});
+	}); 
+
+	app.post('/upload', function(req, res){
+		console.log(req.body);
+		console.log(req.body.files);
+		res.send(req.body);
+	});
+
+	app.post('/images', function(req, res) {
+		console.log(req.body);
+		console.log(req.files);
+		res.send(req.body);
 	});
 
 	// Add an image to favorites
