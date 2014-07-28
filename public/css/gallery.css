@@ -1,0 +1,57 @@
+/* app css stylesheet */
+
+#main{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  width: 80%;
+
+  border: 2px solid black;
+}
+
+.loc{
+  margin: 5px 5px 0px 5px;
+  padding: 5px;
+
+  border: 1px solid black;
+  
+}
+
+.desc{
+  margin-top: 3px;
+}
+
+.btn-fav.active{
+  background-color:yellow;
+} 
+
+/* Hacky way of getting images fit to a set resolution and maintaining aspect ratio */
+.crop{ 
+  overflow: hidden;
+}
+.crop-sm{
+  width: 200px;
+  height: 200px;
+}
+.crop-lg{
+  width: 500px;
+  height: 350px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.crop img{
+  width: auto;
+  height: auto;
+}
+.crop-sm img{
+  max-width: 300px;
+  max-height: 300px;
+}
+.crop-lg img{
+  max-width: 550px;
+  max-height: 450px;
+}
+.crop-sm:hover{
+  cursor: pointer;
+  cursor: hand;
+}

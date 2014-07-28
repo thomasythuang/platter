@@ -1,0 +1,97 @@
+<!-- public/views/upload.html -->
+<!DOCTYPE html>
+
+<!-- Angular Module -->
+<html ng-app="foodApp" class="no-js">
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Upload a Picture</title>
+
+	<!-- Universal Resources-->
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-controller="uploadController" ng-init="user= <%= JSON.stringify(user) %>">
+
+<!-- Header and Navbar -->
+	<header>
+	<nav class="navbar navbar-default">
+    	<div class="container">
+	      	<div class="navbar-header">
+	        	<a class="navbar-brand" href="#">Food Gallery</a>
+	      	</div>
+
+	      	<ul class="nav navbar-nav navbar-right">
+	        	<li><a href="/"><span class="fa fa-home"></span> Home</a></li>
+	        	<li><a href="upload"><span class="fa fa-upload"></span> Upload</a></li>
+	        	<li ng-hide="user"><a href="/login"><span class="fa fa-sign-in"></span> Login</a></li>
+        		<li ng-show="user"><a href="/profile"><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</a></li>
+      		</ul>
+    	</div>
+		</nav>
+	</header>
+
+<!-- Upload Submission Form -->
+<div class="centered">
+	<div class="row">
+		<h4 class="col-xs-4 col-xs-offset-4 left">Upload a picture</h4>
+	</div><br>
+	<div ng-hide="user" class="row">
+		<p class="col-xs-4 col-xs-offset-4 left">Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
+	</div>
+	<form name="submitForm" ng-submit="" ng-show="user">
+		<div class="row form-group">
+			<div class="col-xs-2 col-xs-offset-2 right">
+				<label for="nameInput">Name</label>
+			</div>
+			<div class="col-xs-4 left">
+				<input type="name" class="form-control" id="nameInput" placeholder="enter name" ng-model="formData.name">
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-xs-2 col-xs-offset-2 right">
+				<label for="nameInput">City</label>
+			</div>
+			<div class="col-xs-4 left">
+				<input type="name" class="form-control" id="locInput" placeholder="city" ng-model="formData.city">
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-xs-2 col-xs-offset-2 right">
+				<label for="nameInput">State</label>
+			</div>
+			<div class="col-xs-4 left">
+				<input type="name" class="form-control" id="catInput" placeholder="state" ng-model="formData.state">
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-xs-2 col-xs-offset-2 right">
+				<label for="nameInput">Image File</label>
+			</div>
+			<div class="col-xs-4 left">
+				<input type="file" id="imgInput">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4 left">
+				<button type="submit" class="btn btn-info" ng-click="createImage()">Submit</button>
+				<button class="btn btn-primary" ng-click="test()">Test</button>
+			</div>
+		</div>
+	</form> 
+</div>
+
+<script src="/js/core-upload.js"></script>
+<script src="/js/controllers/uploadCtrl.js"></script>
+<script src="/js/services/imgService.js"></script>
+</body>
+</html>

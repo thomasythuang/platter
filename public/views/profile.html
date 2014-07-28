@@ -1,0 +1,112 @@
+<!-- public/views/profile.html -->
+<!DOCTYPE html>
+
+<!-- Angular Module -->
+<html ng-app="foodApp" class="no-js">
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Your Profile</title>
+
+	<!-- Universal Resources -->
+	<link rel="shortcut icon" href="img/favicon.ico">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+
+<!-- Load user data from res.render() -->
+<body ng-controller="profileController" ng-init="user= <%= JSON.stringify(user)%>; uploads= <%= JSON.stringify(uploads)%>; favorites= <%= JSON.stringify(favorites)%>">
+
+<!-- Header and Navbar -->
+<header>
+<nav class="navbar navbar-default">
+	<div class="container">
+      	<div class="navbar-header">
+        	<a class="navbar-brand" href="#">Food Gallery</a>
+      	</div>
+
+      	<ul class="nav navbar-nav navbar-right">
+        	<li><a href="/"><span class="fa fa-home"></span> Home</a></li>
+        	<li><a href="/upload"><span class="fa fa-upload"></span> Upload</a></li>
+        	<li ng-hide="user"><a href="/login"><span class="fa fa-sign-in"></span> Login</a></li>
+        	<li ng-show="user"><a href="/profile"><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</a></li>
+  		</ul>
+	</div>
+</nav>
+</header>
+
+<div class="container">
+
+	<!-- Heading -->
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span> {{user.facebook.name}}</h1>
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+
+	<div class="row">
+
+		<!-- Facebook Account Info -->
+		<div class="col-xs-6 col-xs-offset-3">
+			<div class="well">
+				<h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+				<p>
+					<strong>name</strong>: {{user.facebook.name}}<br>
+					<strong>email</strong>: {{user.facebook.email}}<br>
+					<strong>id</strong>: {{user.facebook.id}}<br>
+				</p>
+			</div>
+		</div>
+	</div>
+	<br><button class="btn btn-primary" ng-click="test()">Test</button>
+	<button class="btn btn-primary" ng-click="reset()">Reset</button>
+
+	<!-- User Uploads -->
+	<div>
+		<h3>Uploads</h3>
+		<div ng-repeat="img in uploads" class="loc inline">
+			<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
+				<span class="fa fa-trash-o"></span>
+			</button>
+			<span>{{img.name}}</span>
+			<div class="inline">
+				<button type="button" class="btn btn-default btn-fav" ng-class="" ng-click="">
+					<span class="glyphicon glyphicon-star"></span> {{img.favorites}}
+				</button>
+			</div>
+			<div class="crop crop-sm">
+				<img ng-src="{{img.url}}"/>
+			</div>
+		</div>
+	</div>
+	<!-- User Favorites -->
+	<div>
+		<h3>Favorites</h3>
+		<div ng-repeat="fav in favorites" class="loc inline">
+			<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
+				<span class="fa fa-trash-o"></span>
+			</button>
+			<span>{{fav.name}}</span>
+			<div class="inline">
+				<button type="button" class="btn btn-default btn-fav" ng-class="" ng-click="">
+					<span class="glyphicon glyphicon-star"></span> {{fav.favorites}}
+				</button>
+			</div>
+			<div class="crop crop-sm">
+				<img ng-src="{{fav.url}}"/>
+			</div>
+		</div>
+	</div>
+
+</div>
+<script src="/js/core-profile.js"></script>
+<script src="/js/controllers/profCtrl.js"></script>
+<script src="/js/services/userService.js"></script>
+<link rel="stylesheet" href="/css/gallery.css">
+</body>
+</html>
