@@ -3,4 +3,5 @@
 var app = angular.module('foodApp', [
 	'uploadController',
 	'imgService',
+	'angularFileUpload',
 ]);	

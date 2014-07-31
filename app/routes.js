@@ -2,7 +2,14 @@
 
 // load models
 var Image = require('./models/image');
-var User = require('./models/user')
+var User = require('./models/user');
+var fs = require('fs');
+
+var http = require('http');
+var path = require('path');
+var inspect = require('util').inspect;
+var Busboy = require('busboy');
+var os = require('os');
 
 module.exports = function(app, passport){
 
@@ -140,9 +147,32 @@ module.exports = function(app, passport){
 	}); 
 
 	app.post('/upload', function(req, res){
-		console.log(req.body);
-		console.log(req.body.files);
-		res.send(req.body);
+		var busboy = new Busboy({headers: req.headers});
+		var savePath;
+
+		busboy.on('file', function(fieldname, file, filename, encoding, mimetype){
+			console.log('File [' + fieldname + ']: filename: ' + filename);
+			file.on('data', function(data) {
+        		console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
+      		});
+      		file.on('end', function() {
+        		console.log('File [' + fieldname + '] Finished');
+			});
+			//savePath = path.join(os.tmpDir(), path.basename(filename)); //local save
+			savePath = './public/uploads/' + path.basename(filename);	//save to server
+			file.pipe(fs.createWriteStream(savePath));
+		});
+		busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
+      		console.log('Field [' + fieldname + ']: value: ' + inspect(val));
+    	});
+    	busboy.on('finish', function() {
+      		console.log('Done parsing form!');
+      		console.log('File saved to ' + savePath);
+      		res.writeHead(303, { Connection: 'close', Location: '/' });
+      		res.end();
+   		});
+   		req.pipe(busboy);
+
 	});
 
 	app.post('/images', function(req, res) {

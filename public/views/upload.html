@@ -16,7 +16,9 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/main.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="/js/directives/angular-file-upload-shim.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+	<script src="/js/directives/angular-file-upload.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 
@@ -54,7 +56,7 @@
 				<label for="nameInput">Name</label>
 			</div>
 			<div class="col-xs-4 left">
-				<input type="name" class="form-control" id="nameInput" placeholder="enter name" ng-model="formData.name">
+				<input type="text" class="form-control" id="nameInput" placeholder="enter name" ng-model="formData.name">
 			</div>
 		</div>
 		<div class="row form-group">
@@ -62,7 +64,7 @@
 				<label for="nameInput">City</label>
 			</div>
 			<div class="col-xs-4 left">
-				<input type="name" class="form-control" id="locInput" placeholder="city" ng-model="formData.city">
+				<input type="text" class="form-control" id="locInput" placeholder="city" ng-model="formData.city">
 			</div>
 		</div>
 		<div class="row form-group">
@@ -70,28 +72,25 @@
 				<label for="nameInput">State</label>
 			</div>
 			<div class="col-xs-4 left">
-				<input type="name" class="form-control" id="catInput" placeholder="state" ng-model="formData.state">
+				<input type="text" class="form-control" id="catInput" placeholder="state" ng-model="formData.state">
 			</div>
 		</div>
 		<div class="row form-group">
 			<div class="col-xs-2 col-xs-offset-2 right">
-				<label for="nameInput">Image File</label>
+				<label for="nameInput">Image File(s)</label>
 			</div>
 			<div class="col-xs-4 left">
-				<input type="file" id="imgInput">
+				<input type="file" ng-file-select="onFileSelect($files)">
 			</div>
 		</div>
-		<div class="row">
-			<ul class="col-xs-6 col-xs-offset-4 left">
-				<li ng-repeat="file in files" class="inline">{{file.name}}&nbsp&nbsp</li>
-			</ul>
-		</div>
+
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-4 left">
-				<button type="submit" class="btn btn-info" ng-click="upload()">Submit</button>
+				<button type="submit" class="btn btn-info" ng-click="startAll()">Submit</button>
 				<button class="btn btn-primary" ng-click="test()">Test</button>
 			</div>
 		</div>
+		
 
 	</form> 
 </div>
@@ -99,5 +98,6 @@
 <script src="/js/core-upload.js"></script>
 <script src="/js/controllers/uploadCtrl.js"></script>
 <script src="/js/services/imgService.js"></script>
+<link rel="stylesheet" href="/css/upload.css">
 </body>
 </html>
