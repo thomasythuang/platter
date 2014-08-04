@@ -1,10 +1,9 @@
 // app/routes.js
 
-// load models
+// load models and resources
 var Image = require('./models/image');
 var User = require('./models/user');
 var fs = require('fs');
-
 var http = require('http');
 var path = require('path');
 var inspect = require('util').inspect;
@@ -13,7 +12,7 @@ var os = require('os');
 
 module.exports = function(app, passport){
 
-//// VIEWS -------------------------------------------------------------------
+//// SIMPLE VIEWS -------------------------------------------------------------------
 	app.get('/', function(req, res) {
 		res.render('index.html', {
 			user : req.user
@@ -92,7 +91,7 @@ module.exports = function(app, passport){
 			failureRedirect : '/'
 		}));
 
-	//UNLINK ACCOUNTS
+	// UNLINK ACCOUNTS
 
     // facebook -------------------------------
     app.get('/unlink/facebook', function(req, res) {
@@ -146,6 +145,7 @@ module.exports = function(app, passport){
 		});
 	});  */
 
+	// Upload image and create an image object for it in the database
 	app.post('/upload', function(req, res){
 		var busboy = new Busboy({headers: req.headers});
 		var savePath;
@@ -153,13 +153,12 @@ module.exports = function(app, passport){
 		busboy.on('file', function(fieldname, file, filename, encoding, mimetype){
 			console.log('File [' + fieldname + ']: filename: ' + filename);
 			file.on('data', function(data) {
-        		
       		});
       		file.on('end', function() {
         		console.log('File [' + fieldname + ']: uploaded');
 			});
-			//savePath = path.join(os.tmpDir(), path.basename(filename)); //local save
-			savePath = './public/uploads/' + path.basename(filename);	//save to server
+			//savePath = path.join(os.tmpDir(), path.basename(filename)); 	//local save
+			savePath = './public/uploads/' + path.basename(filename);		//save to server
 			file.pipe(fs.createWriteStream(savePath));
 		});
 		busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
@@ -169,6 +168,7 @@ module.exports = function(app, passport){
     	busboy.on('finish', function() {
       		console.log('Done parsing form!');
       		console.log('Image saved to ' + savePath);
+      		// create the image in the database
       		Image.create({
 				name 		: req.body.name,
 				city		: req.body.city,
@@ -193,12 +193,6 @@ module.exports = function(app, passport){
 			});
    		});
    		req.pipe(busboy);
-	});
-
-	app.post('/images', function(req, res) {
-		console.log(req.body);
-		console.log(req.files);
-		res.send(req.body);
 	});
 
 	// Add an image to favorites

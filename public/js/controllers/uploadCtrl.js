@@ -11,10 +11,12 @@ app.controller('uploadController', function($scope, $http, $upload, Images) {
 		console.log($scope.selectedFiles);
 	}
 
+	// Add files to selected files array
 	$scope.onFileSelect = function(files){
 		$scope.selectedFiles = $scope.selectedFiles.concat(files);
 	}
 
+	// Deselect files
 	$scope.unselect = function(file){
 		var index = $scope.selectedFiles.indexOf(file);
 		if (index > -1){
@@ -22,7 +24,8 @@ app.controller('uploadController', function($scope, $http, $upload, Images) {
 		}
 	}
 
-	//POST
+	// POST
+	// Upload all selected files
 	$scope.submit = function(){
 		var length = $scope.selectedFiles.length;
 		if (length < 1){

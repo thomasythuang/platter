@@ -21,6 +21,7 @@ app.controller('galleryController', function($scope, $http, Images) {
 	};
 
 	// PUT
+	// Add/remove an image from user's favorites
 	$scope.modFavs = function(img){
 		if ($scope.user){
 			var index = $scope.user.favorites.indexOf(img._id);
@@ -48,6 +49,7 @@ app.controller('galleryController', function($scope, $http, Images) {
 		}
 	};
 
+	// true/false if an image is favorited by the user
 	$scope.checkFav = function(img){
 		if ($scope.user){
 			var index = $scope.user.favorites.indexOf(img._id);
