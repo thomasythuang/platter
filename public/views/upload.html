@@ -56,7 +56,7 @@
 				<label for="nameInput">Name</label>
 			</div>
 			<div class="col-xs-4 left">
-				<input type="text" class="form-control" id="nameInput" placeholder="enter name" ng-model="formData.name">
+				<input type="text" class="form-control" id="nameInput" placeholder="name" ng-model="formData.name">
 			</div>
 		</div>
 		<div class="row form-group">
@@ -80,13 +80,22 @@
 				<label for="nameInput">Image File(s)</label>
 			</div>
 			<div class="col-xs-4 left">
-				<input type="file" ng-file-select="onFileSelect($files)">
+				<input type="file" ng-file-select="onFileSelect($files)" multiple>
 			</div>
 		</div>
-
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-4 left">
-				<button type="submit" class="btn btn-info" ng-click="startAll()">Submit</button>
+				<ul>
+					<li ng-repeat="file in selectedFiles">
+						<span class="glyphicon glyphicon-remove" ng-click="unselect(file)"></span>
+						{{file.name}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4 left">
+				<button type="submit" class="btn btn-info" ng-click="submit()">Submit</button>
 				<button class="btn btn-primary" ng-click="test()">Test</button>
 			</div>
 		</div>

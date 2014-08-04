@@ -7,9 +7,6 @@ app.factory('Images', function($http){
 		get: function(){
 			return $http.get('/images');
 		},
-		create: function(formData){
-			return $http.post('/images', formData);
-		},
 		delete: function(imgId){
 			return $http.delete('/images/' + imgId);
 		},

@@ -114,7 +114,7 @@ module.exports = function(app, passport){
 			res.json(imgs); 
 		});
 	});
-
+	/*
 	// create image and send back all images after creation
 	app.post('/images', function(req, res) {
 		// create a todo, information comes from AJAX request from Angular
@@ -144,7 +144,7 @@ module.exports = function(app, passport){
 				});
 			});
 		});
-	}); 
+	});  */
 
 	app.post('/upload', function(req, res){
 		var busboy = new Busboy({headers: req.headers});
@@ -153,10 +153,10 @@ module.exports = function(app, passport){
 		busboy.on('file', function(fieldname, file, filename, encoding, mimetype){
 			console.log('File [' + fieldname + ']: filename: ' + filename);
 			file.on('data', function(data) {
-        		console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
+        		
       		});
       		file.on('end', function() {
-        		console.log('File [' + fieldname + '] Finished');
+        		console.log('File [' + fieldname + ']: uploaded');
 			});
 			//savePath = path.join(os.tmpDir(), path.basename(filename)); //local save
 			savePath = './public/uploads/' + path.basename(filename);	//save to server
@@ -164,15 +164,35 @@ module.exports = function(app, passport){
 		});
 		busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
       		console.log('Field [' + fieldname + ']: value: ' + inspect(val));
+      		req.body[fieldname] = val;
     	});
     	busboy.on('finish', function() {
       		console.log('Done parsing form!');
-      		console.log('File saved to ' + savePath);
-      		res.writeHead(303, { Connection: 'close', Location: '/' });
-      		res.end();
+      		console.log('Image saved to ' + savePath);
+      		Image.create({
+				name 		: req.body.name,
+				city		: req.body.city,
+				state		: req.body.state,
+				dateAdded 	: Date.now(),
+				favorites	: 0,
+				url			: savePath,
+				authorId 	: req.user.facebook.id,
+				authorName	: req.user.facebook.name,
+				done 		: false
+			}, function(err, img) {
+				if (err)
+					res.send(err);
+				// add the image's id to its uploader's profile
+				User.update({"facebook.id": req.user.facebook.id},
+					{$push: {"images": img._id}}, function(err, data){
+					if (err)
+						res.send(err);
+					res.writeHead(303, { Connection: 'close', Location: '/' });
+      				res.end();
+				});
+			});
    		});
    		req.pipe(busboy);
-
 	});
 
 	app.post('/images', function(req, res) {
@@ -259,7 +279,7 @@ module.exports = function(app, passport){
 
 //// USERS
 
-	// Add an image from a user's favorites
+	// Add an image from a user's favorites  ---add here redundat??
 	app.post('/users/favorites/add/:img_id', function(req, res){ 
 		res.send(req.params.img_id);
 	});
@@ -278,12 +298,12 @@ module.exports = function(app, passport){
 	app.post('/users/reset', function(req, res){
 		User.findOneAndUpdate(
 			{"facebook.id": req.user.facebook.id},
-			{"favorites": []},
+			{"images": []},
 			function(err, user){
 				if (err)
 					res.send(err);
 				console.log(user);
-				res.json(user.favorites);
+				res.json(user.images);
 			});
 	});
 
