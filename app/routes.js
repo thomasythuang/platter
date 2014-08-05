@@ -159,7 +159,6 @@ module.exports = function(app, passport){
 			});
 			//savePath = path.join(os.tmpDir(), path.basename(filename)); 	//local save
 			savePath = './public/uploads/' + path.basename(filename);		//save to server
-			savedPath ='/uploads/' + path.basename(filename);
 			file.pipe(fs.createWriteStream(savePath));
 		});
 		busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
@@ -168,7 +167,8 @@ module.exports = function(app, passport){
     	});
     	busboy.on('finish', function() {
       		console.log('Done parsing form!');
-      		console.log('Image saved to ' + savePath);
+      		var savedPath = savePath.substr(8); // edit url (cut off './public')
+      		console.log('Image saved to ' + savedPath);
       		// create the image in the database
       		Image.create({
 				name 		: req.body.name,
