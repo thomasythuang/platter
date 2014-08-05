@@ -297,7 +297,7 @@ module.exports = function(app, passport){
 	app.post('/users/reset', function(req, res){
 		User.findOneAndUpdate(
 			{"facebook.id": req.user.facebook.id},
-			{"images": []},
+			{"images": [], "favorites": []},
 			function(err, user){
 				if (err)
 					res.send(err);
