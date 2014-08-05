@@ -32,7 +32,8 @@ app.controller('galleryController', function($scope, $http, Images) {
 				img.favorites--;
 				Images.rmvFav(img)
 					.success(function(data){
-						$scope.images = data;
+						img = data;
+						//$scope.images = data;
 					}); 
 			} else {
 				console.log("add");
@@ -41,7 +42,8 @@ app.controller('galleryController', function($scope, $http, Images) {
 				img.favorites++;
 				Images.addFav(img)
 					.success(function(data){
-						$scope.images = data;
+						img = data;
+						//$scope.images = data;
 					}); 
 			}
 		} else {

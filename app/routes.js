@@ -209,12 +209,14 @@ module.exports = function(app, passport){
 				{$push: {"favorites": img._id}}, function(err){
 				if (err)
 					res.send(err);
+				res.json(img);
+				/*
 				// find and return all images
 				Image.find(function(err, imgs) {
 					if (err)
 						res.send(err)
 					res.json(imgs);
-				});
+				}); */
 			});
 		});
 	});
@@ -232,12 +234,14 @@ module.exports = function(app, passport){
 				{$pull: {"favorites": img._id}}, function(err){
 				if (err)
 					res.send(err);
+				res.json(img);
+				/*
 				// find and return all images
 				Image.find(function(err, imgs) {
 					if (err)
 						res.send(err)
 					res.json(imgs);
-				});
+				}); */
 			});
 		});
 	});

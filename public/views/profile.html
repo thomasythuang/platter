@@ -20,7 +20,7 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 
-<!-- Load user data from res.render() -->
+<!-- Load user data from res.render() and transfer to angular controller -->
 <body ng-controller="profileController" ng-init="user= <%= JSON.stringify(user)%>; uploads= <%= JSON.stringify(uploads)%>; favorites= <%= JSON.stringify(favorites)%>">
 
 <!-- Header and Navbar -->
@@ -93,7 +93,7 @@
 			</button>
 			<span>{{fav.name}}</span>
 			<div class="inline">
-				<button type="button" class="btn btn-default btn-fav" ng-class="" ng-click="">
+				<button type="button" class="btn btn-default btn-fav" ng-class="{active: checkFav(fav)}" ng-click="">
 					<span class="glyphicon glyphicon-star"></span> {{fav.favorites}}
 				</button>
 			</div>

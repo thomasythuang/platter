@@ -4,6 +4,18 @@ var app = angular.module('profileController', []);
 
 app.controller('profileController', function($scope, $http, Users) {
 
+	// true/false if an image is favorited by the user
+	$scope.checkFav = function(img){
+		if ($scope.user){
+			var index = $scope.user.favorites.indexOf(img._id);
+			if (index > -1){
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+
 	// PUT
 	$scope.rmvFav = function(imgId){
 		Users.removeFav($scope.user.facebook.id, imgId)
