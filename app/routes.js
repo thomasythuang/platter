@@ -159,6 +159,7 @@ module.exports = function(app, passport){
 			});
 			//savePath = path.join(os.tmpDir(), path.basename(filename)); 	//local save
 			savePath = './public/uploads/' + path.basename(filename);		//save to server
+			savedPath ='/uploads/' + path.basename(filename);
 			file.pipe(fs.createWriteStream(savePath));
 		});
 		busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
@@ -175,7 +176,7 @@ module.exports = function(app, passport){
 				state		: req.body.state,
 				dateAdded 	: Date.now(),
 				favorites	: 0,
-				url			: savePath,
+				url			: savedPath,
 				authorId 	: req.user.facebook.id,
 				authorName	: req.user.facebook.name,
 				done 		: false
