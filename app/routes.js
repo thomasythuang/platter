@@ -113,37 +113,12 @@ module.exports = function(app, passport){
 			res.json(imgs); 
 		});
 	});
-	/*
-	// create image and send back all images after creation
-	app.post('/images', function(req, res) {
-		// create a todo, information comes from AJAX request from Angular
-		Image.create({
-			name 		: req.body.name,
-			city		: req.body.city,
-			state		: req.body.state,
-			dateAdded 	: Date.now(),
-			favorites	: 0,
-			url			: "http://placehold.it/200x200",
-			authorId 	: req.user.facebook.id,
-			authorName	: req.user.facebook.name,
-			done 		: false
-		}, function(err, img) {
-			if (err)
-				res.send(err);
-			// add the image's id to its uploader's profile
-			User.update({"facebook.id": req.user.facebook.id},
-				{$push: {"images": img._id}}, function(err, data){
-				if (err)
-					res.send(err);
-				// find and return all images
-				Image.find(function(err, imgs) {
-					if (err)
-						res.send(err)
-					res.json(imgs);
-				});
-			});
-		});
-	});  */
+
+	// Get all images for one location ---NOT IMPLEMENTED YET
+	app.get('/location/:location_name', function(req, res){
+		console.log(req.params.location_name);
+		res.send(req.body);
+	});
 
 	// Upload image and create an image object for it in the database
 	app.post('/upload', function(req, res){
