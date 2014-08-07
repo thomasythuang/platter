@@ -3,6 +3,7 @@
 // load models and resources
 var Image = require('./models/image');
 var User = require('./models/user');
+var Tracker = require('./models/tracker');
 var fs = require('fs');
 var http = require('http');
 var path = require('path');
@@ -123,52 +124,75 @@ module.exports = function(app, passport){
 	// Upload image and create an image object for it in the database
 	app.post('/upload', function(req, res){
 		var busboy = new Busboy({headers: req.headers});
-		var savePath;
 
-		busboy.on('file', function(fieldname, file, filename, encoding, mimetype){
-			console.log('File [' + fieldname + ']: filename: ' + filename);
-			file.on('data', function(data) {
-      		});
-      		file.on('end', function() {
-        		console.log('File [' + fieldname + ']: uploaded');
+		//Find an open name for file save path
+		Tracker.findOne({name: 'main'}, function(err, main){
+			var savePath;
+			var index;
+			var arr = main.imgs;
+			var i = findOpenIndex(arr);
+			if (i > -1){
+				arr[i] = true;
+				index = i.toString();
+			}else{
+				arr.push(true);
+				index = (arr.length - 1).toString();
+			} 
+			console.log(index);
+
+			Tracker.findOneAndUpdate({name: 'main'}, {imgs: arr}, function(err, main1){
+				console.log(main1.imgs);
+			}); 
+
+			busboy.on('file', function(fieldname, file, filename, encoding, mimetype){
+
+				console.log('File [' + fieldname + ']: filename: ' + filename);
+				file.on('data', function(data) {
+	      		});
+	      		file.on('end', function() {
+	        		console.log('File [' + fieldname + ']: uploaded');
+				});
+
+	      		savePath = ('./public/uploads/' + index + path.extname(filename));
+	      		console.log(savePath);
+				//savePath = path.join(os.tmpDir(), path.basename(filename)); 	//local save
+				//savePath = './public/uploads/' + path.basename(filename);		//save to server
+				file.pipe(fs.createWriteStream(savePath));
 			});
-			//savePath = path.join(os.tmpDir(), path.basename(filename)); 	//local save
-			savePath = './public/uploads/' + path.basename(filename);		//save to server
-			file.pipe(fs.createWriteStream(savePath));
-		});
-		busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
-      		console.log('Field [' + fieldname + ']: value: ' + inspect(val));
-      		req.body[fieldname] = val;
-    	});
-    	busboy.on('finish', function() {
-      		console.log('Done parsing form!');
-      		var savedPath = savePath.substr(8); // edit url (cut off './public')
-      		console.log('Image saved to ' + savedPath);
-      		// create the image in the database
-      		Image.create({
-				name 		: req.body.name,
-				city		: req.body.city,
-				state		: req.body.state,
-				dateAdded 	: Date.now(),
-				favorites	: 0,
-				url			: savedPath,
-				authorId 	: req.user.facebook.id,
-				authorName	: req.user.facebook.name,
-				done 		: false
-			}, function(err, img) {
-				if (err)
-					res.send(err);
-				// add the image's id to its uploader's profile
-				User.update({"facebook.id": req.user.facebook.id},
-					{$push: {"images": img._id}}, function(err, data){
+			busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
+	      		console.log('Field [' + fieldname + ']: value: ' + inspect(val));
+	      		req.body[fieldname] = val;
+	    	});
+	    	busboy.on('finish', function() {
+	      		console.log('Done parsing form!');
+	      		var savedPath = savePath.substr(8); // edit url (cut off './public')
+	      		console.log('Image saved to ' + savedPath);
+	      		// create the image in the database
+	      		Image.create({
+					name 		: req.body.name,
+					city		: req.body.city,
+					state		: req.body.state,
+					dateAdded 	: Date.now(),
+					favorites	: 0,
+					url			: savedPath,
+					authorId 	: req.user.facebook.id,
+					authorName	: req.user.facebook.name,
+					done 		: false
+				}, function(err, img) {
 					if (err)
 						res.send(err);
-					res.writeHead(303, { Connection: 'close', Location: '/' });
-      				res.end();
+					// add the image's id to its uploader's profile
+					User.update({"facebook.id": req.user.facebook.id},
+						{$push: {"images": img._id}}, function(err, data){
+						if (err)
+							res.send(err);
+						res.writeHead(303, { Connection: 'close', Location: '/' });
+	      				res.end();
+					});
 				});
-			});
+	   		});
+	   		req.pipe(busboy);
    		});
-   		req.pipe(busboy);
 	});
 
 	// Add an image to favorites
@@ -290,4 +314,26 @@ function isLoggedIn(req, res, next) {
 		return next();
 	// if they aren't redirect them to the home page
 	res.redirect('/');
+}
+
+/*
+Tracker.findOne({name: 'main'}, function(err, main){
+	console.log(main.imgs);
+	var arr = main.imgs;
+	
+	arr = [];
+
+	Tracker.findOneAndUpdate({name: 'main'}, {imgs: arr}, function(err, main1){
+		console.log(main1.imgs);
+	}); 
+	
+	//console.log(findOpenIndex(main.imgs));
+});  */
+
+function findOpenIndex(arr){
+	for (var i = 0; i < arr.length; i++){
+		if (arr[i] === false)
+			return i;
+	}
+	return -1;
 }
