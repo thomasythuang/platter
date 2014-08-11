@@ -115,10 +115,27 @@ module.exports = function(app, passport){
 		});
 	});
 
-	// Get all images for one location ---NOT IMPLEMENTED YET
+	// Get all images for a single location for its page
 	app.get('/location/:location_name', function(req, res){
 		console.log(req.params.location_name);
-		res.send(req.body);
+		if (req.user)
+			var usr = req.user;
+		else
+			var usr = undefined;
+		Image.find({
+			'name': req.params.location_name
+		},	function(err, imgs){
+			if (imgs.length < 1){
+				res.render('loc-nf.html', {
+					user 		: usr,
+				});
+			} else {
+				res.render('location.html', {
+					user 		: usr,
+					images		: imgs,
+				});
+			}
+		});
 	});
 
 	// Upload image and create an image object for it in the database
