@@ -128,6 +128,7 @@ module.exports = function(app, passport){
 			if (imgs.length < 1){
 				res.render('loc-nf.html', {
 					user 		: usr,
+					name   		: req.params.location_name,
 				});
 			} else {
 				res.render('location.html', {
@@ -155,10 +156,9 @@ module.exports = function(app, passport){
 				arr.push(true);
 				index = (arr.length - 1).toString();
 			} 
-			console.log(index);
 
 			Tracker.findOneAndUpdate({name: 'main'}, {imgs: arr}, function(err, main1){
-				console.log(main1.imgs);
+				//console.log(main1.imgs);
 			}); 
 
 			busboy.on('file', function(fieldname, file, filename, encoding, mimetype){
@@ -171,7 +171,7 @@ module.exports = function(app, passport){
 				});
 
 	      		savePath = ('./public/uploads/' + index + path.extname(filename));
-	      		console.log(savePath);
+	      		//console.log(savePath);
 				//savePath = path.join(os.tmpDir(), path.basename(filename)); 	//local save
 				//savePath = './public/uploads/' + path.basename(filename);		//save to server
 				file.pipe(fs.createWriteStream(savePath));
@@ -262,9 +262,9 @@ module.exports = function(app, passport){
 		});
 	});
 
-	// delete an image
+	// delete an image (from home page- used only for debugging)
 	app.delete('/images/:img_id', function(req, res) {
-		// access the image data
+		// access the image data 
 		Image.findOne({
 			_id: req.params.img_id
 		}, function(err, img){
@@ -306,7 +306,25 @@ module.exports = function(app, passport){
 
 	// delete an image (from profile page)
 	app.delete('/users/uploads/:img_id', function(req, res) {
-		res.send(req.params.img_id);
+		User.update({"facebook.id": req.user._id},
+			{$pull: {"images": req.params.img_id}
+		}, function(err, data){
+			if (err)
+				res.send(err);
+			// remove the image from the database
+			Image.remove({
+				_id: req.params.img_id
+			}, function(err, img){
+				if (err)
+					res.send(err);
+				// find and return all remaining images
+				Image.find({
+					'_id': {$in: req.user.images}
+				},	function(err, ups){
+					res.json(ups);
+				});
+			});
+		}); 
 	});
 
 	// reset uploads (mainly for debugging)

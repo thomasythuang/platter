@@ -11,7 +11,7 @@
 	<title>Your Profile</title>
 
 	<!-- Universal Resources -->
-	<link rel="shortcut icon" href="img/favicon.ico">
+	<link rel="shortcut icon" href="/img/favicon.ico">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/main.css">
@@ -41,7 +41,7 @@
 </nav>
 </header>
 
-<div class="container">
+<div class="container centered" id="main">
 
 	<!-- Heading -->
 	<div class="page-header text-center">
@@ -49,7 +49,7 @@
 		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
 	</div>
 
-	<div class="row">
+	<div class="row left">
 		<!-- Facebook Account Info -->
 		<div class="col-xs-6 col-xs-offset-3">
 			<div class="well">
@@ -88,9 +88,6 @@
 	<div>
 		<h3>Favorites</h3>
 		<div ng-repeat="fav in favorites" class="loc inline">
-			<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
-				<span class="fa fa-trash-o"></span>
-			</button>
 			<span>{{fav.name}}</span>
 			<div class="inline">
 				<button type="button" class="btn btn-default btn-fav" ng-class="{active: checkFav(fav)}" ng-click="">

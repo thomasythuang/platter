@@ -11,7 +11,7 @@
 	<title>Platter</title>
 
 	<!-- Universal Resources -->
-	<link rel="shortcut icon" href="img/favicon.ico">
+	<link rel="shortcut icon" href="/img/favicon.ico">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/main.css">
@@ -74,11 +74,12 @@
 				<span ng-click="test(img)">{{img.name}}</span>
 				<a ng-href="/location/{{img.name}}">all</a>
 			</div>
+			<!-- Delete button, debugging purposes only
 			<div class="inline"> 
 				<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
 					<span class="fa fa-trash-o"></span>
 				</button>
-			</div>
+			</div> -->
 			<div class="inline"><div class="">{{img.city | characters:12 :false}}, {{img.state}}</div></div> 
 			<div class="inline">
 				<button type="button" class="btn btn-default btn-fav" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">

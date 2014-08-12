@@ -18,7 +18,7 @@ app.controller('profileController', function($scope, $http, Users) {
 
 	// PUT
 	$scope.rmvFav = function(imgId){
-		Users.removeFav($scope.user.facebook.id, imgId)
+		Users.removeFav(imgId)
 			.success(function(data){
 				$scope.user.images = data;
 			});
@@ -26,9 +26,9 @@ app.controller('profileController', function($scope, $http, Users) {
 
 	// DELETE
 	$scope.deleteImage = function(imgId){
-		Users.deleteUpload($scope.user.facebook.id, imgId)
+		Users.deleteUpload(imgId)
 			.success(function(data){
-				$scope.user.images = data;
+				$scope.uploads = data;
 			});
 	};
 
