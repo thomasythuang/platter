@@ -118,21 +118,17 @@ module.exports = function(app, passport){
 	// Get all images for a single location for its page
 	app.get('/location/:location_name', function(req, res){
 		console.log(req.params.location_name);
-		if (req.user)
-			var usr = req.user;
-		else
-			var usr = undefined;
 		Image.find({
 			'name': req.params.location_name
 		},	function(err, imgs){
 			if (imgs.length < 1){
 				res.render('loc-nf.html', {
-					user 		: usr,
+					user 		: req.user,
 					name   		: req.params.location_name,
 				});
 			} else {
 				res.render('location.html', {
-					user 		: usr,
+					user 		: req.user,
 					images		: imgs,
 				});
 			}
