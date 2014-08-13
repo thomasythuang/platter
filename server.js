@@ -1,19 +1,19 @@
 // server.js
 
 // set up ======================================================================
-var express  	= require('express');
-var app      	= express(); 					// create app w/ express
-var mongoose 	= require('mongoose'); 			// mongoose for mongodb
-var port  		= process.env.PORT || 8080; 	// set port
-var passport 	= require('passport');
-var flash 	 	= require('connect-flash');
+var express 		= require('express');
+var app 			= express(); 					// create app w/ express
+var mongoose 		= require('mongoose'); 			// mongoose for mongodb
+var port 			= process.env.PORT || 8080; 	// set port
+var passport 		= require('passport');
+var flash 			= require('connect-flash');
 
 // express modules
-var morgan 	 			= require('morgan');
-var cookieParser 		= require('cookie-parser');
-var bodyParser 			= require('body-parser');
-var methodOverride 		= require('method-override');
-var session 			= require('express-session');
+var morgan 			= require('morgan');
+var cookieParser 	= require('cookie-parser');
+var bodyParser 		= require('body-parser');
+var methodOverride 	= require('method-override');
+var session 		= require('express-session');
 
 
 // configuration ===============================================================
