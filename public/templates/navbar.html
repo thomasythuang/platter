@@ -1,0 +1,18 @@
+<!-- /templates/navbar.html -->
+
+<header>
+<nav class="navbar navbar-default">
+	<div class="container">
+      	<div class="navbar-header">
+        	<a class="navbar-brand" href="#">Platter</a>
+      	</div>
+
+      	<ul class="nav navbar-nav navbar-right">
+        	<li><a href="/"><span class="fa fa-home"></span> Home</a></li>
+        	<li><a href="/upload"><span class="fa fa-upload"></span> Upload</a></li>
+        	<li ng-hide="user"><a href="/login"><span class="fa fa-sign-in"></span> Login</a></li>
+        	<li ng-show="user"><a href="/profile"><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</a></li>
+  		</ul>
+	</div>
+</nav>
+</header>

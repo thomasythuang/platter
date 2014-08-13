@@ -11,36 +11,17 @@
 	<title>Upload a Picture</title>
 
 	<!-- Universal Resources-->
-	<link rel="shortcut icon" href="/img/favicon.ico">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/css/main.css">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="/js/directives/angular-file-upload-shim.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+	<script src="/resources/angular.min.js"></script>
 	<script src="/js/directives/angular-file-upload.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/css/upload.css">
+	<main-resources></main-resources>
 </head>
 
 <body ng-controller="uploadController" ng-init="user= <%= JSON.stringify(user) %>">
 
 <!-- Header and Navbar -->
-<header>
-<nav class="navbar navbar-default">
-	<div class="container">
-      	<div class="navbar-header">
-        	<a class="navbar-brand" href="#">Platter</a>
-      	</div>
-
-      	<ul class="nav navbar-nav navbar-right">
-        	<li><a href="/"><span class="fa fa-home"></span> Home</a></li>
-        	<li><a href="upload"><span class="fa fa-upload"></span> Upload</a></li>
-        	<li ng-hide="user"><a href="/login"><span class="fa fa-sign-in"></span> Login</a></li>
-    		<li ng-show="user"><a href="/profile"><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</a></li>
-  		</ul>
-	</div>
-</nav>
-</header>
+<main-navbar></main-navbar>
 
 <!-- Upload Submission Form -->
 <div class="centered">
@@ -108,7 +89,7 @@
 
 <script src="/js/core-upload.js"></script>
 <script src="/js/controllers/uploadCtrl.js"></script>
+<script src="/js/directives/coreDirective.js"></script>
 <script src="/js/services/imgService.js"></script>
-<link rel="stylesheet" href="/css/upload.css">
 </body>
 </html>

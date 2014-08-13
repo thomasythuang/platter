@@ -11,35 +11,16 @@
 	<title>Your Profile</title>
 
 	<!-- Universal Resources -->
-	<link rel="shortcut icon" href="/img/favicon.ico">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/css/main.css">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="/resources/angular.min.js"></script>
+	<link rel="stylesheet" href="/css/gallery.css">
+	<main-resources></main-resources>
 </head>
 
 <!-- Load user data from res.render() and transfer to angular controller -->
 <body ng-controller="profileController" ng-init="user= <%= JSON.stringify(user)%>; uploads= <%= JSON.stringify(uploads)%>; favorites= <%= JSON.stringify(favorites)%>">
 
 <!-- Header and Navbar -->
-<header>
-<nav class="navbar navbar-default">
-	<div class="container">
-      	<div class="navbar-header">
-        	<a class="navbar-brand" href="#">Platter</a>
-      	</div>
-
-      	<ul class="nav navbar-nav navbar-right">
-        	<li><a href="/"><span class="fa fa-home"></span> Home</a></li>
-        	<li><a href="/upload"><span class="fa fa-upload"></span> Upload</a></li>
-        	<li ng-hide="user"><a href="/login"><span class="fa fa-sign-in"></span> Login</a></li>
-        	<li ng-show="user"><a href="/profile"><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</a></li>
-  		</ul>
-	</div>
-</nav>
-</header>
+<main-navbar></main-navbar>
 
 <div class="container centered" id="main">
 
@@ -103,7 +84,7 @@
 </div>
 <script src="/js/core-profile.js"></script>
 <script src="/js/controllers/profCtrl.js"></script>
+<script src="/js/directives/coreDirective.js"></script>
 <script src="/js/services/userService.js"></script>
-<link rel="stylesheet" href="/css/gallery.css">
 </body>
 </html>
