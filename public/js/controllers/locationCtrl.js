@@ -51,7 +51,7 @@ app.controller('locationController', function($scope, $http) {
 		} else {
 			alert("Sorry! You need to sign in or register to favorite a picture!");
 		}
-	};
+	}; */
 
 	// true/false if an image is favorited by the user
 	$scope.checkFav = function(img){
@@ -64,7 +64,7 @@ app.controller('locationController', function($scope, $http) {
 			}
 		}
 	}
-	*/
+	
 	$scope.test = function(){
 		console.log($scope.user);
 	};
