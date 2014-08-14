@@ -11,6 +11,13 @@
 	<title>Platter</title>
 
 	<!-- Universal Resources --> 
+	<script src="/resources/polymer-components/platform/platform.js"></script>
+	<link rel="import" href="/resources/polymer-components/paper-elements/paper-elements.html">
+	<!--
+	<link rel="import" href="/resources/polymer-components/paper-button/paper-button.html">
+	<link rel="import" href="/resources/polymer-components/paper-checkbox/paper-checkbox.html">
+	-->
+	<link rel="import" href="/resources/polymer-components/core-icons/core-icons.html">
 	<script src="/resources/angular.min.js"></script>
 	<main-resources></main-resources>
 	<link rel="stylesheet" href="/css/gallery.css">
@@ -41,8 +48,14 @@
 			<option value=24>24</option>
 		</select>
 		at a time
-		<button class="btn btn-primary" ng-click="test()">Test</button>
+		<!-- <button class="btn btn-primary" ng-click="test()">Test</button> -->
 	</div><br>
+
+	<div>
+		<paper-button label="BUTTON" raisedButton></paper-button>
+		<paper-checkbox></paper-checkbox>
+		
+	</div>
 
 	<!-- Image Gallery -->
   	<div class="loc inline" ng-repeat="img in images | orderBy: sortMethod | limitTo: imgLimit">
