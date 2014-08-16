@@ -1,17 +1,1 @@
-html{ 
-	overflow-y:scroll; 
-}
-
-.inline{
-  display: inline-block;
-}
-
-.centered{
-  text-align: center;
-}
-.left{
-  text-align:left;
-}
-.right{
-  text-align:right;
-}
+html{overflow-y:scroll}.inline{display:inline-block}.centered{text-align:center}.left{text-align:left}.right{text-align:right}

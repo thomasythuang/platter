@@ -10,7 +10,9 @@ app.directive('mainResources', function(){
 		template: 
 		//'<script src="/resources/polymer-components/platform/platform.js"></script>'+
 		//'<link rel="import" href="/resources/polymer-components/paper-elements/paper-elements.html">'+
+		//'<link rel="import" href="/resources/polymer-components/core-elements/core-elements.html">'+
 		//'<link rel="import" href="/resources/polymer-components/core-icons/core-icons.html">'+
+		'<link rel="import" href="/resources/polymer-components/font-roboto/roboto.html">'+
 		'<link rel="shortcut icon" href="/img/favicon.ico">'+
 		'<link rel="stylesheet" href="/resources/bootstrap.min.css">'+
 		'<link rel="stylesheet" href="/resources/font-awesome.min.css">'+

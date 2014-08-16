@@ -7,8 +7,9 @@ app.controller('uploadController', function($scope, $http, $upload, Images) {
 	$scope.selectedFiles = [];
 
 	$scope.test = function(){
-		console.log($scope.formData);
-		console.log($scope.selectedFiles);
+		//console.log($scope.formData);
+		//console.log($scope.selectedFiles);
+		console.log($scope.user)
 	}
 
 	// Add files to selected files array

@@ -11,106 +11,101 @@
 	<title>Platter</title>
 
 	<!-- Universal Resources --> 
+	<main-resources></main-resources>
 	<script src="/resources/polymer-components/platform/platform.js"></script>
 	<link rel="import" href="/resources/polymer-components/paper-elements/paper-elements.html">
-	<!--
-	<link rel="import" href="/resources/polymer-components/paper-button/paper-button.html">
-	<link rel="import" href="/resources/polymer-components/paper-checkbox/paper-checkbox.html">
-	-->
+	<link rel="import" href="/resources/polymer-components/core-elements/core-elements.html">
 	<link rel="import" href="/resources/polymer-components/core-icons/core-icons.html">
 	<script src="/resources/angular.min.js"></script>
-	<main-resources></main-resources>
+	
 	<link rel="stylesheet" href="/css/gallery.css">
 </head>
 
 <!-- load user data into angular controller -->
-<body ng-controller="galleryController" ng-init="user= <%= JSON.stringify(user) %>">
+<body fullbleed ng-controller="galleryController" ng-init="user= <%= JSON.stringify(user) %>">
 
-<!-- Header and Navbar -->
-<main-navbar></main-navbar>
+<!-- Header and Navbar --> <!--
+<main-navbar></main-navbar> -->
+<core-scaffold>
+	<core-header-panel navigation flex>
+  	<core-toolbar id="navheader">
+  		<span>Platter</span>
+  	</core-toolbar>
+  	<core-menu>
+  		<core-item label="Home">
+  			<a href="/"></a>
+			</core-item>
+  		<core-item label="Upload">
+  			<a href="/upload"></a>
+  		</core-item>
+  		<core-item label="Test">
+  			<a href="/test"></a>
+  		</core-item>
+  	</core-menu>
+	</core-header-panel>
+  
+	<span tool>Title</span>
 
-<div id="main" class="centered">
-	<!-- Gallery Settings -->
-	<div>
-		Sort by: 
-		<select ng-model="sortMethod">
-			<option value="-favorites">Most Popular</option>
-			<option value="-dateAdded">Most Recent</option>
-			<option value="name">Name (ascending)</option>
-			<option value="-name">Name (descending)</option>
-			<option value="state">Location</option>
-			<option value="">Corn</option>
-		</select>
-		&nbsp&nbsp&nbsp&nbsp Show 
-		<select ng-model="imgLimit">
-			<option value=6>6</option>
-			<option value=12>12</option>
-			<option value=24>24</option>
-		</select>
-		at a time
-		<!-- <button class="btn btn-primary" ng-click="test()">Test</button> -->
-	</div><br>
+	<div class="content">
 
-	<div>
-		<paper-button label="BUTTON" raisedButton></paper-button>
-		<paper-checkbox></paper-checkbox>
-		
-	</div>
+  	<div id="main" class="centered">
+			<!-- Gallery Settings -->
+			<div>
+				Sort by: 
+				<select ng-model="sortMethod">
+					<option value="-favorites">Most Popular</option>
+					<option value="-dateAdded">Most Recent</option>
+					<option value="name">Name (ascending)</option>
+					<option value="-name">Name (descending)</option>
+					<option value="state">Location</option>
+					<option value="">Corn</option>
+				</select>
+				&nbsp&nbsp&nbsp&nbsp Show 
+				<select ng-model="imgLimit">
+					<option value=6>6</option>
+					<option value=12>12</option>
+					<option value=24>24</option>
+				</select>
+				at a time
+			</div><br>
 
-	<!-- Image Gallery -->
-  	<div class="loc inline" ng-repeat="img in images | orderBy: sortMethod | limitTo: imgLimit">
-
-		<!-- Image and Short Description -->
-		<div class="crop crop-sm">
-			<img ng-src="{{img.url}}" data-toggle="modal" data-target="#{{img._id}}"/>
-		</div>
-		<div class="desc">
-			<div class="">
-				<span ng-click="test(img)">{{img.name}}</span>
-				<a ng-href="/location/{{img.name}}">all</a>
+			<div>
+				<paper-button label="test" raisedButton ng-click="test()"></paper-button>
+				<paper-checkbox></paper-checkbox>
+				
 			</div>
-			<!-- Delete button, debugging purposes only
-			<div class="inline"> 
-				<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
-					<span class="fa fa-trash-o"></span>
-				</button>
-			</div> -->
-			<div class="inline"><div class="">{{img.city | characters:12 :false}}, {{img.state}}</div></div> 
-			<div class="inline">
-				<button type="button" class="btn btn-default btn-fav" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
-					<span class="glyphicon glyphicon-star"></span> {{img.favorites}}
-				</button>
-			</div>
-		</div>
 
-		<!-- Pop-up Modal -->
-		<div class="modal fade" id="{{img._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		  	<div class="modal-dialog">
-		    	<div class="modal-content">
-			      	<div class="modal-header">
-			        	<h4 class="modal-title" id="myModalLabel">{{img.name}}</h4>
-			      	</div>
-			      	<div class="modal-body center">
-			        	<div class="crop crop-lg">
-							<img ng-src="{{img.url}}"/>
-						</div>
-			        	<p>Location: {{img.city}}, {{img.state}}</p>
-			        	<p>Category: {{img.category}}</p>
-			        	<p>Tags: <span ng-repeat="tag in location.tags">#{{tag}} </span>
-			        	<p>Date Added: {{img.dateAdded | date: 'MM/dd/yy'}}</p>
-			        	<p>by {{img.authorName}}</p>
-			      	</div>
-			      	<div class="modal-footer">
-				      	<button type="button" class="btn btn-default btn-fav" ng-class="" ng-click="">
+			<!-- Image Gallery -->
+	  	<div class="loc inline" ng-repeat="img in images | orderBy: sortMethod | limitTo: imgLimit">
+
+				<!-- Image and Short Description -->
+				<div class="crop crop-sm">
+					<img ng-src="{{img.url}}" data-toggle="modal" data-target="#{{img._id}}"/>
+				</div>
+				<div class="desc">
+					<div class="">
+						<span ng-click="test(img)">{{img.name}}</span>
+						<a ng-href="/location/{{img.name}}">all</a>
+					</div>
+					<!-- Delete button, debugging purposes only
+					<div class="inline"> 
+						<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
+							<span class="fa fa-trash-o"></span>
+						</button>
+					</div> -->
+					<div class="inline"><div class="">{{img.city | characters:12 :false}}, {{img.state}}</div></div> 
+					<div class="inline">
+						<button type="button" class="btn btn-default btn-fav" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
 							<span class="glyphicon glyphicon-star"></span> {{img.favorites}}
 						</button>
-			        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			      	</div>
-		    	</div>
-		  	</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
+</core-scaffold>
+
+
 
 <script src="/js/core-home.js"></script>
 <script src="/js/controllers/galleryCtrl.js"></script>

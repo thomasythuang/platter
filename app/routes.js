@@ -27,6 +27,13 @@ module.exports = function(app, passport){
 		});
 	});
 
+	// test page (for debugging)
+	app.get('/test', function(req, res){
+		res.render('test.html', {
+			user : req.user
+		});
+	});
+
 //// AUTHENTICATION ----------------------------------------------------------
 
 	// load user profile and associated data
