@@ -21,12 +21,10 @@ module.exports = function(app, passport){
 	});
 
 	// upload page
-	app.get('/upload', function(req, res){ /*
+	app.get('/upload', function(req, res){
 		res.render('upload.html', {
 			user : req.user
-		}); */
-		console.log('Upload');
-		res.end();
+		});
 	});
 
 	// test page (for debugging)
