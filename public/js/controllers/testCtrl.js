@@ -7,7 +7,7 @@ var app = angular.module('foodApp', [
 app.controller('testController', function($scope) {
 	
 	$scope.test = function(){
-		console.log($scope.user);
+		console.log($scope.tab);
 	}
 
 	

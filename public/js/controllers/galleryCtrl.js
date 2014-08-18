@@ -2,7 +2,7 @@
 
 var app = angular.module('galleryController', []);
 
-app.controller('galleryController', function($scope, $http, Images) {
+app.controller('galleryController', function($scope, $http, $location, Images) {
 	$scope.sortMethod = "name";
 	$scope.imgLimit = 12;
 
@@ -63,7 +63,4 @@ app.controller('galleryController', function($scope, $http, Images) {
 		}
 	}
 
-	$scope.test = function(){
-		console.log($scope.user);
-	};
 })

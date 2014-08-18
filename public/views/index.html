@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <!-- Angular Module -->
-<html ng-app="foodApp" class="no-js">
+<html ng-app="foodApp" class="no-js" ng-controller="mainController">
 <head>
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -10,44 +10,18 @@
 
 	<title>Platter</title>
 
-	<!-- Universal Resources --> 
-	<main-resources></main-resources>
-	<script src="/resources/polymer-components/platform/platform.js"></script>
-	<link rel="import" href="/resources/polymer-components/paper-elements/paper-elements.html">
-	<link rel="import" href="/resources/polymer-components/core-elements/core-elements.html">
-	<link rel="import" href="/resources/polymer-components/core-icons/core-icons.html">
+	<!-- Angular & Fonts --> 
 	<script src="/resources/angular.min.js"></script>
-	
-	<link rel="stylesheet" href="/css/gallery.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 </head>
 
 <!-- load user data into angular controller -->
-<body fullbleed ng-controller="galleryController" ng-init="user= <%= JSON.stringify(user) %>">
+<body ng-controller="galleryController" ng-init="user= <%= JSON.stringify(user) %>">
 
-<!-- Header and Navbar --> <!--
-<main-navbar></main-navbar> -->
-<core-scaffold>
-	<core-header-panel navigation flex>
-  	<core-toolbar id="navheader">
-  		<span>Platter</span>
-  	</core-toolbar>
-  	<core-menu>
-  		<core-item label="Home">
-  			<a href="/"></a>
-			</core-item>
-  		<core-item label="Upload">
-  			<a href="/upload"></a>
-  		</core-item>
-  		<core-item label="Test">
-  			<a href="/test"></a>
-  		</core-item>
-  	</core-menu>
-	</core-header-panel>
-  
-	<span tool>Title</span>
+<core-header-panel mode="waterfall">
+  <main-navbar></main-navbar>
 
-	<div class="content">
-
+	<div vertical layout center class="content">
   	<div id="main" class="centered">
 			<!-- Gallery Settings -->
 			<div>
@@ -72,7 +46,7 @@
 			<div>
 				<paper-button label="test" raisedButton ng-click="test()"></paper-button>
 				<paper-checkbox></paper-checkbox>
-				
+				<a href="/upload">upload</a>
 			</div>
 
 			<!-- Image Gallery -->
@@ -103,14 +77,18 @@
 			</div>
 		</div>
 	</div>
-</core-scaffold>
+</core-header-panel>
 
-
-
+<!-- Resources -->
+<main-resources></main-resources>
+<script src="/resources/polymer-components/platform/platform.js"></script>
 <script src="/js/core-home.js"></script>
+<script src="/js/controllers/mainCtrl.js"></script>
 <script src="/js/controllers/galleryCtrl.js"></script>
 <script src="/js/directives/coreDirective.js"></script>
 <script src="/js/services/imgService.js"></script>
 <script src="/js/filters/truncate.js"></script>
+<link rel="stylesheet" href="/css/gallery.css">
+<link rel="stylesheet" href="/css/test.css">
 </body>
 </html>

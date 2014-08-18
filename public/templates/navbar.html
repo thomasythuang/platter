@@ -1,18 +1,16 @@
 <!-- /templates/navbar.html -->
 
-<header>
-<nav class="navbar navbar-default">
-	<div class="container">
-      	<div class="navbar-header">
-        	<a class="navbar-brand" href="#">Platter</a>
-      	</div>
-
-      	<ul class="nav navbar-nav navbar-right">
-        	<li><a href="/"><span class="fa fa-home"></span> Home</a></li>
-        	<li><a href="/upload"><span class="fa fa-upload"></span> Upload</a></li>
-        	<li ng-hide="user"><a href="/login"><span class="fa fa-sign-in"></span> Login</a></li>
-        	<li ng-show="user"><a href="/profile"><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</a></li>
-  		</ul>
-	</div>
-</nav>
-</header>
+<core-toolbar class="" id="mainheader">
+  <a href="/">
+    <paper-icon-button id="navicon" icon="arrow-back"></paper-icon-button>
+  </a>
+  <span style="font-size:40px">Roboto</span>
+  <span flex>
+    <paper-tabs class="fit" ng-model="tab">
+      <paper-tab ng-click="go('/')">Home</paper-tab>
+      <paper-tab ng-click="go('/upload')">Upload</paper-tab>
+      <paper-tab ng-click="go('/login')">Login<paper-tab>
+    </paper-tabs>
+  </span>
+  <paper-icon-button id="searchbutton" icon="search" ng-click="test()"></paper-icon-button>
+</core-toolbar>

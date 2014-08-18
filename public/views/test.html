@@ -11,15 +11,16 @@
 	<title>Platter</title>
 
 	<!-- Universal Resources --> 
-	<!-- <main-resources></main-resources> -->
+	<!-- <main-resources></main-resources> --><!-- 
 	<script src="/resources/polymer-components/platform/platform.js"></script>
 	<link rel="import" href="/resources/polymer-components/paper-elements/paper-elements.html">
 	<link rel="import" href="/resources/polymer-components/core-elements/core-elements.html">
 	<link rel="import" href="/resources/polymer-components/core-icons/core-icons.html">
 	<script src="/resources/angular.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="/css/test.css">
-	
+	<link rel="stylesheet" href="/css/test.css"> -->
+	<script src="/resources/angular.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 </head>
 
 <!-- load user data into angular controller -->
@@ -32,14 +33,14 @@
   	</a>
     <span style="font-size:40px">Roboto</span>
     <span flex>
-	    <paper-tabs class="fit">
+	    <paper-tabs class="fit" ng-model="tab">
 	    	<paper-tab>Home</paper-tab>
 	    	<paper-tab>Upload</paper-tab>
 	    	<paper-tab>Login<paper-tab>
 	  	</paper-tabs>	
   	</span>
     <paper-icon-button id="searchbutton" 
-      icon="search"></paper-icon-button>
+      icon="search" ng-click="test()"></paper-icon-button>
   </core-toolbar>
   <p>
 	  <paper-input label="Normal input"></paper-input>
@@ -47,7 +48,7 @@
 		<paper-input floatingLabel label="City"></paper-input>
 		<paper-input floatingLabel label="State"></paper-input>
 	</p>
-  <p>Sample content.</p>
+  <a href="/upload">Upload</a>
   <p>Sample content.</p>
   <p>More stuff.</p>
   <p>More stuff.</p>
@@ -87,6 +88,11 @@
 	</div>
 </core-scaffold> -->
 
+<script src="/resources/polymer-components/platform/platform.js"></script>
+<link rel="import" href="/resources/polymer-components/paper-elements/paper-elements.html">
+<link rel="import" href="/resources/polymer-components/core-elements/core-elements.html">
+<link rel="import" href="/resources/polymer-components/core-icons/core-icons.html">
+<link rel="stylesheet" href="/css/test.css">
 <script src="/js/controllers/testCtrl.js"></script>
 <script src="/js/directives/coreDirective.js"></script>
 </body>
