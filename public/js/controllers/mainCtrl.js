@@ -2,14 +2,10 @@
 
 var app = angular.module('mainController', []);
 
-app.controller('mainController', function($scope, $location){
-
-	$scope.go = function(path){
-		
-	};
+app.controller('mainController', function($scope){
 
 	$scope.test = function(){
-		console.log(location.href);
+		console.log($scope.user);
 	};
 
 });

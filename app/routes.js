@@ -29,9 +29,8 @@ module.exports = function(app, passport){
 
 	// test page (for debugging)
 	app.get('/test', function(req, res){
-		res.render('test.html', {
-			user : req.user
-		});
+		console.log("test");
+		res.json("test result");
 	});
 
 //// AUTHENTICATION ----------------------------------------------------------
@@ -81,7 +80,7 @@ module.exports = function(app, passport){
 	// handle the callback after facebook has authenticated the user
 	app.get('/auth/facebook/callback',
 		passport.authenticate('facebook', {
-			successRedirect : '/profile',
+			successRedirect : '/',
 			failureRedirect : '/'
 		}));
 
