@@ -20,9 +20,23 @@ module.exports = function(app, passport){
 		});
 	});
 
+	// login page
+	app.get('/login', function(req, res){
+		res.render('index.html', {
+			user : req.user
+		});
+	});
+	
 	// upload page
 	app.get('/upload', function(req, res){
-		res.render('upload.html', {
+		res.render('index.html', {
+			user : req.user
+		});
+	});
+
+	// location page
+	app.get('/location/:loc_id', function(req, res){
+		res.render('index.html', {
 			user : req.user
 		});
 	});
@@ -34,7 +48,7 @@ module.exports = function(app, passport){
 	});
 
 //// AUTHENTICATION ----------------------------------------------------------
-
+ 
 	// load user profile and associated data
 	app.get('/profile', function(req, res){
 		if (req.user){
@@ -44,7 +58,7 @@ module.exports = function(app, passport){
 				Image.find({
 					'_id': {$in: req.user.favorites}
 				}, function(err, favs){
-					res.render('profile.html', {
+					res.render('index.html', {
 						user 		: req.user,
 						uploads		: ups,
 						favorites	: favs,
@@ -52,26 +66,26 @@ module.exports = function(app, passport){
 				});
 			});
 		} else {
-			res.render('profile.html', {
+			res.render('index.html', {
 				user 		: undefined,
 				uploads 	: undefined,
 				favorites	: undefined,
 			});
 		}
-	});
+	}); 
 
 	// logout
 	app.get('/logout', function(req, res) {
 		req.logout();
 		res.redirect('/');
 	});
-
+ 	/*
 	// login page
 	app.get('/login', function(req, res){
 		res.render('login.html', {
 			user : req.user
 		});
-	});
+	}); */
 
 	// FACEBOOK AUTHENTICATION -------------------
 	// route for facebook authentication and login
@@ -80,7 +94,7 @@ module.exports = function(app, passport){
 	// handle the callback after facebook has authenticated the user
 	app.get('/auth/facebook/callback',
 		passport.authenticate('facebook', {
-			successRedirect : '/',
+			successRedirect : '/profile',
 			failureRedirect : '/'
 		}));
 
@@ -122,21 +136,15 @@ module.exports = function(app, passport){
 	});
 
 	// Get all images for a single location for its page
-	app.get('/location/:location_name', function(req, res){
+	app.get('/location/imgs/:location_name', function(req, res){
 		console.log(req.params.location_name);
 		Image.find({
 			'name': req.params.location_name
 		},	function(err, imgs){
 			if (imgs.length < 1){
-				res.render('loc-nf.html', {
-					user 		: req.user,
-					name   		: req.params.location_name,
-				});
+				res.json(500, {error: 'location not found'});
 			} else {
-				res.render('location.html', {
-					user 		: req.user,
-					images		: imgs,
-				});
+				res.json(imgs);
 			}
 		});
 	});

@@ -1,27 +1,3 @@
-<!-- public/views/profile.html -->
-<!DOCTYPE html>
-
-<!-- Angular Module -->
-<html ng-app="foodApp" class="no-js">
-<head>
-	<!-- Meta -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Your Profile</title>
-
-	<!-- Universal Resources -->
-	<script src="/resources/angular.min.js"></script>
-	<main-resources></main-resources>
-	<link rel="stylesheet" href="/css/gallery.css">
-</head>
-
-<!-- Load user data from res.render() and transfer to angular controller -->
-<body ng-controller="profileController" ng-init="user= <%= JSON.stringify(user)%>; uploads= <%= JSON.stringify(uploads)%>; favorites= <%= JSON.stringify(favorites)%>">
-
-<!-- Header and Navbar -->
-<main-navbar></main-navbar>
-
 <div class="container centered" id="main">
 
 	<!-- Heading -->
@@ -82,9 +58,3 @@
 	</div>
 
 </div>
-<script src="/js/core-profile.js"></script>
-<script src="/js/controllers/profCtrl.js"></script>
-<script src="/js/directives/coreDirective.js"></script>
-<script src="/js/services/userService.js"></script>
-</body>
-</html>

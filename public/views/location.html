@@ -1,25 +1,4 @@
 <!-- public/views/location.html -->
-<!DOCTYPE html>
-
-<!-- Angular Module -->
-<html ng-app="foodApp" class="no-js" ng-controller="locationController" ng-init="user= <%= JSON.stringify(user) %>; images= <%= JSON.stringify(images) %>">
-<head>
-	<!-- Meta -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>{{images[0].name}}</title>
-
-	<!-- Universal Resources -->
-	<script src="/resources/angular.min.js"></script>
-	<main-resources></main-resources>
-	<link rel="stylesheet" href="/css/gallery.css">
-</head>
-
-<body>
-
-<!-- Header and Navbar -->
-<main-navbar></main-navbar>
 
 <div id="main" class="centered">
 	<!-- Gallery Settings -->
@@ -40,11 +19,11 @@
 		<button class="btn btn-primary" ng-click="test()">Test</button>
 	</div><br>
 
-	<h3>{{images[0].name}}</h3>
-	<h5>{{images[0].city}}, {{images[0].state}}</h5>
+	<h3>{{params.loc_name}}</h3>
+	<h5>{{imgs[0].city}}, {{imgs[0].state}}</h5>
 
 	<!-- Image Gallery -->
-  	<div class="loc inline" ng-repeat="img in images | orderBy: sortMethod | limitTo: imgLimit">
+	<div class="loc inline" ng-repeat="img in imgs | orderBy: sortMethod | limitTo: imgLimit">
 
 		<!-- Image and Short Description -->
 		<div class="crop crop-sm">
@@ -61,39 +40,5 @@
 				</button>
 			</div>
 		</div>
-
-		<!-- Pop-up Modal -->
-		<div class="modal fade" id="{{img._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		  	<div class="modal-dialog">
-		    	<div class="modal-content">
-			      	<div class="modal-header">
-			        	<h4 class="modal-title" id="myModalLabel">{{img.name}}</h4>
-			      	</div>
-			      	<div class="modal-body center">
-			        	<div class="crop crop-lg">
-							<img ng-src="{{img.url}}"/>
-						</div>
-			        	<p>Location: {{img.city}}, {{img.state}}</p>
-			        	<p>Category: {{img.category}}</p>
-			        	<p>Tags: <span ng-repeat="tag in location.tags">#{{tag}} </span>
-			        	<p>Date Added: {{img.dateAdded | date: 'MM/dd/yy'}}</p>
-			        	<p>by {{img.authorName}}</p>
-			      	</div>
-			      	<div class="modal-footer">
-				      	<button type="button" class="btn btn-default btn-fav" ng-class="" ng-click="">
-							<span class="glyphicon glyphicon-star"></span> {{img.favorites}}
-						</button>
-			        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			      	</div>
-		    	</div>
-		  	</div>
-		</div>
 	</div>
 </div>
-
-<script src="/js/core-location.js"></script>
-<script src="/js/controllers/locationCtrl.js"></script>
-<script src="/js/directives/coreDirective.js"></script>
-<script src="/js/filters/truncate.js"></script>
-</body>
-</html>

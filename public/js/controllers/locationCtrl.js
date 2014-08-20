@@ -2,11 +2,20 @@
 
 var app = angular.module('locationController', []);
 
-app.controller('locationController', function($scope, $http) {
+app.controller('locationController', function($scope, $http, $routeParams) {
 	$scope.sortMethod = "-favorites";
 	$scope.imgLimit = 12;
 
+	$scope.params = $routeParams;
 
+	$http.get('/location/imgs/' + $scope.params.loc_name)
+		.success(function(data){
+			console.log("works!");
+			$scope.imgs = data;
+		})
+		.error(function(data){
+			console.log("Location not found");
+		});
 	/*
 	// GET
 	Images.get()
@@ -67,5 +76,6 @@ app.controller('locationController', function($scope, $http) {
 	
 	$scope.test = function(){
 		console.log($scope.user);
+		console.log($scope.imgs);
 	};
 })

@@ -2,7 +2,7 @@
 
 #main{ 
   padding: 10px;
-  width: 80%;
+  /* width: 80%; */
 
   border: 2px solid black;
 }
@@ -13,6 +13,12 @@
 
   border: 1px solid black;
   
+}
+
+.content{
+  
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .desc{

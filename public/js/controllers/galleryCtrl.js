@@ -63,4 +63,7 @@ app.controller('galleryController', function($scope, $http, $location, Images) {
 		}
 	}
 
+	$scope.test = function(){
+		console.log($scope.images);
+	}
 })

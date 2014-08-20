@@ -9,7 +9,9 @@ var app = angular.module('foodApp', [
 	'uploadController',
 	'loginController',
 	'profileController',
+	'locationController',
 	'imgService',
+	'userService',
 	'truncate',
 	'angularFileUpload',
 ]);	
