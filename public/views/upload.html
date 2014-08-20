@@ -1,65 +1,64 @@
 <!-- public/views/upload.html -->
 
 <!-- Upload Submission Form -->
-<div class="centered">
-	<div class="row">
-		<h4 class="col-xs-4 col-xs-offset-4 left">Upload a picture</h4>
-	</div><br>
 
-	<!-- If not logged in -->
-	<div ng-hide="user" class="row">
-		<p class="col-xs-4 col-xs-offset-4 left">Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
-	</div>
+<div class="row">
+	<h4 class="col-xs-4 col-xs-offset-4 left">Upload a picture</h4>
+</div><br>
 
-	<!-- If logged in -->
-	<form name="submitForm" ng-submit="" ng-show="user">
-		<div class="row form-group">
-			<div class="col-xs-2 col-xs-offset-2 right">
-				<label for="nameInput">Name</label>
-			</div>
-			<div class="col-xs-4 left">
-				<input type="text" class="form-control" id="nameInput" placeholder="name" ng-model="formData.name">
-			</div>
-		</div>
-		<div class="row form-group">
-			<div class="col-xs-2 col-xs-offset-2 right">
-				<label for="nameInput">City</label>
-			</div>
-			<div class="col-xs-4 left">
-				<input type="text" class="form-control" id="locInput" placeholder="city" ng-model="formData.city">
-			</div>
-		</div>
-		<div class="row form-group">
-			<div class="col-xs-2 col-xs-offset-2 right">
-				<label for="nameInput">State</label>
-			</div>
-			<div class="col-xs-4 left">
-				<input type="text" class="form-control" id="catInput" placeholder="state" ng-model="formData.state">
-			</div>
-		</div>
-		<div class="row form-group">
-			<div class="col-xs-2 col-xs-offset-2 right">
-				<label for="nameInput">Image File(s)</label>
-			</div>
-			<div class="col-xs-4 left">
-				<input type="file" ng-file-select="onFileSelect($files)">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4 col-xs-offset-4 left">
-				<ul>
-					<li ng-repeat="file in selectedFiles">
-						<span class="glyphicon glyphicon-remove" ng-click="unselect(file)"></span>
-						{{file.name}}
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4 col-xs-offset-4 left">
-				<button type="submit" class="btn btn-info" ng-click="submit()">Submit</button>
-				<button class="btn btn-primary" ng-click="test()">Test</button>
-			</div>
-		</div>
-	</form> 
+<!-- If not logged in -->
+<div ng-hide="user" class="row">
+	<p class="col-xs-4 col-xs-offset-4 left">Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
 </div>
+
+<!-- If logged in -->
+<form name="submitForm" ng-submit="" ng-show="user">
+	<div class="row form-group">
+		<div class="col-xs-2 col-xs-offset-2 right">
+			<label for="nameInput">Name</label>
+		</div>
+		<div class="col-xs-4 left">
+			<input type="text" class="form-control" id="nameInput" placeholder="name" ng-model="formData.name">
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-2 col-xs-offset-2 right">
+			<label for="nameInput">City</label>
+		</div>
+		<div class="col-xs-4 left">
+			<input type="text" class="form-control" id="locInput" placeholder="city" ng-model="formData.city">
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-2 col-xs-offset-2 right">
+			<label for="nameInput">State</label>
+		</div>
+		<div class="col-xs-4 left">
+			<input type="text" class="form-control" id="catInput" placeholder="state" ng-model="formData.state">
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-2 col-xs-offset-2 right">
+			<label for="nameInput">Image File(s)</label>
+		</div>
+		<div class="col-xs-4 left">
+			<input type="file" ng-file-select="onFileSelect($files)">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4 left">
+			<ul>
+				<li ng-repeat="file in selectedFiles">
+					<span class="glyphicon glyphicon-remove" ng-click="unselect(file)"></span>
+					{{file.name}}
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4 left">
+			<button type="submit" class="btn btn-info" ng-click="submit()">Submit</button>
+			<button class="btn btn-primary" ng-click="test()">Test</button>
+		</div>
+	</div>
+</form> 

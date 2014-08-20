@@ -1,5 +1,13 @@
-<div class="container centered" id="main">
+<!-- public/views/upload.html -->
 
+<h2>Profile</h2>
+
+<!-- If not logged in -->
+<div ng-hide="user" class="row">
+	<p >Please <a href="/login">login or sign up</a> to be able to view your profile</p>
+</div>
+
+<div class="centered" ng-show="user">
 	<!-- Heading -->
 	<div class="page-header text-center">
 		<h1><span class="fa fa-anchor"></span> {{user.facebook.name}}</h1>
@@ -40,7 +48,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- User Favorites -->
 	<div>
 		<h3>Favorites</h3>
@@ -56,5 +64,4 @@
 			</div>
 		</div>
 	</div>
-
 </div>
