@@ -12,8 +12,5 @@ app.controller('loginController', function($scope, $http, $location){
 			});
 	};
 
-	$scope.login = function(){ 
-		window.location.assign('http://localhost:8080/auth/facebook');
-	};
 
 });

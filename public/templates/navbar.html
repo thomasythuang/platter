@@ -1,15 +1,15 @@
 <!-- /templates/navbar.html -->
 
 <core-toolbar class="" id="mainheader">
-  <a href="/">
-    <paper-icon-button id="navicon" icon="arrow-back"></paper-icon-button>
+  <a href="/" style="color: black">
+    <core-icon icon="home"></core-icon>
   </a>
-  <span style="font-size:40px">Roboto</span>
+  <span style="font-size:40px">Corn</span>
   <span flex>
-    <paper-tabs noink class="fit" ng-model="tab">
-      <paper-tab ng-click="go('/')">Home</paper-tab>
-      <paper-tab ng-click="go('/upload')">Upload</paper-tab>
-      <paper-tab ng-click="go('/login')">Login<paper-tab>
+    <paper-tabs class="fit" ng-model="tab">
+      <paper-tab ng-click="go('/')">You're</paper-tab>
+      <paper-tab ng-click="go('/upload')">A</paper-tab>
+      <paper-tab ng-click="go('/login')">Nerd<paper-tab>
     </paper-tabs>
   </span>
   <paper-icon-button id="searchbutton" icon="search" ng-click="test()"></paper-icon-button>

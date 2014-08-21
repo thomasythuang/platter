@@ -10,11 +10,11 @@ core-header-panel {
   width: 100vw;
 }
 core-toolbar {
-  background-color: #03A9F4;
+  background-color: #ffa000;
 }
 p {
   margin: 20px;
-  padding: 80px 20px;
+  padding: 20px;
   border-radius: 20px;
   background-color: #eee;
 }

@@ -11,54 +11,15 @@
 	<p class="col-xs-4 col-xs-offset-4 left">Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
 </div>
 
-<!-- If logged in -->
-<form name="submitForm" ng-submit="" ng-show="user">
-	<div class="row form-group">
-		<div class="col-xs-2 col-xs-offset-2 right">
-			<label for="nameInput">Name</label>
-		</div>
-		<div class="col-xs-4 left">
-			<input type="text" class="form-control" id="nameInput" placeholder="name" ng-model="formData.name">
-		</div>
-	</div>
-	<div class="row form-group">
-		<div class="col-xs-2 col-xs-offset-2 right">
-			<label for="nameInput">City</label>
-		</div>
-		<div class="col-xs-4 left">
-			<input type="text" class="form-control" id="locInput" placeholder="city" ng-model="formData.city">
-		</div>
-	</div>
-	<div class="row form-group">
-		<div class="col-xs-2 col-xs-offset-2 right">
-			<label for="nameInput">State</label>
-		</div>
-		<div class="col-xs-4 left">
-			<input type="text" class="form-control" id="catInput" placeholder="state" ng-model="formData.state">
-		</div>
-	</div>
-	<div class="row form-group">
-		<div class="col-xs-2 col-xs-offset-2 right">
-			<label for="nameInput">Image File(s)</label>
-		</div>
-		<div class="col-xs-4 left">
-			<input type="file" ng-file-select="onFileSelect($files)">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-4 col-xs-offset-4 left">
-			<ul>
-				<li ng-repeat="file in selectedFiles">
-					<span class="glyphicon glyphicon-remove" ng-click="unselect(file)"></span>
-					{{file.name}}
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-4 col-xs-offset-4 left">
-			<button type="submit" class="btn btn-info" ng-click="submit()">Submit</button>
-			<button class="btn btn-primary" ng-click="test()">Test</button>
-		</div>
-	</div>
-</form> 
+<form method="POST" action="/upload" enctype="multipart/form-data" ng-show="user" id="upForm">
+	<paper-input floatingLabel label="Name" ng-model="formData.name"></paper-input>
+	<paper-input floatingLabel label="City" ng-model="formData.city"></paper-input>
+	<paper-input floatingLabel label="State" ng-model="formData.state"></paper-input>
+
+  <input id="name" type="text" name="name" style="display:none">
+  <input id="city" type="text" name="city" style="display:none">
+  <input id="state" type="text" name="state" style="display:none">
+  <input type="file" name="filefield">
+</form>
+<button ng-click="test()">Test</button>
+<button ng-click="upload()">Submit</button>

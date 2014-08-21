@@ -8,4 +8,12 @@ app.controller('mainController', function($scope){
 		console.log($scope.user);
 	}; */
 
+	$scope.login = function(){ 
+		window.location.assign('http://localhost:8080/auth/facebook');
+	};
+
+	$scope.logout = function(){ 
+		window.location.assign('http://localhost:8080/logout');
+	};
+
 });

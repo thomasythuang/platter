@@ -10,8 +10,8 @@ var app = angular.module('foodApp', [
 	'loginController',
 	'profileController',
 	'locationController',
-	'imgService',
-	'userService',
+	'mainService',
 	'truncate',
 	'angularFileUpload',
+	'ng-polymer-elements',
 ]);	
