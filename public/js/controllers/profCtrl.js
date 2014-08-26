@@ -4,6 +4,21 @@ var app = angular.module('profileController', []);
 
 app.controller('profileController', function($scope, $http, Users) {
 
+	// If user is logged in, load user data (images & favorites) into page
+	if ($scope.user){
+		Users.getInfo()
+			.success(function(data){
+				console.log(data);
+				var userInfo = data;
+				console.log(userInfo.favorites);
+				$scope.uploads = userInfo.uploads;
+				$scope.favorites = userInfo.favorites;
+			})
+			.error(function(data){
+				console.log(data);
+			});
+	}
+
 	// true/false if an image is favorited by the user
 	$scope.checkFav = function(img){
 		if ($scope.user){
@@ -43,6 +58,7 @@ app.controller('profileController', function($scope, $http, Users) {
 	$scope.test = function(){
 		console.log($scope.user);
 		console.log($scope.uploads);
+		console.log($scope.favorites);
 	};
 
 })

@@ -3,23 +3,21 @@
 <!-- Upload Submission Form -->
 
 <div class="row">
-	<h4 class="col-xs-4 col-xs-offset-4 left">Upload a picture</h4>
+	<h4 class="">Upload a picture</h4>
 </div><br>
 
 <!-- If not logged in -->
 <div ng-hide="user" class="row">
-	<p class="col-xs-4 col-xs-offset-4 left">Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
+	<p class="">Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
 </div>
 
-<form method="POST" action="/upload" enctype="multipart/form-data" ng-show="user" id="upForm">
-	<paper-input floatingLabel label="Name" ng-model="formData.name"></paper-input>
-	<paper-input floatingLabel label="City" ng-model="formData.city"></paper-input>
-	<paper-input floatingLabel label="State" ng-model="formData.state"></paper-input>
-
-  <input id="name" type="text" name="name" style="display:none">
-  <input id="city" type="text" name="city" style="display:none">
-  <input id="state" type="text" name="state" style="display:none">
-  <input type="file" name="filefield">
-</form>
+<material-content>
+	<form method="POST" action="/upload" enctype="multipart/form-data" ng-show="user" id="upForm">
+	  <span>Name</span><input id="name" type="text" name="name">
+	  <span>City</span><input id="city" type="text" name="city">
+	  <span>State</span><input id="state" type="text" name="state">
+	  <input type="file" name="filefield">
+	</form>
+</material-content>
 <button ng-click="test()">Test</button>
 <button ng-click="upload()">Submit</button>

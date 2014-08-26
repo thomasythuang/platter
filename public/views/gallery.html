@@ -1,6 +1,6 @@
 <!-- public/views/gallery.html -->
 
-<div id="main" class="centered">
+<material-content id="main" class="centered">
 	<!-- Gallery Settings -->
 	<div>
 		Sort by: 
@@ -22,14 +22,13 @@
 	</div><br>
 
 	<div>
-		<material-checkbox></material-checkbox>
 		<a href="/upload">upload</a>
 		<a href="/login">login</a>
 		<a href="/profile">profile</a>
 	</div>
 
 	<!-- Image Gallery -->
-	<div class="loc inline" ng-repeat="img in images | orderBy: sortMethod | limitTo: imgLimit">
+	<material-card class="loc inline" ng-repeat="img in images | orderBy: sortMethod | limitTo: imgLimit">
 
 		<!-- Image and Short Description -->
 		<div class="crop crop-sm">
@@ -53,5 +52,5 @@
 				</button>
 			</div>
 		</div>
-	</div>
-</div>
+	</material-card>
+</material-content>

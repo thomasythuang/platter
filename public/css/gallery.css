@@ -1,18 +1,15 @@
 /* app css stylesheet */
 
 #main{ 
-  padding: 10px;
+  margin-top: 5px;
+  padding-top: 10px;
   /* width: 80%; */
 
   border: 2px solid black;
 }
 
 .loc{
-  margin: 5px 5px 0px 5px;
-  padding: 5px;
 
-  border: 1px solid black;
-  
 }
 
 .content{
@@ -32,6 +29,9 @@
 /* Hacky way of getting images fit to a set resolution and maintaining aspect ratio */
 .crop{ 
   overflow: hidden;
+  margin-top: -10px;
+  margin-left:-10px;
+  margin-right: -10px;
 }
 .crop-sm{
   width: 200px;

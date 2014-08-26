@@ -41,6 +41,29 @@ module.exports = function(app, passport){
 		});
 	});
 
+	// profile page
+	app.get('/profile', function(req, res){
+		res.render('index.html', {
+			user : req.user
+		});
+	});
+
+	// load user profile and associated data
+	app.get('/profile/info', function(req, res){
+		Image.find({
+			'_id': {$in: req.user.images}
+		},	function(err, ups){
+			Image.find({
+				'_id': {$in: req.user.favorites}
+			}, function(err, favs){
+				res.json({
+					uploads		: ups,
+					favorites	: favs,
+				});
+			});
+		});
+	});
+
 	// test page (for debugging)
 	app.get('/test', function(req, res){
 		console.log("test");
@@ -48,31 +71,6 @@ module.exports = function(app, passport){
 	});
 
 //// AUTHENTICATION ----------------------------------------------------------
- 
-	// load user profile and associated data
-	app.get('/profile', function(req, res){
-		if (req.user){
-			Image.find({
-				'_id': {$in: req.user.images}
-			},	function(err, ups){
-				Image.find({
-					'_id': {$in: req.user.favorites}
-				}, function(err, favs){
-					res.render('index.html', {
-						user 		: req.user,
-						uploads		: ups,
-						favorites	: favs,
-					});
-				});
-			});
-		} else {
-			res.render('index.html', {
-				user 		: undefined,
-				uploads 	: undefined,
-				favorites	: undefined,
-			});
-		}
-	}); 
 
 	// logout
 	app.get('/logout', function(req, res) {

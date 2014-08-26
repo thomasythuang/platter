@@ -5,6 +5,7 @@ var app = angular.module('uploadController', []);
 app.controller('uploadController', function($scope, $http, $injector) {
 	$scope.formData = {};
 	$scope.selectedFiles = [];
+	$scope.data = {};
 
 	$scope.test = function(){
 		console.log($scope.formData);

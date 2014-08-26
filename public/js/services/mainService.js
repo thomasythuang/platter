@@ -22,6 +22,9 @@ app.factory('Images', function($http){
 app.factory('Users', function($http){
 	return{
 
+		getInfo: function(){
+			return $http.get('/profile/info');
+		},
 		addFav: function(imgId){
 			return $http.post('/users/favorites/add/' + imgId);
 		},
