@@ -2,6 +2,9 @@
 
 var app = angular.module('foodApp', [
 	'ngRoute',
+	'ngAnimateStylers',
+	'ngAnimate',
+	'ngMaterial',
 	'ngRoutes',
 	'coreDirective',
 	'mainController',
@@ -12,6 +15,4 @@ var app = angular.module('foodApp', [
 	'locationController',
 	'mainService',
 	'truncate',
-	'angularFileUpload',
-	'ng-polymer-elements',
 ]);	

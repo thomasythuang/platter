@@ -10,28 +10,29 @@
 
 	<title>Platter</title>
 
-	<!-- Polymer Platform, Angular, & Fonts --> 
-	<script src="/resources/polymer-components/platform/platform.js"></script>
-	<script src="/js/directives/angular-file-upload-shim.min.js"></script>
+	<!-- Polymer Platform, Angular, & Fonts -->
+	<link rel="stylesheet" href="/resources/angular-material.min.css">
 	<script src="/resources/angular.min.js"></script>
-	<script src="/js/directives/angular-file-upload.min.js"></script>
 	<script src="/resources/angular-route.js"></script>
+	<script src="/resources/angular-animate-stylers.js"></script>
+	<script src="/resources/angular-animate.min.js"></script>
+	<script src="/resources/angular-material.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 </head>
 
 <!-- load user data into angular controller -->
 <body ng-controller="mainController" ng-init="user= <%= JSON.stringify(user) %>">
 
-<core-header-panel mode="waterfall">
-  <main-navbar></main-navbar>
+<main-navbar></main-navbar>
 
-  <div vertical layout center class="content">
-		<div ng-view></div>
-	</div>
-</core-header-panel>
+<div class="content">
+	<div ng-view></div>
+</div>
 
 <!-- Resources -->  <!-- Add everything to main-resources later -->
 <main-resources></main-resources>
+<script src="/resources/jquery-2.1.1.min.js"></script>
+<script src="/resources/bootstrap.min.js"></script>
 <script src="/js/coreModule.js"></script>
 <script src="/js/ngRoutes.js"></script>
 <script src="/js/controllers/mainCtrl.js"></script>
@@ -43,8 +44,8 @@
 <script src="/js/directives/coreDirective.js"></script>
 <script src="/js/services/mainService.js"></script>
 <script src="/js/filters/truncate.js"></script>
+<link rel="stylesheet" href="/resources/bootstrap.min.css">
 <link rel="stylesheet" href="/css/gallery.css">
 <link rel="stylesheet" href="/css/test.css">
-<script src="/resources/ng-polymer-elements.min.js"></script>
 </body>
 </html>
