@@ -4,20 +4,31 @@
 
 <div class="row">
 	<h4 class="">Upload a picture</h4>
-</div><br>
+</div>
 
 <!-- If not logged in -->
 <div ng-hide="user" class="row">
 	<p class="">Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
 </div>
 
-<material-content>
-	<form method="POST" action="/upload" enctype="multipart/form-data" ng-show="user" id="upForm">
-	  <span>Name</span><input id="name" type="text" name="name">
-	  <span>City</span><input id="city" type="text" name="city">
-	  <span>State</span><input id="state" type="text" name="state">
+
+<form method="POST" action="/upload" enctype="multipart/form-data" ng-show="user" id="up-form">
+	<div id="form-body" class="left">
+		<material-input-group class="ig">
+			<label class="m-label left">Name</label>
+		  <input class="m-input" type="text" name="name" ng-model="formData.name">
+		</material-input-group>
+		<material-input-group class="ig">
+			<label class="m-label left">City</label>
+		  <input class="m-input" type="text" name="city" ng-model="formData.city">
+		</material-input-group>
+		<material-input-group class="ig">
+			<label class="m-label left">State</label>
+		  <input class="m-input" type="text" name="state" ng-model="formData.state">
+		</material-input-group><br>
 	  <input type="file" name="filefield">
-	</form>
-</material-content>
+	</div>
+</form> <br>
+
 <button ng-click="test()">Test</button>
 <button ng-click="upload()">Submit</button>

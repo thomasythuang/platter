@@ -1,1 +1,23 @@
-html{overflow-y:scroll}.inline{display:inline-block}.centered{text-align:center}.left{text-align:left}.right{text-align:right}
+html{ 
+	overflow-y:auto; 
+}
+
+.inline{
+  display: inline-block;
+}
+
+.centered{
+  text-align: center;
+}
+.left{
+  text-align:left;
+}
+.right{
+  text-align:right;
+}
+
+body {
+  font-family: 'Roboto', Helvetica, sans-serif;
+  font-weight:300;
+  margin:0px;
+}

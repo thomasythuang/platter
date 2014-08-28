@@ -26,12 +26,8 @@ app.controller('uploadController', function($scope, $http, $injector) {
 		}
 	}
 
-	$scope.upload = function(file){
-		document.getElementById("name").value = $scope.formData.name;
-		document.getElementById("city").value = $scope.formData.city;
-		document.getElementById("state").value = $scope.formData.state;
-
-		document.getElementById("upForm").submit();
+	$scope.upload = function(file){ 
+		document.getElementById("up-form").submit();
 	}
 
  	/*

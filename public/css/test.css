@@ -1,20 +1,28 @@
-body {
-  font-family: 'Roboto', Helvetica, sans-serif;
-  font-weight:300;
-  margin:0px;
-}
-core-header-panel {
-  background: white;
-  /* height: 100% fails here on some browsers */
-  height: 100vh;
-  width: 100vw;
-}
 material-tabs, material-tab{
   background-color: #ff8000;
 }
+
 p {
   margin: 20px;
   padding: 20px;
   border-radius: 20px;
   background-color: #eee;
+}
+
+.m-label{
+  display: inline-block;
+}
+
+#form-body{
+  width: 20%; /* CHANGE THIS to em's or something */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ig{
+  width: 100%;
+}
+
+.m-input{
+  width: 100%;
 }

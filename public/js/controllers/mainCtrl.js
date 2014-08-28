@@ -2,7 +2,7 @@
 
 var app = angular.module('mainController', []);
 
-app.controller('mainController', function($scope){
+app.controller('mainController', function($scope, $location){
 	/*
 	$scope.test = function(){
 		console.log($scope.user);
@@ -14,6 +14,10 @@ app.controller('mainController', function($scope){
 
 	$scope.logout = function(){ 
 		window.location.assign('http://localhost:8080/logout');
+	};
+
+	$scope.nav = function(route){
+		$location.path(route);
 	};
 
 });
