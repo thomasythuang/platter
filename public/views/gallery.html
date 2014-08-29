@@ -35,11 +35,11 @@
 			<a ng-href="/location/{{img.name}}">all</a>
 		</div>
 		<!-- Delete button, debugging purposes only -->
-		<!-- <div class="inline"> 
+		 <div class="inline"> 
 			<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
 				<span class="fa fa-trash"></span>
 			</button>
-		</div> -->
+		</div> 
 		<div class="inline"><div class="">{{img.city | characters:10 :false}}, {{img.state | characters: 2}}</div></div> 
 		<div class="inline">
 			<button type="button" class="btn-fav" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
