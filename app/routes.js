@@ -13,7 +13,8 @@ var os = require('os');
 
 module.exports = function(app, passport){
 
-//// SIMPLE VIEWS -------------------------------------------------------------------
+//// VIEWS -------------------------------------------------------------------
+	// home page
 	app.get('/', function(req, res) {
 		res.render('index.html', {
 			user : req.user
@@ -62,12 +63,6 @@ module.exports = function(app, passport){
 				});
 			});
 		});
-	});
-
-	// test page (for debugging)
-	app.get('/test', function(req, res){
-		console.log("test");
-		res.json("test result");
 	});
 
 //// AUTHENTICATION ----------------------------------------------------------
@@ -270,7 +265,7 @@ module.exports = function(app, passport){
 		});
 	});
 
-	// delete an image (from home page- used only for debugging)
+	// delete an image from main gallery (debugging only)
 	app.delete('/images/:img_id', function(req, res) {
 		// access the image data 
 		Image.findOne({
@@ -301,38 +296,29 @@ module.exports = function(app, passport){
 	});
 
 //// USERS
-
-	// Add an image from a user's favorites  ---add here redundat??
-	app.post('/users/favorites/add/:img_id', function(req, res){ 
-		res.send(req.params.img_id);
-	});
-
-	// Remove an image from a user's favorites
-	app.post('/users/favorites/remove/:img_id', function(req, res){ 
-		res.send(req.params.img_id);
-	});
-
-	// delete an image (from profile page)
-	app.delete('/users/uploads/:img_id', function(req, res) {
+	// Delete an image from owner's profile page
+	app.delete('/users/uploads/:img_id', function(req, res){
 		User.update({"facebook.id": req.user._id},
 			{$pull: {"images": req.params.img_id}
 		}, function(err, data){
-			if (err)
+			if (err){
 				res.send(err);
-			// remove the image from the database
-			Image.remove({
-				_id: req.params.img_id
-			}, function(err, img){
-				if (err)
-					res.send(err);
-				// find and return all remaining images
-				Image.find({
-					'_id': {$in: req.user.images}
-				},	function(err, ups){
-					res.json(ups);
+			}else{
+				Image.remove({
+					_id: req.params.img_id
+				}, function(err, img){
+					if (err){
+						res.send(err);
+					}else{
+						Image.find({
+							'_id': {$in: req.user.images}
+						}, function(err, ups){
+							res.json(ups);
+						});
+					}
 				});
-			});
-		}); 
+			}
+		});
 	});
 
 	// reset uploads (mainly for debugging)

@@ -17,35 +17,20 @@ app.controller('profileController', function($scope, $http, Users) {
 			});
 	}
 
-	// true/false if an image is favorited by the user
-	$scope.checkFav = function(img){
-		if ($scope.user){
-			var index = $scope.user.favorites.indexOf(img._id);
-			if (index > -1){
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
-
-	// PUT
-	$scope.rmvFav = function(imgId){
-		Users.removeFav(imgId)
-			.success(function(data){
-				$scope.user.images = data;
-			});
-	};
-
 	// DELETE
+	// Delete an image from a user's profile page
 	$scope.deleteImage = function(imgId){
 		Users.deleteUpload(imgId)
 			.success(function(data){
 				$scope.uploads = data;
+			})
+			.error(function(data){
+				console.log(data);
 			});
 	};
 
-	// PUT (debugging function)
+	// PUT
+	// Reset a user's favorites and uploads to {}: debugging only
 	$scope.reset = function(){
 		Users.reset()
 			.success(function(data){

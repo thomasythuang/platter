@@ -21,15 +21,8 @@ app.factory('Images', function($http){
 
 app.factory('Users', function($http){
 	return{
-
 		getInfo: function(){
 			return $http.get('/profile/info');
-		},
-		addFav: function(imgId){
-			return $http.post('/users/favorites/add/' + imgId);
-		},
-		removeFav: function(imgId){
-			return $http.post('/users/favorites/remove/' + imgId);
 		},
 		deleteUpload: function(imgId){
 			return $http.delete('/users/uploads/' + imgId);
@@ -37,6 +30,5 @@ app.factory('Users', function($http){
 		reset: function(){
 			return $http.post('/users/reset');
 		},
-
 	}
 });
