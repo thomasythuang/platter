@@ -96,6 +96,7 @@ material-tabs, material-tab{
 /* //// IMAGE GALLERY //// */
 .loc{
 	background-color: #fff;
+  max-width: 200px;
 }
 .desc{
   margin-top: 3px;

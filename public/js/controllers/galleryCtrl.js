@@ -3,8 +3,8 @@
 var app = angular.module('galleryController', []);
 
 app.controller('galleryController', function($scope, $http, $location, Images) {
-	$scope.sortMethod = "name";
-	$scope.imgLimit = 12;
+	$scope.sortMethod = "-dateAdded";
+	$scope.imgLimit = 25;
 
 	// GET
 	Images.get()

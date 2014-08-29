@@ -15,9 +15,9 @@
 	</select>
 	&nbsp&nbsp&nbsp&nbsp Show 
 	<select ng-model="imgLimit">
-		<option value=6>6</option>
-		<option value=12>12</option>
-		<option value=24>24</option>
+		<option value=10>10</option>
+		<option value=25>25</option>
+		<option value=50>50</option>
 	</select>
 	at a time
 </div>
@@ -31,7 +31,7 @@
 	</div>
 	<div class="desc">
 		<div class="">
-			<span ng-click="test(img)">{{img.name}}</span>
+			<span ng-click="test(img)">{{img.name | characters: 15}}</span>
 			<a ng-href="/location/{{img.name}}">all</a>
 		</div>
 		<!-- Delete button, debugging purposes only -->
@@ -40,7 +40,7 @@
 				<span class="fa fa-trash"></span>
 			</button>
 		</div> -->
-		<div class="inline"><div class="">{{img.city | characters:12 :false}}, {{img.state}}</div></div> 
+		<div class="inline"><div class="">{{img.city | characters:10 :false}}, {{img.state | characters: 2}}</div></div> 
 		<div class="inline">
 			<button type="button" class="btn-fav" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
 				<span class="fa fa-star"></span> {{img.favorites}}
