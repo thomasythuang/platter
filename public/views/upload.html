@@ -4,21 +4,21 @@
 
 <!-- If not logged in -->
 <div ng-hide="user" class="row">
-	<p class="">Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
+	<p class="well">Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
 </div>
 
 
 <form method="POST" action="/upload" enctype="multipart/form-data" ng-show="user" id="up-form">
 	<div id="form-body" class="left">
-		<material-input-group class="ig">
+		<material-input-group class="ig material-input-group-theme-orange">
 			<label class="m-label left">Name</label>
 		  <input class="m-input" type="text" name="name" ng-model="formData.name">
 		</material-input-group>
-		<material-input-group class="ig">
+		<material-input-group class="ig material-input-group-theme-orange">
 			<label class="m-label left">City</label>
 		  <input class="m-input" type="text" name="city" ng-model="formData.city">
 		</material-input-group>
-		<material-input-group class="ig">
+		<material-input-group class="ig material-input-group-theme-orange">
 			<label class="m-label left">State</label>
 		  <input class="m-input" type="text" name="state" ng-model="formData.state">
 		</material-input-group><br>

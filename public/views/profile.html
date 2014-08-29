@@ -3,7 +3,7 @@
 <!-- If not logged in -->
 <div ng-hide="user">
 	<h1><span class="fa fa-anchor"></span>Profile</h1>
-	<p >Please <a href="/login">login or sign up</a> to be able to view your profile</p>
+	<p class="well">Please <a href="/login">login or sign up</a> to be able to view your profile</p>
 </div>
 
 <div ng-show="user">
@@ -13,7 +13,7 @@
 
 	<!-- Facebook Account Info -->
 	<h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
-	<p>
+	<p class="well">
 		<strong>name</strong>: {{user.facebook.name}}<br>
 		<strong>email</strong>: {{user.facebook.email}}<br>
 		<strong>id</strong>: {{user.facebook.id}}<br>

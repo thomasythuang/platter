@@ -1,11 +1,18 @@
 html{ 
 	overflow-y:auto; 
+	background-color: #fff;
+}
+body {
+  font-family: 'Roboto', Helvetica, sans-serif;
+  font-weight:300;
+  margin:0px;
+
 }
 
+/* //// BASIC POSITIONING CLASSES //// */
 .inline{
   display: inline-block;
 }
-
 .centered{
   text-align: center;
 }
@@ -16,12 +23,15 @@ html{
   text-align:right;
 }
 
-body {
-  font-family: 'Roboto', Helvetica, sans-serif;
-  font-weight:300;
-  margin:0px;
+/* //// TOOLBAR AND NG-VIEW //// */
+#content{
+	
 }
-
+#view{
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
 #home-bar{
 	padding-right: 0px;
 }
@@ -48,4 +58,72 @@ body {
 	-webkit-flex-direction: row;
 	-ms-flex-direction: row;
 	flex-direction: row;
+}
+material-tabs, material-tab{
+  background-color: #ff8000;
+}
+.well{
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #ddd;
+}
+
+
+/* //// UPLOAD FORM //// */
+.m-label{
+  display: inline-block;
+}
+.m-input{
+  width: 100%;
+}
+#form-body{
+  width: 30%; /* CHANGE THIS to em's or something */
+  margin-left: auto;
+  margin-right: auto;
+}
+.ig{
+  width: 100%;
+}
+
+
+/* //// IMAGE GALLERY //// */
+.desc{
+  margin-top: 3px;
+}
+.btn-fav.active{
+  background-color:yellow;
+} 
+/* Hacky way of getting images fit to a set resolution and maintaining aspect ratio */
+.crop{ 
+  overflow: hidden;
+  margin-top: -10px;
+  margin-left:-10px;
+  margin-right: -10px;
+}
+.crop-sm{
+  width: 200px;
+  height: 200px;
+}
+.crop-lg{
+  width: 500px;
+  height: 350px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.crop img{
+  width: auto;
+  height: auto;
+}
+.crop-sm img{
+  max-width: 300px;
+  max-height: 300px;
+}
+.crop-lg img{
+  max-width: 550px;
+  max-height: 450px;
+}
+.crop-sm:hover{
+  cursor: pointer;
+  cursor: hand;
 }
