@@ -1,3 +1,26 @@
+<material-toolbar class="material-theme-orange" id="home-bar">
+  <div class="material-toolbar-tools" id="home-bar-container" layout="horizontal">
+    <h1>CornCano</h1>
+    <span flex></span>
+    <span flex></span>
+    <material-tabs flex class="" id="home-tabs">
+      <material-tab noink ng-click="nav('/')">
+        Home
+      </material-tab>
+      <material-tab noink ng-click="nav('/upload')">
+        Upload
+      </material-tab>
+      <material-tab noink ng-click="nav('/login')" ng-hide="user">
+        Login
+      </material-tab>
+      <material-tab noink ng-click="nav('/profile')" ng-show="user">
+        <i class="fa fa-facebook"></i>{{user.facebook.name | words: 1 :false}}
+      </material-tab>
+    </material-tabs>
+  </div>
+</material-toolbar>
+
+<!-- 
 <material-tabs selected="activeIndex">
   <material-tab noink ng-click="nav('/')">
     Home
@@ -12,3 +35,4 @@
     {{user.facebook.name}}
   </material-tab>
 </material-tabs>
+-->
