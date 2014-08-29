@@ -6,7 +6,7 @@ module.exports = {
 	'facebookAuth' : {
 		'clientID' 		: '1447136428882176', // your App ID
 		'clientSecret' 	: '7985b61a32cb6f274cf14c081cc40c25', // your App Secret
-		'callbackURL' 	: 'http://localhost:8080/auth/facebook/callback'
+		'callbackURL' 	: 'http://platter.herokuapp.com/auth/facebook/callback'
 	},
 	
 };
