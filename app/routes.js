@@ -65,6 +65,13 @@ module.exports = function(app, passport){
 		});
 	});
 
+	// 404 error page
+	app.get('/404', function(req, res){
+		res.render('index.html', {
+			user : req.user
+		});
+	});
+
 //// AUTHENTICATION ----------------------------------------------------------
 
 	// logout
@@ -332,6 +339,12 @@ module.exports = function(app, passport){
 				console.log(user);
 				res.json(user.images);
 			});
+	});
+
+
+
+	app.get('*', function(req, res){
+		res.redirect('/404');
 	});
 
 };

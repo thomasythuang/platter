@@ -64,12 +64,6 @@
 					<span ng-click="test(fav)">{{fav.name}}</span>
 					<a ng-href="/location/{{fav.name}}">all</a>
 				</div>
-				<!-- Delete button, debugging purposes only -->
-				<div class="inline"> 
-					<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
-						<span class="fa fa-trash"></span>
-					</button>
-				</div> 
 				<div class="inline"><div class="">{{fav.city | characters:12 :false}}, {{fav.state}}</div></div> 
 				<div class="inline">
 					<button type="button" class="btn-fav" ng-class="{active: checkFav(fav)}" ng-click="modFavs(fav)">
