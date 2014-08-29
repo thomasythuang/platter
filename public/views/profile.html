@@ -1,33 +1,25 @@
 <!-- public/views/upload.html -->
 
-<h2>Profile</h2>
-
 <!-- If not logged in -->
-<div ng-hide="user" class="row">
+<div ng-hide="user">
+	<h1><span class="fa fa-anchor"></span>Profile</h1>
 	<p >Please <a href="/login">login or sign up</a> to be able to view your profile</p>
 </div>
 
-<div class="centered" ng-show="user">
+<div ng-show="user">
 	<!-- Heading -->
-	<div class="page-header text-center">
-		<h1><span class="fa fa-anchor"></span> {{user.facebook.name}}</h1>
-		<a ng-click="logout()" href="">Logout</a>
-	</div>
+	<h1><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</h1>
+	<a ng-click="logout()" href="">Logout</a>
 
-	<div class="row left">
-		<!-- Facebook Account Info -->
-		<div class="col-xs-6 col-xs-offset-3">
-			<div class="well">
-				<h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
-				<p>
-					<strong>name</strong>: {{user.facebook.name}}<br>
-					<strong>email</strong>: {{user.facebook.email}}<br>
-					<strong>id</strong>: {{user.facebook.id}}<br>
-				</p>
-			</div>
-		</div>
-	</div>
-	<br><button class="btn btn-primary" ng-click="test()">Test</button>
+	<!-- Facebook Account Info -->
+	<h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+	<p>
+		<strong>name</strong>: {{user.facebook.name}}<br>
+		<strong>email</strong>: {{user.facebook.email}}<br>
+		<strong>id</strong>: {{user.facebook.id}}<br>
+	</p>
+
+	<button class="btn btn-primary" ng-click="test()">Test</button>
 	<button class="btn btn-primary" ng-click="reset()">Reset</button>
 
 	<!-- User Uploads -->
@@ -46,13 +38,13 @@
 				<!-- Delete button, debugging purposes only -->
 				<div class="inline"> 
 					<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
-						<core-icon icon="delete"></core-icon>
+						<span class="fa fa-trash"></span>
 					</button>
 				</div> 
 				<div class="inline"><div class="">{{upl.city | characters:12 :false}}, {{upl.state}}</div></div> 
 				<div class="inline">
 					<button type="button" class="btn btn-default btn-fav" ng-class="{active: checkFav(upl)}" ng-click="modFavs(upl)">
-						<span class="glyphicon glyphicon-star"></span> {{upl.favorites}}
+						<span class="fa fa-star"></span> {{upl.favorites}}
 					</button>
 				</div>
 			</div>
@@ -75,13 +67,13 @@
 				<!-- Delete button, debugging purposes only -->
 				<div class="inline"> 
 					<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
-						<core-icon icon="delete"></core-icon>
+						<span class="fa fa-trash"></span>
 					</button>
 				</div> 
 				<div class="inline"><div class="">{{fav.city | characters:12 :false}}, {{fav.state}}</div></div> 
 				<div class="inline">
-					<button type="button" class="btn btn-default btn-fav" ng-class="{active: checkFav(fav)}" ng-click="modFavs(fav)">
-						<span class="glyphicon glyphicon-star"></span> {{fav.favorites}}
+					<button type="button" class="btn-fav" ng-class="{active: checkFav(fav)}" ng-click="modFavs(fav)">
+						<span class="fa fa-star"></span> {{fav.favorites}}
 					</button>
 				</div>
 			</div>

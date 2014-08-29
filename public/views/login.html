@@ -1,10 +1,14 @@
 <!-- public/views/login.html -->
 
-<div class="container">
-	<div class="col-xs-6 col-xs-offset-3">
-		<h1><span class="fa fa-sign-in"></span> Login</h1>
-		<p>Login or Register with</p>
-		<button ng-click="login()">Facebook</a>
-		<button ng-click="what()">what</button>
-	</div>
+<h1><span class="fa fa-sign-in"></span> Login</h1>
+
+<div ng-hide="user">
+	<p>Login or Register with</p>
+
+	<button ng-click="login()">Facebook</button>
+	<button ng-click="what()">what</button>
+</div>
+
+<div ng-show="user">
+	<p>You are already logged in! Get outta here and go <a href="/">home</a></p>
 </div>

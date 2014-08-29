@@ -8,9 +8,7 @@ app.controller('profileController', function($scope, $http, Users) {
 	if ($scope.user){
 		Users.getInfo()
 			.success(function(data){
-				console.log(data);
 				var userInfo = data;
-				console.log(userInfo.favorites);
 				$scope.uploads = userInfo.uploads;
 				$scope.favorites = userInfo.favorites;
 			})

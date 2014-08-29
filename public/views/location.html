@@ -1,44 +1,42 @@
 <!-- public/views/location.html -->
 
-<div id="main" class="centered">
-	<!-- Gallery Settings -->
-	<div>
-		Sort by: 
-		<select ng-model="sortMethod">
-			<option value="-favorites">Most Popular</option>
-			<option value="-dateAdded">Most Recent</option>
-			<option value="">Corn</option>
-		</select>
-		&nbsp&nbsp&nbsp&nbsp Show 
-		<select ng-model="imgLimit">
-			<option value=6>6</option>
-			<option value=12>12</option>
-			<option value=24>24</option>
-		</select>
-		at a time
-		<button class="btn btn-primary" ng-click="test()">Test</button>
-	</div><br>
+<h1><span class="fa fa-cutlery" style="margin-right: 5px;"></span>{{params.loc_name}}</h1>
+<h3>{{imgs[0].city}}, {{imgs[0].state}}</h3>
 
-	<h3>{{params.loc_name}}</h3>
-	<h5>{{imgs[0].city}}, {{imgs[0].state}}</h5>
+<!-- Gallery Settings -->
+<div>
+	Sort by: 
+	<select ng-model="sortMethod">
+		<option value="-favorites">Most Popular</option>
+		<option value="-dateAdded">Most Recent</option>
+		<option value="">Corn</option>
+	</select>
+	&nbsp&nbsp&nbsp&nbsp Show 
+	<select ng-model="imgLimit">
+		<option value=6>6</option>
+		<option value=12>12</option>
+		<option value=24>24</option>
+	</select>
+	at a time
+	<button class="btn btn-primary" ng-click="test()">Test</button>
+</div>
 
-	<!-- Image Gallery -->
-	<div class="loc inline" ng-repeat="img in imgs | orderBy: sortMethod | limitTo: imgLimit">
+<!-- Image Gallery -->
+<material-card class="loc inline" ng-repeat="img in imgs | orderBy: sortMethod | limitTo: imgLimit">
 
-		<!-- Image and Short Description -->
-		<div class="crop crop-sm">
-			<img ng-src="{{img.url}}" data-toggle="modal" data-target="#{{img._id}}"/>
+	<!-- Image and Short Description -->
+	<div class="crop crop-sm">
+		<img ng-src="{{img.url}}"/>
+	</div>
+	<div class="desc">
+		<div class="">
+			{{img.authorName}}
 		</div>
-		<div class="desc">
-			<div class="">
-				{{img.authorName}}
-			</div>
-			<div class="inline">{{img.dateAdded | date: 'MM/dd/yy'}}</div>
-			<div class="inline">
-				<button type="button" class="btn btn-default btn-fav" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
-					<span class="glyphicon glyphicon-star"></span> {{img.favorites}}
-				</button>
-			</div>
+		<div class="inline">{{img.dateAdded | date: 'MM/dd/yy'}}</div>
+		<div class="inline">
+			<button type="button" class="btn-fav" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
+				<span class="fa fa-star"></span> {{img.favorites}}
+			</button>
 		</div>
 	</div>
-</div>
+</material-card>
