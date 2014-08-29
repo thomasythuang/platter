@@ -1,11 +1,11 @@
 html{ 
 	overflow-y:auto; 
-	background-color: #fff;
+	background-color: #eee;
 }
 body {
   font-family: 'Roboto', Helvetica, sans-serif;
   font-weight:300;
-  margin:0px;
+  margin:0;
 
 }
 
@@ -43,7 +43,7 @@ body {
 	height: 64px;
 	font-size: inherit;
 	font-weight: normal;
-	padding: 0 10px 0 10px;
+	padding: 0 0.25em 0 0.25em;
 	margin: 0;
 
 	display: -webkit-box;
@@ -63,22 +63,28 @@ material-tabs, material-tab{
   background-color: #ff8000;
 }
 .well{
-  margin: 20px;
-  padding: 20px;
-  border-radius: 20px;
-  background-color: #ddd;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 1.5em;
+  background-color: #d1d1d1;
+  max-width: 40em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
 /* //// UPLOAD FORM //// */
 .m-label{
   display: inline-block;
+  color: #888;
 }
 .m-input{
   width: 100%;
+  border-color: #888;
 }
 #form-body{
-  width: 30%; /* CHANGE THIS to em's or something */
+  width: 25em;
   margin-left: auto;
   margin-right: auto;
 }
@@ -88,6 +94,9 @@ material-tabs, material-tab{
 
 
 /* //// IMAGE GALLERY //// */
+.loc{
+	background-color: #fff;
+}
 .desc{
   margin-top: 3px;
 }
