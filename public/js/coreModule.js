@@ -15,4 +15,5 @@ var app = angular.module('foodApp', [
 	'locationController',
 	'mainService',
 	'truncate',
+	'angularFileUpload',
 ]);	

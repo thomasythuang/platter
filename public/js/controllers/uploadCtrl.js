@@ -2,7 +2,7 @@
 
 var app = angular.module('uploadController', []);
 
-app.controller('uploadController', function($scope, $http, $injector) {
+app.controller('uploadController', function($scope, $http, $upload) {
 	$scope.formData = {};
 	$scope.selectedFiles = [];
 	$scope.data = {};
@@ -14,8 +14,8 @@ app.controller('uploadController', function($scope, $http, $injector) {
 	}
 
 	// Add files to selected files array
-	$scope.onFileSelect = function(files){
-		$scope.selectedFiles = $scope.selectedFiles.concat(files);
+	$scope.onFileSelect = function(file){
+		$scope.selectedFiles = $scope.selectedFiles.concat(file);
 	}
 
 	// Deselect files
@@ -27,48 +27,23 @@ app.controller('uploadController', function($scope, $http, $injector) {
 	}
 
 	$scope.upload = function(file){ 
-		document.getElementById("up-form").submit();
+		$upload.upload({
+    	url: '/upload',
+    	method: 'POST',
+    	data: {
+      		name: 	$scope.formData.name,
+      		city: 	$scope.formData.city,
+      		state: 	$scope.formData.state,
+    	},
+    	file: $scope.selectedFiles[0],
+    	fileFormDataName: 'image',
+  	}).success(function(data) {
+    	console.log('Upload complete!');
+    	$scope.formData = {};
+    	$scope.selectedFiles = [];
+  	}).error(function(err) {
+    	console.log('Error uploading file: ' + err.message || err);
+  	});
 	}
-
- 	/*
-	// POST
-	// Upload all selected files 
-	$scope.submit = function(){
-		var length = $scope.selectedFiles.length;
-		if (length < 1){
-			alert("you must select at least one image file!");
-			return;
-		} 
-
-		
-		for (var i = 0; i < length; i++){
-  		$scope.uploadInProgress = true;
-  		$scope.uploadProgress = 0;
-
-	  	$scope.upload = $upload.upload({
-	    	url: '/upload',
-	    	method: 'POST',
-	    	headers: {'content-Type': 'multipart/form-data'},
-	    	data: {
-	      		name: 	$scope.formData.name,
-	      		city: 	$scope.formData.city,
-	      		state: 	$scope.formData.state,
-	    	},
-	    	file: $scope.selectedFiles[i],
-	    	fileFormDataName: 'myUpload',
-	  	}).progress(function(event) {
-	    	$scope.uploadProgress = parseInt(100.0 * event.loaded / event.total);
-	    	//console.log('Progress: ' + $scope.uploadProgress + '%');
-	    	//$scope.$apply();
-	  	}).success(function(data, status, headers, config) {
-	    	console.log('Upload complete!');
-	    	$scope.formData = {};
-	    	$scope.selectedFiles = [];
-	  	}).error(function(err) {
-	    	$scope.uploadInProgress = false;
-	    	console.log('Error uploading file: ' + err.message || err);
-	  	});
-		} 
-	};  */
 	
-})
+});

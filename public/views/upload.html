@@ -8,7 +8,7 @@
 </div>
 
 
-<form method="POST" action="/upload" enctype="multipart/form-data" ng-show="user" id="up-form">
+<form ng-show="user" id="up-form">
 	<div id="form-body" class="left">
 		<material-input-group class="ig material-input-group-theme-orange">
 			<label class="m-label left">Name</label>
@@ -22,9 +22,9 @@
 			<label class="m-label left">State</label>
 		  <input class="m-input" type="text" name="state" ng-model="formData.state">
 		</material-input-group><br>
-	  <input type="file" name="filefield">
+	  <input type="file" name="image" ng-file-select="onFileSelect($files)">
 	</div>
 </form> <br>
 
-<!-- <button ng-click="test()">Test</button> -->
+<button ng-click="test()">Test</button>
 <button ng-click="upload()">Submit</button>

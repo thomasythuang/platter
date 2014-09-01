@@ -11,7 +11,7 @@ var flash 		= require('connect-flash');
 // express modules
 var morgan 		= require('morgan');
 var cookieParser 	= require('cookie-parser');
-var bodyParser 		= require('body-parser');
+//var bodyParser 		= require('body-parser');
 var methodOverride 	= require('method-override');
 var session 		= require('express-session');
 
@@ -23,8 +23,8 @@ require('./config/passport')(passport);
 // express config
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(methodOverride());
 app.engine('html', require('ejs').renderFile);
