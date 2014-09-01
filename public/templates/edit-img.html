@@ -1,8 +1,25 @@
 <material-dialog>
-  <p>Dialog</p>
-  <div class="dialog-actions" layout="horizontal" layout-align="end">
+  <div class="dialog-content">
+    <h3>Edit this location</h3>
+    <material-input-group class="ig material-input-group-theme-orange">
+      <label class="m-label left">{{nameLabel}}</label>
+      <input class="m-input" type="text" name="name" ng-model="name">
+    </material-input-group>
+    <material-input-group class="ig material-input-group-theme-orange">
+      <label class="m-label left">{{cityLabel}}</label>
+      <input class="m-input" type="text" name="city" ng-model="city">
+    </material-input-group>
+    <material-input-group class="ig material-input-group-theme-orange">
+      <label class="m-label left">{{stateLabel}}</label>
+      <input class="m-input" type="text" name="state" ng-model="state">
+    </material-input-group>
+  </div>
+  <div id="edit-actions" class="dialog-actions" layout="horizontal">
     <button ng-click="close()">
-      Okay
+      Cancel
+    </button> &nbsp&nbsp
+    <button ng-click="submit()">
+      Submit
     </button>
   </div>
 </material-dialog>

@@ -58,7 +58,7 @@ app.controller('mainController', function($scope, $location, $http, Images){
 			}
 		} else {
 			alert("Sorry! You need to sign in or register to favorite a picture!");
-		}
+		} 
 	};
 
 	// true/false if an image is favorited by the user

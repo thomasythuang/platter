@@ -22,7 +22,6 @@
 	<!-- 
 	<button class="btn btn-primary" ng-click="test()">Test</button>
 	<button class="btn btn-primary" ng-click="reset()">Reset</button> -->
-	<button ng-click="openDialog()">Open</button>
 
 	<!-- User Uploads -->
 	<div>
@@ -36,6 +35,7 @@
 				<div class="">
 					<span ng-click="test(upl)">{{upl.name}}</span>
 					<a ng-href="/location/{{upl.name}}">all</a>
+					<button ng-click="openDialog(upl, $event)">Edit</button>
 				</div>
 				<!-- Delete button, debugging purposes only -->
 				<div class="inline"> 

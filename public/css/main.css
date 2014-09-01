@@ -1,11 +1,11 @@
 html{ 
-	overflow-y:auto; 
+	overflow-y: auto; 
 	background-color: #eee;
 }
 body {
   font-family: 'Roboto', Helvetica, sans-serif;
-  font-weight:300;
-  margin:0;
+  font-weight: 300;
+  margin: 0;
 
 }
 
@@ -17,10 +17,10 @@ body {
   text-align: center;
 }
 .left{
-  text-align:left;
+  text-align: left;
 }
 .right{
-  text-align:right;
+  text-align: right;
 }
 
 /* //// TOOLBAR AND NG-VIEW //// */
@@ -108,7 +108,7 @@ material-tabs, material-tab{
 .crop{ 
   overflow: hidden;
   margin-top: -10px;
-  margin-left:-10px;
+  margin-left: -10px;
   margin-right: -10px;
 }
 .crop-sm{
@@ -118,8 +118,8 @@ material-tabs, material-tab{
 .crop-lg{
   width: 500px;
   height: 350px;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .crop img{
   width: auto;
@@ -136,4 +136,9 @@ material-tabs, material-tab{
 .crop-sm:hover{
   cursor: pointer;
   cursor: hand;
+}
+
+material-backdrop{
+  min-height: 100%;
+  margin-top: 64px;
 }
