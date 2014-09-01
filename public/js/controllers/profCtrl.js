@@ -2,7 +2,7 @@
 
 var app = angular.module('profileController', []);
 
-app.controller('profileController', function($scope, $location, $http, Users) {
+app.controller('profileController', function($scope, $location, $http, $materialDialog, Users) {
 
 	// If user is logged in, load user data (images & favorites) into page
 	if ($scope.user){
@@ -15,12 +15,6 @@ app.controller('profileController', function($scope, $location, $http, Users) {
 			.error(function(data){
 				console.log(data);
 			});
-	}
-
-	// Remove '#_=_' hash from FB login- might not be best way to do so
-	if (window.location.href.indexOf('#_=_') > 0){
-		console.log('yup');
-		window.location = window.location.href.replace(/#.*/, '');
 	}
 
 	// DELETE
@@ -43,6 +37,13 @@ app.controller('profileController', function($scope, $location, $http, Users) {
 				$scope.user.images = data;
 			});
 	};
+
+	$scope.openDialog = function($event) {
+    var hideDialog = $materialDialog({
+      templateUrl: '/templates/edit-img.html',
+      targetEvent: $event
+    });
+  };
 
 	$scope.test = function(){
 		console.log($scope.user);

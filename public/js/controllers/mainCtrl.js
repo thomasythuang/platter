@@ -22,6 +22,12 @@ app.controller('mainController', function($scope, $location, $http, Images){
 		$location.path(route);
 	};
 
+	// Remove '#_=_' hash from FB login- might not be best way to do so
+	if (window.location.href.indexOf('#_=_') > 0){
+		console.log('yup');
+		window.location = window.location.href.replace(/#.*/, '');
+	}
+
 	//// IMAGE RELATED FUNCTIONS
 
 	// PUT
@@ -65,6 +71,6 @@ app.controller('mainController', function($scope, $location, $http, Images){
 				return false;
 			}
 		}
-	}
+	};
 
 });

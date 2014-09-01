@@ -16,4 +16,5 @@ var app = angular.module('foodApp', [
 	'mainService',
 	'truncate',
 	'angularFileUpload',
+	//'ngDialog',
 ]);	

@@ -3,7 +3,6 @@
 // load models and resources
 var Image = require('./models/image');
 var User = require('./models/user');
-var Tracker = require('./models/tracker');
 var fs = require('fs');
 var http = require('http');
 var path = require('path');
