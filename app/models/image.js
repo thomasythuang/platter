@@ -11,7 +11,7 @@ var imgSchema = mongoose.Schema({
 	dateAdded	: Date,
 	favorites	: Number,
 	url			: String,
-	authorId	: Number,
+	authorId	: String,
 	authorName	: String,
 
 	done 		: Boolean

@@ -1,5 +1,7 @@
 // js/controllers/mainCtrl.js
 
+// Global Controller- contains functions needed for multiple views
+
 var app = angular.module('mainController', []);
 
 app.controller('mainController', function($scope, $location, $http, $materialDialog, Images){
@@ -7,6 +9,8 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 	$scope.test = function(){
 		console.log($scope.user);
 	}; */
+
+	$scope.selectedIndex = 2;
 
 	$scope.login = function(){ 
 		//window.location.assign('http://platter.herokuapp.com/auth/facebook');

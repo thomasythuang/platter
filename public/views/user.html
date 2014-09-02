@@ -4,8 +4,8 @@
 
 <!-- Heading -->
 <h1><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</h1>
-
-<button class="btn btn-primary" ng-click="test()">Test</button> <!--
+<!--
+<button class="btn btn-primary" ng-click="test()">Test</button> 
 <button class="btn btn-primary" ng-click="reset()">Reset</button> -->
 
 <!-- User Uploads -->
@@ -18,17 +18,10 @@
 		</div>
 		<div class="desc">
 			<div class="">
-				<span ng-click="test(upl)">{{upl.name}}</span>
+				<span ng-click="test(upl)">{{upl.name | characters: 15}}</span>
 				<a ng-href="/location/{{upl.name}}">all</a>
-				<button ng-click="openDialog(upl, $event)">Edit</button>
 			</div>
-			<!-- Delete button, debugging purposes only -->
-			<div class="inline"> 
-				<button type="button" class="btn btn-default" ng-click="deleteImage(upl._id)">
-					<span class="fa fa-trash"></span>
-				</button>
-			</div> 
-			<div class="inline">{{upl.city | characters:12 :false}}, {{upl.state}}</div>
+			<div class="inline">{{upl.city | characters:12 :false}}, {{upl.state | characters: 2}}</div>
 			<button type="button" class="btn btn-default btn-fav inline" ng-class="{active: checkFav(upl)}" ng-click="modFavs(upl)">
 				<span class="fa fa-star"></span> {{upl.favorites}}
 			</button>
@@ -46,10 +39,10 @@
 		</div>
 		<div class="desc">
 			<div class="">
-				<span ng-click="test(fav)">{{fav.name}}</span>
+				<span ng-click="test(fav)">{{fav.name | characters: 15}}</span>
 				<a ng-href="/location/{{fav.name}}">all</a>
 			</div>
-			<div class="inline">{{fav.city | characters:12 :false}}, {{fav.state}}</div>
+			<div class="inline">{{fav.city | characters:12 :false}}, {{fav.state | characters: 2}}</div>
 			<button type="button" class="btn-fav inline" ng-class="{active: checkFav(fav)}" ng-click="modFavs(fav)">
 				<span class="fa fa-star"></span> {{fav.favorites}}
 			</button>

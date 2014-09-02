@@ -170,7 +170,7 @@ module.exports = function(app, passport){
 
 	// Upload image and create an image object for it in the database
 	app.post('/upload', function(req, res){
-		
+
 		// Upload to cloudinary, then save image data to mongoDB databse
 		cloudinary.uploader.upload(req.files.image.path, function(result) { 
 		  Image.create({
@@ -180,7 +180,7 @@ module.exports = function(app, passport){
 				dateAdded 	: Date.now(),
 				favorites		: 0,
 				url					: result.url,
-				authorId 		: req.user.facebook.id,
+				authorId 		: req.user._id,
 				authorName	: req.user.facebook.name,
 				done 				: false
 			}, function(err, img) {
