@@ -183,8 +183,7 @@ module.exports = function(app, passport){
 					{$push: {"images": img._id}}, function(err, data){
 					if (err)
 						res.send(err);
-					res.writeHead(303, { Connection: 'close', Location: '/' });
-    				res.end();
+					res.json(img);
 				});
 			}); 
 		}); 

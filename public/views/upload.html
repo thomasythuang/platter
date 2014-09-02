@@ -22,9 +22,9 @@
 			<label class="m-label left">State</label>
 		  <input class="m-input" type="text" name="state" ng-model="formData.state">
 		</material-input-group><br>
-	  <input type="file" name="image" ng-file-select="onFileSelect($files)">
+	  <input type="file" id="f-input" name="image" ng-file-select="onFileSelect($files)">
 	</div>
 </form> <br>
-
-<button ng-click="test()">Test</button>
+<!--
+<button ng-click="test()">Test</button> -->
 <button ng-click="upload()">Submit</button>

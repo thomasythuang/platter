@@ -1,0 +1,16 @@
+<material-dialog>
+  <div class="dialog-content">
+    <h3 class="centered dialog-title"><span class="fa fa-check-square-o"></span>Upload Complete!</h3>
+    <div>
+      <p>Your picture of {{img.name}} has been successfully uploaded!</p>
+      <a href="" ng-click="close()">Upload another picture</a>
+      <a href="/profile" ng-click="close()">My profile</a>
+      <a href="/" ng-click="close()">Home</a>
+    </div>
+  </div>
+  <div id="edit-actions" class="dialog-actions" layout="horizontal">
+    <button ng-click="close()">
+      Ok
+    </button>
+  </div>
+</material-dialog>
