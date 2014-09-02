@@ -3,15 +3,15 @@
     <h3>Edit this location</h3>
     <material-input-group class="ig material-input-group-theme-orange">
       <label class="m-label left">{{nameLabel}}</label>
-      <input class="m-input" type="text" name="name" ng-model="name">
+      <input class="m-input" type="text" name="name" ng-model="formData.name">
     </material-input-group>
     <material-input-group class="ig material-input-group-theme-orange">
       <label class="m-label left">{{cityLabel}}</label>
-      <input class="m-input" type="text" name="city" ng-model="city">
+      <input class="m-input" type="text" name="city" ng-model="formData.city">
     </material-input-group>
     <material-input-group class="ig material-input-group-theme-orange">
       <label class="m-label left">{{stateLabel}}</label>
-      <input class="m-input" type="text" name="state" ng-model="state">
+      <input class="m-input" type="text" name="state" ng-model="formData.state">
     </material-input-group>
   </div>
   <div id="edit-actions" class="dialog-actions" layout="horizontal">

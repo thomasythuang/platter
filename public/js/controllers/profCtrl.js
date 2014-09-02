@@ -18,9 +18,9 @@ app.controller('profileController', function($scope, $location, $http, $material
 	}
 
 	$scope.test = function(){
-		console.log($scope.user);
+		//console.log($scope.user);
 		console.log($scope.uploads);
-		console.log($scope.favorites);
+		//console.log($scope.favorites);
 	};
 
 	// DELETE
@@ -44,40 +44,65 @@ app.controller('profileController', function($scope, $location, $http, $material
 			});
 	};
 
+	// PUT
+	// Opens a pop-up dialog that allows for editing of image information
 	$scope.openDialog = function(img, $event) {
     var hideDialog = $materialDialog({
       templateUrl: '/templates/edit-img.html',
       targetEvent: $event,
       controller: 
-    	['$scope', '$hideDialog', function($scope, $hideDialog, $watch){
-      	$scope.img = img;
+    	['$scope', '$hideDialog', '$http', 'Images', function($scope, $hideDialog, $http, Images){
+      	$scope.formData = {};
       	$scope.nameLabel = img.name;
       	$scope.cityLabel = img.city;
       	$scope.stateLabel = img.state;
-      	$scope.name = "";
-      	$scope.city = "";
-      	$scope.state = "";
-      	$scope.$watch('name', function(){
-      		if ($scope.name.length > 0){
+      	$scope.formData.name = $scope.formData.city = $scope.formData.state = "";
+      	$scope.formData._id = img._id;
+
+      	// Change between label name and the previous name (this is really convoluted)
+      	$scope.$watch('formData.name', function(){
+      		if ($scope.formData.name.length > 0){
 	      		$scope.nameLabel = "Name";
 	      	}else{
-	      		$scope.nameLabel = $scope.img.name;
+	      		$scope.nameLabel = img.name;
 	      	}
       	});
-      	$scope.$watch('city', function(){
-      		if ($scope.city.length > 0){
+      	$scope.$watch('formData.city', function(){
+      		if ($scope.formData.city.length > 0){
 	      		$scope.cityLabel = "City";
 	      	}else{
-	      		$scope.cityLabel = $scope.img.city;
+	      		$scope.cityLabel = img.city;
 	      	}
       	});
-      	$scope.$watch('state', function(){
-      		if ($scope.state.length > 0){
+      	$scope.$watch('formData.state', function(){
+      		if ($scope.formData.state.length > 0){
 	      		$scope.stateLabel = "State";
 	      	}else{
-	      		$scope.stateLabel = $scope.img.state;
+	      		$scope.stateLabel = img.state;
 	      	}
       	});
+
+      	// Submit the update request to the server
+      	$scope.submit = function(){
+      		if ($scope.formData.name.length < 1)
+      			$scope.formData.name = img.name;
+      		if ($scope.formData.city.length < 1)
+      			$scope.formData.city = img.city;
+      		if ($scope.formData.state.length < 1)
+      			$scope.formData.state = img.state;
+      		console.log($scope.formData);
+      		Images.update($scope.formData)
+      			// refresh the page
+      			.success(function(data){
+      				img = data;
+      				$hideDialog();
+      				location.reload();
+      			})
+      			// log the error
+      			.error(function(err){
+      				console.log(err);
+      			});
+      	};
 
       	$scope.close = function(){
       		$hideDialog();
@@ -85,6 +110,5 @@ app.controller('profileController', function($scope, $location, $http, $material
       }] 
     });
   };
-
 
 });

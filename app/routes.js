@@ -189,6 +189,22 @@ module.exports = function(app, passport){
 		}); 
 	});
 
+	// Edit an image's data
+	app.put('/images/edit', function(req, res){
+		Image.findOneAndUpdate({
+			_id: req.body._id
+		}, {
+			name 				: req.body.name,
+			city				: req.body.city,
+			state				: req.body.state
+		}, function(err, img){
+			if (err)
+				res.send(err);
+			else
+				res.json(img);
+		});
+	});
+
 	// Add an image to favorites
 	app.put('/images/favorites/add', function(req, res){
 		// Increment the favorite count

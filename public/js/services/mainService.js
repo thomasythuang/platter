@@ -16,6 +16,9 @@ app.factory('Images', function($http){
 		rmvFav: function(img){
 			return $http.put('/images/favorites/remove', img);
 		},
+		update: function(formData){
+			return $http.put('/images/edit', formData);
+		},
 	}
 });
 
