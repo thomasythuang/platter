@@ -10,7 +10,7 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 		console.log($scope.user);
 	}; */
 
-	$scope.selectedIndex = 2;
+	$scope.selectedIndex = 0;
 
 	$scope.login = function(){ 
 		//window.location.assign('http://platter.herokuapp.com/auth/facebook');
