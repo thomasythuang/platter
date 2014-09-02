@@ -63,8 +63,24 @@ module.exports = function(app, passport){
 		});
 	});
 
-	// load user profile and associated data
-	app.get('/profile/info/:user_id', function(req, res){
+	// load private profile and associated data
+	app.get('/profile/info', function(req, res){
+		Image.find({
+			'_id': {$in: req.user.images}
+		},	function(err, ups){
+			Image.find({
+				'_id': {$in: req.user.favorites}
+			}, function(err, favs){
+				res.json({
+					uploads		: ups,
+					favorites	: favs,
+				});
+			});
+		});
+	});
+
+	// load public profile and associated data
+	app.get('/users/info/:user_id', function(req, res){
 		User.findOne({
 			'_id': req.params.user_id
 		}, function(err, user){
@@ -77,6 +93,7 @@ module.exports = function(app, passport){
 					res.json({
 						uploads		: ups,
 						favorites	: favs,
+						user  		: user,
 					});
 				});
 			});

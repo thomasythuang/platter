@@ -28,11 +28,6 @@ app.controller('uploadController', function($scope, $http, $upload, $materialDia
 
 	// Clear the upload form
 	$scope.clearForm = function(){
-		var input = document.getElementById('f-input');
-		if (input != null){
-			document.getElementById('f-input').outerHTML = input.outerHTML;
-			$scope.selectedFiles = [];
-		}
 		$scope.formData = {};
   	$scope.selectedFiles = [];
 	};

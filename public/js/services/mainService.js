@@ -24,8 +24,11 @@ app.factory('Images', function($http){
 
 app.factory('Users', function($http){
 	return{
-		getInfo: function(userId){
-			return $http.get('/profile/info/' + userId);
+		profInfo: function(){
+			return $http.get('/profile/info');
+		},
+		userInfo: function(userId){
+			return $http.get('/users/info/' + userId);
 		},
 		deleteUpload: function(imgId){
 			return $http.delete('/users/uploads/' + imgId);
