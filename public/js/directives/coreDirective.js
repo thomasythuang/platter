@@ -7,8 +7,8 @@ app.directive('mainResources', function(){
 		restrict: 'E',
 		// using templateUrl for resources slows down css loading for some reason
 		//templateUrl: '/templates/resources.html', 
-		template: 
-		'<link rel="stylesheet" href="/css/main.css">',
+		//template: 
+		//'<link rel="stylesheet" href="/css/main.css">',
 	};
 });
 

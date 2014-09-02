@@ -5,7 +5,6 @@ var Image = require('./models/image');
 var User = require('./models/user');
 var fs = require('fs');
 var http = require('http');
-var path = require('path');
 var inspect = require('util').inspect;
 var multer = require('multer');
 var os = require('os');
@@ -98,13 +97,6 @@ module.exports = function(app, passport){
 		req.logout();
 		res.redirect('/');
 	});
- 	/*
-	// login page
-	app.get('/login', function(req, res){
-		res.render('login.html', {
-			user : req.user
-		});
-	}); */
 
 	// FACEBOOK AUTHENTICATION -------------------
 	// route for facebook authentication and login
@@ -228,13 +220,6 @@ module.exports = function(app, passport){
 				if (err)
 					res.send(err);
 				res.json(img);
-				/*
-				// find and return all images
-				Image.find(function(err, imgs) {
-					if (err)
-						res.send(err)
-					res.json(imgs);
-				}); */
 			});
 		});
 	});
@@ -253,13 +238,6 @@ module.exports = function(app, passport){
 				if (err)
 					res.send(err);
 				res.json(img);
-				/*
-				// find and return all images
-				Image.find(function(err, imgs) {
-					if (err)
-						res.send(err)
-					res.json(imgs);
-				}); */
 			});
 		});
 	});
@@ -325,15 +303,13 @@ module.exports = function(app, passport){
 		User.findOneAndUpdate(
 			{"facebook.id": req.user.facebook.id},
 			{"images": [], "favorites": []},
-			function(err, user){
-				if (err)
-					res.send(err);
-				console.log(user);
-				res.json(user.images);
-			});
+		function(err, user){
+			if (err)
+				res.send(err);
+			console.log(user);
+			res.json(user.images);
+		});
 	});
-
-
 
 	app.get('*', function(req, res){
 		res.redirect('/404');
