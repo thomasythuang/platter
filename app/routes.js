@@ -50,24 +50,35 @@ module.exports = function(app, passport){
 		});
 	});
 
-	// profile page
+	// (private) profile page
 	app.get('/profile', function(req, res){
 		res.render('index.html', {
 			user : req.user
 		});
 	});
 
+	// (public) profile page
+	app.get('/user/:user_id', function(req, res){
+		res.render('index.html', {
+			user : req.user
+		});
+	});
+
 	// load user profile and associated data
-	app.get('/profile/info', function(req, res){
-		Image.find({
-			'_id': {$in: req.user.images}
-		},	function(err, ups){
+	app.get('/profile/info/:user_id', function(req, res){
+		User.findOne({
+			'_id': req.params.user_id
+		}, function(err, user){
 			Image.find({
-				'_id': {$in: req.user.favorites}
-			}, function(err, favs){
-				res.json({
-					uploads		: ups,
-					favorites	: favs,
+				'_id': {$in: user.images}
+			},	function(err, ups){
+				Image.find({
+					'_id': {$in: user.favorites}
+				}, function(err, favs){
+					res.json({
+						uploads		: ups,
+						favorites	: favs,
+					});
 				});
 			});
 		});
@@ -159,8 +170,6 @@ module.exports = function(app, passport){
 
 	// Upload image and create an image object for it in the database
 	app.post('/upload', function(req, res){
-		console.log(req.body);
-		console.log(req.files);
 		
 		// Upload to cloudinary, then save image data to mongoDB databse
 		cloudinary.uploader.upload(req.files.image.path, function(result) { 

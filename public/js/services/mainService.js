@@ -24,8 +24,8 @@ app.factory('Images', function($http){
 
 app.factory('Users', function($http){
 	return{
-		getInfo: function(){
-			return $http.get('/profile/info');
+		getInfo: function(userId){
+			return $http.get('/profile/info/' + userId);
 		},
 		deleteUpload: function(imgId){
 			return $http.delete('/users/uploads/' + imgId);

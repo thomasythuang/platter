@@ -27,6 +27,12 @@
 			controller: 'profileController',
 		})
 
+		// (Public) Profile Page 
+		.when('/user/:user_id', {
+			templateUrl: '../views/user.html', 
+			controller: 'userController',
+		})
+
 		// Location 
 		.when('/location/:loc_name', {
 			templateUrl: '../views/location.html', 

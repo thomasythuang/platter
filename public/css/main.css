@@ -142,3 +142,9 @@ material-backdrop{
   min-height: 100%;
   margin-top: 64px;
 }
+.dialog-content .dialog-title{
+  margin-top: 0px;
+}
+.dialog-content h3{
+  margin-bottom: 0.4em;
+}

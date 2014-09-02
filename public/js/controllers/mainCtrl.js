@@ -2,7 +2,7 @@
 
 var app = angular.module('mainController', []);
 
-app.controller('mainController', function($scope, $location, $http, Images){
+app.controller('mainController', function($scope, $location, $http, $materialDialog, Images){
 	/*
 	$scope.test = function(){
 		console.log($scope.user);
@@ -29,6 +29,22 @@ app.controller('mainController', function($scope, $location, $http, Images){
 	}
 
 	//// IMAGE RELATED FUNCTIONS
+
+	// Open a dialog with larger picture/more info about an image
+	$scope.imgDialog = function(img, $event) {
+    var hideDialog = $materialDialog({
+      templateUrl: '/templates/img-lg.html',
+      targetEvent: $event,
+      controller: 
+    	['$scope', '$hideDialog', function($scope, $hideDialog){
+    		$scope.img = img;
+
+      	$scope.close = function(){
+      		$hideDialog();
+      	};
+      }] 
+    });
+  };
 
 	// PUT
 	// Add/remove an image from user's favorites

@@ -33,10 +33,8 @@
 			{{img.authorName}}
 		</div>
 		<div class="inline">{{img.dateAdded | date: 'MM/dd/yy'}}</div>
-		<div class="inline">
-			<button type="button" class="btn-fav" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
-				<span class="fa fa-star"></span> {{img.favorites}}
-			</button>
-		</div>
+		<button type="button" class="btn-fav inline" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
+			<span class="fa fa-star"></span> {{img.favorites}}
+		</button>
 	</div>
 </material-card>

@@ -1,0 +1,19 @@
+<material-dialog>
+  <div class="dialog-content">
+    <h1 class="centered dialog-title"><span class="fa fa-cutlery"></span> {{img.name}}</h1>
+    <div class="crop crop-lg">
+      <img ng-src="{{img.url}}"/>
+    </div>
+    <p>
+      <div><span class="fa fa-globe"></span> {{img.city}}, {{img.state}}</div>
+      <div><span class="fa fa-user"></span> {{img.authorName}}</div>
+      <div><span class="fa fa-clock-o"></span> {{img.dateAdded | date : 'MM/dd/yyyy'}}</div>
+      <div><span class="fa fa-star"></span> {{img.favorites}}</div>
+    </p>
+  </div>
+  <div id="edit-actions" class="dialog-actions" layout="horizontal">
+    <button ng-click="close()">
+      Close
+    </button>
+  </div>
+</material-dialog>

@@ -6,7 +6,7 @@ app.controller('profileController', function($scope, $location, $http, $material
 
 	// If user is logged in, load user data (images & favorites) into page
 	if ($scope.user){
-		Users.getInfo()
+		Users.getInfo($scope.user._id)
 			.success(function(data){
 				var userInfo = data;
 				$scope.uploads = userInfo.uploads;
@@ -18,7 +18,7 @@ app.controller('profileController', function($scope, $location, $http, $material
 	}
 
 	$scope.test = function(){
-		//console.log($scope.user);
+		console.log($scope.user);
 		console.log($scope.uploads);
 		//console.log($scope.favorites);
 	};

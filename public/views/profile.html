@@ -2,7 +2,7 @@
 
 <!-- If not logged in -->
 <div ng-hide="user">
-	<h1><span class="fa fa-anchor"></span>Profile</h1>
+	<h1><span class="fa fa-user"></span>Profile</h1>
 	<p class="well">Please <a href="/login">login or sign up</a> to be able to view your profile</p>
 </div>
 
@@ -10,6 +10,7 @@
 	<!-- Heading -->
 	<h1><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</h1>
 	<a ng-click="logout()" href="">Logout</a>
+	<a ng-href="/user/{{user._id}}">Public Profile</a>
 
 	<!-- Facebook Account Info -->
 	<h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
@@ -28,7 +29,7 @@
 		<h3>Uploads</h3>
 		<material-card class="loc inline" ng-repeat="upl in uploads">
 			<!-- Image and Short Description -->
-			<div class="crop crop-sm">
+			<div class="crop crop-sm" ng-click="imgDialog(upl)">
 				<img ng-src="{{upl.url}}"/>
 			</div>
 			<div class="desc">
@@ -43,12 +44,10 @@
 						<span class="fa fa-trash"></span>
 					</button>
 				</div> 
-				<div class="inline"><div class="">{{upl.city | characters:12 :false}}, {{upl.state}}</div></div> 
-				<div class="inline">
-					<button type="button" class="btn btn-default btn-fav" ng-class="{active: checkFav(upl)}" ng-click="modFavs(upl)">
-						<span class="fa fa-star"></span> {{upl.favorites}}
-					</button>
-				</div>
+				<div class="inline">{{upl.city | characters:12 :false}}, {{upl.state}}</div>
+				<button type="button" class="btn btn-default btn-fav inline" ng-class="{active: checkFav(upl)}" ng-click="modFavs(upl)">
+					<span class="fa fa-star"></span> {{upl.favorites}}
+				</button>
 			</div>
 		</material-card>
 	</div>
@@ -58,7 +57,7 @@
 		<h3>Favorites</h3>
 		<material-card class="loc inline" ng-repeat="fav in favorites">
 			<!-- Image and Short Description -->
-			<div class="crop crop-sm">
+			<div class="crop crop-sm" ng-click="imgDialog(fav)">
 				<img ng-src="{{fav.url}}"/>
 			</div>
 			<div class="desc">
@@ -66,12 +65,10 @@
 					<span ng-click="test(fav)">{{fav.name}}</span>
 					<a ng-href="/location/{{fav.name}}">all</a>
 				</div>
-				<div class="inline"><div class="">{{fav.city | characters:12 :false}}, {{fav.state}}</div></div> 
-				<div class="inline">
-					<button type="button" class="btn-fav" ng-class="{active: checkFav(fav)}" ng-click="modFavs(fav)">
-						<span class="fa fa-star"></span> {{fav.favorites}}
-					</button>
-				</div>
+				<div class="inline">{{fav.city | characters:12 :false}}, {{fav.state}}</div>
+				<button type="button" class="btn-fav inline" ng-class="{active: checkFav(fav)}" ng-click="modFavs(fav)">
+					<span class="fa fa-star"></span> {{fav.favorites}}
+				</button>
 			</div>
 		</material-card>
 	</div>

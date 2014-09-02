@@ -13,6 +13,7 @@ var app = angular.module('foodApp', [
 	'loginController',
 	'profileController',
 	'locationController',
+	'userController',
 	'mainService',
 	'truncate',
 	'angularFileUpload',

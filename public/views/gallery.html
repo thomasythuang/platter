@@ -29,11 +29,11 @@
 <material-card class="loc inline" ng-repeat="img in images | orderBy: sortMethod | limitTo: imgLimit">
 
 	<!-- Image and Short Description -->
-	<div class="crop crop-sm">
+	<div class="crop crop-sm" ng-click="imgDialog(img, $event)">
 		<img ng-src="{{img.url}}"/>
 	</div>
 	<div class="desc">
-		<div class="">
+		<div>
 			<span ng-click="test(img)">{{img.name | characters: 15}}</span>
 			<a ng-href="/location/{{img.name}}">all</a>
 		</div>
@@ -43,11 +43,9 @@
 				<span class="fa fa-trash"></span>
 			</button>
 		</div>
-		<div class="inline"><div class="">{{img.city | characters:10 :false}}, {{img.state | characters: 2}}</div></div> 
-		<div class="inline">
-			<button type="button" class="btn-fav" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
-				<span class="fa fa-star"></span> {{img.favorites}}
-			</button>
-		</div>
+		<div class="inline">{{img.city | characters:10 :false}}, {{img.state | characters: 2}}</div>
+		<button type="button" class="btn-fav inline" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
+			<span class="fa fa-star"></span> {{img.favorites}}
+		</button>
 	</div>
 </material-card>
