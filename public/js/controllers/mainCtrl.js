@@ -77,9 +77,23 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 					}); 
 			}
 		} else {
-			alert("Sorry! You need to sign in or register to favorite a picture!");
+			//alert("Sorry! You need to sign in or register to favorite a picture!");
+			$scope.favsDialog();
 		} 
 	};
+
+	// Dialog telling users to login to favorite an image
+	$scope.favsDialog = function() {
+    var hideDialog = $materialDialog({
+      templateUrl: '/templates/fav-login.html',
+      controller: 
+    	['$scope', '$hideDialog', function($scope, $hideDialog){
+      	$scope.close = function(){
+      		$hideDialog();
+      	};
+      }] 
+    });
+  };
 
 	// true/false if an image is favorited by the user
 	$scope.checkFav = function(img){

@@ -179,31 +179,38 @@ module.exports = function(app, passport){
 
 	// Upload image and create an image object for it in the database
 	app.post('/upload', function(req, res){
-
-		// Upload to cloudinary, then save image data to mongoDB databse
-		cloudinary.uploader.upload(req.files.image.path, function(result) { 
-		  Image.create({
-				name 				: req.body.name,
-				city				: req.body.city,
-				state				: req.body.state,
-				dateAdded 	: Date.now(),
-				favorites		: 0,
-				url					: result.url,
-				authorId 		: req.user._id,
-				authorName	: req.user.facebook.name,
-				done 				: false
-			}, function(err, img) {
-				if (err)
-					res.send(err);
-				// add the image's id to its uploader's profile
-				User.update({"facebook.id": req.user.facebook.id},
-					{$push: {"images": img._id}}, function(err, data){
+		var ext = req.files.image.extension;
+		console.log(req.files.image);
+		if (ext != 'jpg' && ext != 'png' && ext != 'gif'){
+			res.status(415).send({code:415, error: 'Unsupported file type'});
+		}else if (req.files.image.size > 2000000){
+			res.status(413).send({code:413, error: 'File size too large'});
+		}else{
+			// Upload to cloudinary, then save image data to mongoDB databse
+			cloudinary.uploader.upload(req.files.image.path, function(result) { 
+			  Image.create({
+					name 				: req.body.name,
+					city				: req.body.city,
+					state				: req.body.state,
+					dateAdded 	: Date.now(),
+					favorites		: 0,
+					url					: result.url,
+					authorId 		: req.user._id,
+					authorName	: req.user.facebook.name,
+					done 				: false
+				}, function(err, img) {
 					if (err)
 						res.send(err);
-					res.json(img);
-				});
+					// add the image's id to its uploader's profile
+					User.update({"facebook.id": req.user.facebook.id},
+						{$push: {"images": img._id}}, function(err, data){
+						if (err)
+							res.send(err);
+						res.json(img);
+					});
+				}); 
 			}); 
-		}); 
+		}
 	});
 
 	// Edit an image's data

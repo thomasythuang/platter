@@ -91,6 +91,11 @@ material-tabs, material-tab{
 .ig{
   width: 100%;
 }
+#progress{
+  width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 
 /* //// IMAGE GALLERY //// */
@@ -138,9 +143,19 @@ material-tabs, material-tab{
   cursor: hand;
 }
 
+/* //// POP-UP DIALOGS //// */
 material-backdrop{
+  position: fixed;
   min-height: 100%;
-  margin-top: 64px;
+}
+material-dialog{
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 .dialog-content .dialog-title{
   margin-top: 0px;

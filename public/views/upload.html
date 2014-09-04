@@ -8,23 +8,32 @@
 </div>
 
 
-<form ng-show="user" id="up-form">
+<form ng-show="user" name="upForm" id="up-form" novalidate>
 	<div id="form-body" class="left">
 		<material-input-group class="ig material-input-group-theme-orange">
 			<label class="m-label left">Name</label>
-		  <input class="m-input" type="text" name="name" ng-model="formData.name">
+		  <input class="m-input" type="text" name="name" ng-model="formData.name" required>
 		</material-input-group>
 		<material-input-group class="ig material-input-group-theme-orange">
 			<label class="m-label left">City</label>
-		  <input class="m-input" type="text" name="city" ng-model="formData.city">
+		  <input class="m-input" type="text" name="city" ng-model="formData.city" required>
 		</material-input-group>
 		<material-input-group class="ig material-input-group-theme-orange">
 			<label class="m-label left">State</label>
-		  <input class="m-input" type="text" name="state" ng-model="formData.state">
+		  <input class="m-input" type="text" name="state" ng-model="formData.state" required>
 		</material-input-group><br>
-	  <input type="file" id="f-input" name="image" ng-file-select="onFileSelect($files)">
+	  <input type="file" id="f-input" name="image" ng-file-select="onFileSelect($files)" required>
 	</div>
 </form> <br>
-<!-- 
-<button ng-click="test()">Test</button>
-<button ng-click="upload()">Submit</button> -->
+<!-- -->
+<button ng-click="test()">Test</button> 
+<button ng-click="upload()" ng-disabled="upForm.$invalid || !fileSelected">Submit</button> 
+
+<div id="progress" ng-show="inProgress">
+	<material-slider>
+	  <input type="range" ng-model="data.progress">
+	</material-slider>
+	<p>
+		{{data.progress}}% Uploaded
+	</p>
+</div>
