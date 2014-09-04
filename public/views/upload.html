@@ -23,11 +23,13 @@
 		  <input class="m-input" type="text" name="state" ng-model="formData.state" required>
 		</material-input-group><br>
 	  <input type="file" id="f-input" name="image" ng-file-select="onFileSelect($files)" required>
+	  <div>We support .jpg, .png, and .gif files up to 2MB large</div>
 	</div>
-</form> <br>
-<!-- -->
-<button ng-click="test()">Test</button> 
-<button ng-click="upload()" ng-disabled="upForm.$invalid || !fileSelected">Submit</button> 
+	<button ng-click="upload()" ng-disabled="upForm.$invalid || !fileSelected">Submit</button> 
+</form> 
+<!-- 
+<button ng-click="test()">Test</button> -->
+
 
 <div id="progress" ng-show="inProgress">
 	<material-slider>

@@ -87,6 +87,7 @@ material-tabs, material-tab{
   width: 25em;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1em;
 }
 .ig{
   width: 100%;

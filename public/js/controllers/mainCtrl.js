@@ -10,7 +10,11 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 		console.log($scope.user);
 	}; */
 
-	$scope.selectedIndex = 0;
+	// Remove '#_=_' hash from FB login- might not be best way to do so
+	if (window.location.href.indexOf('#_=_') > 0){
+		console.log('yup');
+		window.location = window.location.href.replace(/#.*/, '');
+	}
 
 	$scope.login = function(){ 
 		//window.location.assign('http://platter.herokuapp.com/auth/facebook');
@@ -22,15 +26,35 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 		window.location.assign('http://localhost:8080/logout');
 	};
 
+	// Navigate to a page
 	$scope.nav = function(route){
 		$location.path(route);
+		$scope.selectTab();
 	};
 
-	// Remove '#_=_' hash from FB login- might not be best way to do so
-	if (window.location.href.indexOf('#_=_') > 0){
-		console.log('yup');
-		window.location = window.location.href.replace(/#.*/, '');
-	}
+	// Highlight the correct page on the navbar
+	$scope.selectTab = function(){
+		switch($location.path()){
+			case '/':
+				$scope.selectedIndex = 0;
+				break;
+			case '/upload':
+				$scope.selectedIndex = 1;
+				break;
+			case '/login':
+				$scope.selectedIndex = 2;
+				break;
+			case '/profile':
+				$scope.selectedIndex = 3;
+				break;
+			default:
+				$scope.selectedIndex = -1;
+				break;
+		}
+	};
+
+	// Select the correct navbar tab on page refresh
+	$scope.selectTab();
 
 	//// IMAGE RELATED FUNCTIONS
 
