@@ -165,7 +165,6 @@ module.exports = function(app, passport){
 
 	// Get all images for a single location for its page
 	app.get('/location/imgs/:location_name', function(req, res){
-		console.log(req.params.location_name);
 		Image.find({
 			'name': req.params.location_name
 		},	function(err, imgs){

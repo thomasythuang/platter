@@ -33,11 +33,15 @@
 
 <!-- load user data into angular controller -->
 <body ng-controller="mainController" ng-init="user= <%= JSON.stringify(user) %>">
+	<div id="content">
+		<main-navbar></main-navbar>
+		<div class="centered">
+			<div ng-view id="view"></div>
+		</div>
+		<div id="push"></div>
+	</div>
+	<div id="footer" class="material-theme-orange">
 
-	<main-navbar></main-navbar>
-
-	<div class="centered" id="content">
-		<div ng-view id="view"></div>
 	</div>
 
 <!-- Resources -->  <!-- Add everything to main-resources later 

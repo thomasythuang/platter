@@ -3,6 +3,7 @@
 var app = angular.module('profileController', []);
 
 app.controller('profileController', function($scope, $location, $http, $materialDialog, Users) {
+	$scope.selectedIndex = 0;
 
 	// If user is logged in, load user data (images & favorites) into page
 	if ($scope.user){
@@ -21,6 +22,12 @@ app.controller('profileController', function($scope, $location, $http, $material
 		console.log($scope.user);
 		console.log($scope.uploads);
 		//console.log($scope.favorites);
+	};
+
+	// Navigate between tabs on profile page
+	$scope.go = function(tab){
+		$scope.selectedIndex = tab;
+		console.log($scope.selectedIndex);
 	};
 
 	// DELETE
