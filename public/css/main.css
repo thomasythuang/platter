@@ -2,12 +2,20 @@ html{
 	overflow-y: auto; 
 	background-color: #eee;
   height: 100%;
+  font-family: 'Lato', sans-serif;
 }
-body {
-  font-family: 'Roboto', Helvetica, sans-serif;
-  font-weight: 300;
+body{
   margin: 0;
   height: 100%;
+}
+h1{
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.75em;
+  font-weight: bold;
+}
+.header-thin{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
 }
 #push, #footer{
   height: 64px;
@@ -68,6 +76,8 @@ body {
 }
 material-tabs, material-tab{
   background-color: #ff8000;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
 }
 .well{
   margin-top: 1em;

@@ -21,7 +21,7 @@
   <div ng-switch on="selectedIndex">
 		<!-- User Uploads -->
 		<div ng-switch-when="0">
-			<h3>Uploads</h3>
+			<h3 class="header-thin">Uploads</h3>
 			<material-card class="loc inline" ng-repeat="upl in uploads">
 				<!-- Image and Short Description -->
 				<div class="crop crop-sm" ng-click="imgDialog(upl)">
@@ -42,7 +42,7 @@
 
 		<!-- User Favorites -->
 		<div ng-switch-when="1">
-			<h3>Favorites</h3>
+			<h3 class="header-thin">Favorites</h3>
 			<material-card class="loc inline" ng-repeat="fav in favorites">
 				<!-- Image and Short Description -->
 				<div class="crop crop-sm" ng-click="imgDialog(fav)">

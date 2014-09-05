@@ -12,13 +12,6 @@
 	<a ng-click="logout()" href="">Logout</a>
 	<a ng-href="/user/{{user._id}}">Public Profile</a>
 
-	<!-- Facebook Account Info -->
-	<p class="well">
-		<strong>name</strong>: {{user.facebook.name}}<br>
-		<strong>email</strong>: {{user.facebook.email}}<br>
-		<strong>id</strong>: {{user._id}}<br>
-	</p>
-
 	<!--
 	<button class="btn btn-primary" ng-click="test()">Test</button> 
 	<button class="btn btn-primary" ng-click="reset()">Reset</button> -->
@@ -31,14 +24,14 @@
 	      My Favorites
 	    </material-tab>
 	    <material-tab ng-click="go(2)">
-	      My Friends
+	      My Info
 	    </material-tab>
 	  </material-tabs>
 
 	  <div ng-switch on="selectedIndex">
 			<!-- User Uploads -->
 			<div ng-switch-when="0">
-				<h3>Uploads</h3>
+				<h3 class="header-thin">Uploads</h3>
 				<material-card class="loc inline" ng-repeat="upl in uploads">
 					<!-- Image and Short Description -->
 					<div class="crop crop-sm" ng-click="imgDialog(upl)">
@@ -66,7 +59,7 @@
 
 			<!-- User Favorites -->
 			<div ng-switch-when="1">
-				<h3>Favorites</h3>
+				<h3 class="header-thin">Favorites</h3>
 				<material-card class="loc inline" ng-repeat="fav in favorites">
 					<!-- Image and Short Description -->
 					<div class="crop crop-sm" ng-click="imgDialog(fav)">
@@ -87,8 +80,10 @@
 
 			<!-- Facebook Friends -->
 			<div ng-switch-when="2">
-				<h3>Friends</h3>
-				Pls. You have no friends
+				<h3 class="header-thin">Email</h3>
+				<p>{{user.facebook.email}}</p>
+				<h3 class="header-thin">Friends</h3>
+				<p>Pls. You have no friends</p>
 			</div>
 		</div>
 	</div>
