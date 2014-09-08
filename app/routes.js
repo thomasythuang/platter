@@ -181,9 +181,9 @@ module.exports = function(app, passport){
 		var ext = req.files.image.extension;
 		console.log(req.files.image);
 		if (ext != 'jpg' && ext != 'png' && ext != 'gif'){
-			res.status(415).send({code:415, error: 'Unsupported file type'});
+			res.status(415).send({code:415, error: 'Unsupported file type', fmt: ext});
 		}else if (req.files.image.size > 2000000){
-			res.status(413).send({code:413, error: 'File size too large'});
+			res.status(413).send({code:413, error: 'File size too large', size: req.files.image.size});
 		}else{
 			// Upload to cloudinary, then save image data to mongoDB databse
 			cloudinary.uploader.upload(req.files.image.path, function(result) { 

@@ -38,21 +38,21 @@
 						<img ng-src="{{upl.url}}"/>
 					</div>
 					<div class="desc">
-						<div class="">
+						<div class="desc-title">
 							<span ng-click="test(upl)">{{upl.name | characters: 15}}</span>
 							<a ng-href="/location/{{upl.name}}">all</a>
-							<button ng-click="openDialog(upl, $event)">Edit</button>
+							<material-button class="material-button-raised btn-fav" ng-click="openDialog(upl, $event)">Edit</material-button>
 						</div>
 						<!-- Delete button -->
 						<div class="inline"> 
-							<button type="button" class="btn btn-default" ng-click="deleteImage(upl._id)">
+							<material-button class="material-button-raised btn-fav" ng-click="deleteImage(upl._id)">
 								<span class="fa fa-trash"></span>
-							</button>
-						</div> 
+							</material-button>
+						</div>
 						<div class="inline">{{upl.city | characters:12 :false}}, {{upl.state | characters: 2}}</div>
-						<button type="button" class="btn btn-default btn-fav inline" ng-class="{active: checkFav(upl)}" ng-click="modFavs(upl)">
+						<material-button class="material-button-raised btn-fav inline" ng-class="{active: checkFav(upl)}" ng-click="modFavs(upl)">
 							<span class="fa fa-star"></span> {{upl.favorites}}
-						</button>
+						</material-button>
 					</div>
 				</material-card>
 			</div>
@@ -71,9 +71,9 @@
 							<a ng-href="/location/{{fav.name}}">all</a>
 						</div>
 						<div class="inline">{{fav.city | characters:12 :false}}, {{fav.state | characters: 2}}</div>
-						<button type="button" class="btn-fav inline" ng-class="{active: checkFav(fav)}" ng-click="modFavs(fav)">
+						<material-button class="material-button-raised btn-fav inline" ng-class="{active: checkFav(fav)}" ng-click="modFavs(fav)">
 							<span class="fa fa-star"></span> {{fav.favorites}}
-						</button>
+						</material-button>
 					</div>
 				</material-card>
 			</div>

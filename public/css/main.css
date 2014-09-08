@@ -129,10 +129,13 @@ material-tabs, material-tab{
 /* //// IMAGE GALLERY //// */
 .loc{
 	background-color: #fff;
-  max-width: 200px;
+  max-width: 15em;
 }
 .desc{
   margin-top: 3px;
+}
+.desc-title{
+  margin-bottom: 5px;
 }
 .btn-fav{
   margin-bottom: -0.5em;
@@ -145,11 +148,10 @@ material-tabs, material-tab{
   overflow: hidden;
   margin-top: -10px;
   margin-left: -10px;
-  margin-right: -10px;
 }
 .crop-sm{
-  width: 200px;
-  height: 200px;
+  width: 15em;
+  height: 15em;
 }
 .crop-lg{
   width: 500px;
@@ -157,12 +159,12 @@ material-tabs, material-tab{
   margin-left: auto;
   margin-right: auto;
 }
-.crop img{
+.crop img{ /*
   width: auto;
-  height: auto;
+  height: auto; */
 }
 .crop-sm img{
-  max-width: 300px;
+  max-width: 500px;
   max-height: 300px;
 }
 .crop-lg img{

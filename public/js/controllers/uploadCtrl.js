@@ -2,7 +2,7 @@
 
 var app = angular.module('uploadController', []);
 
-app.controller('uploadController', function($scope, $http, $upload, $materialDialog) {
+app.controller('uploadController', function($scope, $http, $upload, $filter, $materialDialog) {
 	$scope.formData = {};
 	$scope.selectedFiles = [];
 	$scope.inProgress = false;
@@ -76,11 +76,13 @@ app.controller('uploadController', function($scope, $http, $upload, $materialDia
 		var head;
 		var message;
 		if (err.code == 415){
-			head = "Unsupported file type";
-			message = "Sorry! You uploaded an unsupported image type. We support .jpg, .png, and .gif files up to 2MB in size.";
+			var format = err.fmt;
+			head = "Unsupported file type!";
+			message = "Sorry! You uploaded an unsupported image type (." + format + "). We support .jpg, .png, and .gif files up to 2MB in size.";
 		}else if(err.code == 413){
-			head = "Image file too large";
-			message = "Sorry! The image file you uploaded was too large. We support .jpg, .png, and .gif files up to 2MB in size.";
+			var size = $filter('number')(err.size/1000000, 2);
+			head = "Image file too large!";
+			message = "Sorry! The image file you uploaded was too large (" + size + "MB). We support .jpg, .png, and .gif files up to 2MB in size.";
 		}else{
 			head = "Error";
 			message = "Sorry! The upload failed for an undocumented reason. Please contact an administrator for more assisstance";
