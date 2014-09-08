@@ -44,8 +44,8 @@
 			</button>
 		</div>
 		<div class="inline">{{img.city | characters:10 :false}}, {{img.state | characters: 2}}</div>
-		<button type="button" class="btn-fav inline" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
+		<material-button class="btn-fav inline material-button-raised" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
 			<span class="fa fa-star"></span> {{img.favorites}}
-		</button>
+		</material-button>
 	</div>
 </material-card>

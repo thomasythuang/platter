@@ -75,7 +75,7 @@ h1{
 	flex-direction: row;
 }
 material-tabs, material-tab{
-  background-color: #ff8000;
+  background-color: #4285f4; /* #ff8000; */
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
 }
@@ -116,14 +116,14 @@ material-tabs, material-tab{
 }
 
 /* //// PROFILE PAGE //// */
-#prof-content{
-  background-color: #ff6000;
+.prof-content{
+  /* background-color: #ff6000; */
   padding-bottom: 1em;
   margin: 0 auto 1.5em auto;
   max-width: 90%;
 }
-#prof-content h3{
-  color: white;
+.prof-content .desc{
+  color: black;
 }
 
 /* //// IMAGE GALLERY //// */
@@ -133,6 +133,9 @@ material-tabs, material-tab{
 }
 .desc{
   margin-top: 3px;
+}
+.btn-fav{
+  margin-bottom: -0.5em;
 }
 .btn-fav.active{
   background-color:yellow;
