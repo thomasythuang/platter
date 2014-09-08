@@ -65,7 +65,7 @@ app.controller('profileController', function($scope, $location, $http, $material
       	$scope.stateLabel = img.state;
       	$scope.formData.name = $scope.formData.city = $scope.formData.state = "";
       	$scope.formData._id = img._id;
-
+      	
       	// Change between label name and the previous name (this is really convoluted)
       	$scope.$watch('formData.name', function(){
       		if ($scope.formData.name.length > 0){

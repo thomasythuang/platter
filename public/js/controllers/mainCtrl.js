@@ -26,6 +26,12 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 		window.location.assign('http://localhost:8080/logout');
 	};
 
+	// Watch for route changes and select to correct tab
+	$scope.$on('$locationChangeStart', function(event){
+		//console.log($location.path());
+		$scope.selectTab();
+	})
+
 	// Navigate to a page
 	$scope.nav = function(route){
 		$location.path(route);
@@ -52,9 +58,6 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 				break;
 		}
 	};
-
-	// Select the correct navbar tab on page refresh
-	$scope.selectTab();
 
 	//// IMAGE RELATED FUNCTIONS
 
