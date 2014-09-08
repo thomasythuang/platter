@@ -21,7 +21,6 @@ app.controller('userController', function($scope, $location, $http, $routeParams
 	// Navigate between tabs on profile page
 	$scope.go = function(tab){
 		$scope.selectedIndex = tab;
-		console.log($scope.selectedIndex);
 	};
 
 	$scope.test = function(){

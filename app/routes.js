@@ -188,7 +188,7 @@ module.exports = function(app, passport){
 			// Upload to cloudinary, then save image data to mongoDB databse
 			cloudinary.uploader.upload(req.files.image.path,
 				function(result) {
-					//console.log(result);
+					console.log(result);
 				  Image.create({
 						name 				: req.body.name,
 						city				: req.body.city,
@@ -197,6 +197,7 @@ module.exports = function(app, passport){
 						favorites		: 0,
 						thumb				: result.eager[0].url,
 						url					: result.eager[1].url,
+						cloudId			: result.public_id,
 						authorId 		: req.user._id,
 						authorName	: req.user.facebook.name,
 						done 				: false
@@ -281,21 +282,26 @@ module.exports = function(app, passport){
 			if (err)
 				res.send(err);
 			// remove the image from its uploader's 'images' array
-			User.update({"facebook.id": img.authorId},
-			{$pull: {"images": img._id}}, function(err, data){
+			User.findOneAndUpdate({"_id": img.authorId},
+				{$pull: {"images": img._id}
+			}, function(err, user){
 				if (err)
 					res.send(err);
-				// remove the image from the database
-				Image.remove({
-					_id: req.params.img_id
-				}, function(err, img){
-					if (err)
-						res.send(err);
-					// find and return all remaining images
-					Image.find(function(err, imgs){
+				// remove the image file from cloudinary
+				cloudinary.uploader.destroy(img.cloudId, function(result){
+					console.log(result);
+					// remove the image data from the MongoDB database
+					Image.remove({
+						_id: req.params.img_id
+					}, function(err, img){
 						if (err)
 							res.send(err);
-						res.json(imgs);
+						// find and return all remaining images
+						Image.find(function(err, imgs){
+							if (err)
+								res.send(err);
+							res.json(imgs);
+						});
 					});
 				});
 			});
@@ -305,26 +311,39 @@ module.exports = function(app, passport){
 //// USERS
 	// Delete an image from owner's profile page
 	app.delete('/users/uploads/:img_id', function(req, res){
-		User.update({"facebook.id": req.user._id},
-			{$pull: {"images": req.params.img_id}
-		}, function(err, data){
-			if (err){
+		// access the image data 
+		Image.findOne({
+			_id: req.params.img_id
+		}, function(err, img){
+			if (err)
 				res.send(err);
-			}else{
-				Image.remove({
-					_id: req.params.img_id
-				}, function(err, img){
-					if (err){
-						res.send(err);
-					}else{
-						Image.find({
-							'_id': {$in: req.user.images}
-						}, function(err, ups){
-							res.json(ups);
+			// remove the image from its uploader's 'image' array
+			User.findOneAndUpdate({"_id": req.user._id},
+				{$pull: {"images": img._id}
+			}, function(err, user){
+				if (err){
+					res.send(err);
+				}else{
+					// remove the image file from cloudinary
+					cloudinary.uploader.destroy(img.cloudId, function(result){
+						console.log(result);
+						// remove the image data from the MongoDB database
+						Image.remove({
+							_id: req.params.img_id
+						}, function(err, img){
+							if (err){
+								res.send(err);
+							}else{
+								Image.find({
+									'_id': {$in: req.user.images}
+								}, function(err, ups){
+									res.json(ups);
+								});
+							}
 						});
-					}
-				});
-			}
+					});
+				}
+			});
 		});
 	});
 

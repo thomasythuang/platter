@@ -12,6 +12,7 @@ var imgSchema = mongoose.Schema({
 	favorites	: Number,
 	thumb  	: String,
 	url			: String,
+	cloudId : String,
 	authorId	: String,
 	authorName	: String,
 

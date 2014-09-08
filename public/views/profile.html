@@ -11,11 +11,13 @@
 	<h1><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</h1>
 	<a ng-click="logout()" href="">Logout</a>
 	<a ng-href="/user/{{user._id}}">Public Profile</a>
-
-	<!--
+	<!-- 
 	<button class="btn btn-primary" ng-click="test()">Test</button> 
 	<button class="btn btn-primary" ng-click="reset()">Reset</button> -->
+
 	<div class="prof-content material-theme-dark">
+
+		<!-- Header tabs -->
 		<material-tabs flex selected="selectedIndex" id="home-tabs">
 	    <material-tab ng-click="go(0)">
 	      My Uploads
@@ -29,13 +31,13 @@
 	  </material-tabs>
 
 	  <div ng-switch on="selectedIndex">
+
 			<!-- User Uploads -->
 			<div ng-switch-when="0">
 				<h3 class="header-thin">Uploads</h3>
 				<material-card class="loc inline" ng-repeat="upl in uploads">
 					<!-- Image and Short Description -->
 					<img class="thumb" ng-src="{{upl.thumb}}" ng-click="imgDialog(upl, $event)"/>
-
 					<div class="desc">
 						<div class="desc-title">
 							<span ng-click="test(upl)">{{upl.name | characters: 15}}</span>
@@ -62,7 +64,6 @@
 				<material-card class="loc inline" ng-repeat="fav in favorites">
 					<!-- Image and Short Description -->
 					<img class="thumb" ng-src="{{fav.thumb}}" ng-click="imgDialog(fav, $event)"/>
-					
 					<div class="desc">
 						<div class="">
 							<span ng-click="test(fav)">{{fav.name | characters: 15}}</span>
@@ -83,6 +84,7 @@
 				<h3 class="header-thin">Friends</h3>
 				<p>Pls. You have no friends</p>
 			</div>
+			
 		</div>
 	</div>
 </div>
