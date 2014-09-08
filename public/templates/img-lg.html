@@ -1,9 +1,11 @@
 <material-dialog>
   <div class="dialog-content">
     <h1 class="centered dialog-title">{{img.name}}</h1>
+    <img ng-src="{{img.url}}"/>
+    <!-- 
     <div class="crop crop-lg">
       <img ng-src="{{img.url}}"/>
-    </div>
+    </div> -->
     <p>
       <div><span class="fa fa-globe"></span> {{img.city}}, {{img.state}}</div>
       <div><span class="fa fa-user"></span> <a ng-href="/user/{{img.authorId}}" ng-click="close()">{{img.authorName}}</a></div>

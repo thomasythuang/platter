@@ -129,7 +129,15 @@ material-tabs, material-tab{
 /* //// IMAGE GALLERY //// */
 .loc{
 	background-color: #fff;
-  max-width: 15em;
+  max-width: 200px;
+}
+.thumb{
+  margin-top: -10px;
+  margin-left: -10px;
+}
+.thumb:hover{
+  cursor: pointer;
+  cursor: hand;
 }
 .desc{
   margin-top: 3px;
@@ -143,38 +151,6 @@ material-tabs, material-tab{
 .btn-fav.active{
   background-color:yellow;
 } 
-/* Hacky way of getting images fit to a set resolution and maintaining aspect ratio */
-.crop{ 
-  overflow: hidden;
-  margin-top: -10px;
-  margin-left: -10px;
-}
-.crop-sm{
-  width: 15em;
-  height: 15em;
-}
-.crop-lg{
-  width: 500px;
-  height: 350px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.crop img{ /*
-  width: auto;
-  height: auto; */
-}
-.crop-sm img{
-  max-width: 500px;
-  max-height: 300px;
-}
-.crop-lg img{
-  max-width: 550px;
-  max-height: 450px;
-}
-.crop-sm:hover{
-  cursor: pointer;
-  cursor: hand;
-}
 
 /* //// POP-UP DIALOGS //// */
 material-backdrop{

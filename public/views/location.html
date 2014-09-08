@@ -25,16 +25,15 @@
 <material-card class="loc inline" ng-repeat="img in imgs | orderBy: sortMethod | limitTo: imgLimit">
 
 	<!-- Image and Short Description -->
-	<div class="crop crop-sm" ng-click="imgDialog(img)">
-		<img ng-src="{{img.url}}"/>
-	</div>
+	<img class="thumb" ng-src="{{img.thumb}}" ng-click="imgDialog(img, $event)"/>
+
 	<div class="desc">
 		<div class="">
 			<a ng-href="/user/{{img.authorId}}">{{img.authorName}}</a>
 		</div>
 		<div class="inline">{{img.dateAdded | date: 'MM/dd/yy'}}</div>
-		<button type="button" class="btn-fav inline" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
+		<material-button class="material-button-raised btn-fav inline" ng-class="{active: checkFav(img)}" ng-click="modFavs(img)">
 			<span class="fa fa-star"></span> {{img.favorites}}
-		</button>
+		</material-button>
 	</div>
 </material-card>

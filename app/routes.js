@@ -186,29 +186,37 @@ module.exports = function(app, passport){
 			res.status(413).send({code:413, error: 'File size too large', size: req.files.image.size});
 		}else{
 			// Upload to cloudinary, then save image data to mongoDB databse
-			cloudinary.uploader.upload(req.files.image.path, function(result) { 
-			  Image.create({
-					name 				: req.body.name,
-					city				: req.body.city,
-					state				: req.body.state,
-					dateAdded 	: Date.now(),
-					favorites		: 0,
-					url					: result.url,
-					authorId 		: req.user._id,
-					authorName	: req.user.facebook.name,
-					done 				: false
-				}, function(err, img) {
-					if (err)
-						res.send(err);
-					// add the image's id to its uploader's profile
-					User.update({"facebook.id": req.user.facebook.id},
-						{$push: {"images": img._id}}, function(err, data){
+			cloudinary.uploader.upload(req.files.image.path,
+				function(result) {
+					//console.log(result);
+				  Image.create({
+						name 				: req.body.name,
+						city				: req.body.city,
+						state				: req.body.state,
+						dateAdded 	: Date.now(),
+						favorites		: 0,
+						thumb				: result.eager[0].url,
+						url					: result.eager[1].url,
+						authorId 		: req.user._id,
+						authorName	: req.user.facebook.name,
+						done 				: false
+					}, function(err, img) {
 						if (err)
 							res.send(err);
-						res.json(img);
-					});
-				}); 
-			}); 
+						// add the image's id to its uploader's profile
+						User.update({"facebook.id": req.user.facebook.id},
+							{$push: {"images": img._id}}, function(err, data){
+							if (err)
+								res.send(err);
+							res.json(img);
+						});
+					}); 
+				}, {
+					// Create both a thumbnail and main image via cloudinary tools
+					eager: [{width: 200, height: 200, crop: "fill"},
+									{width: 600, height: 450, crop: "limit"},]
+				}
+			); 
 		}
 	});
 

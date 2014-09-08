@@ -5,11 +5,12 @@ var mongoose = require('mongoose');
 
 // define the schema for the image model
 var imgSchema = mongoose.Schema({
-    name		: String,
+  name		: String,
 	city		: String,
 	state		: String,
 	dateAdded	: Date,
 	favorites	: Number,
+	thumb  	: String,
 	url			: String,
 	authorId	: String,
 	authorName	: String,

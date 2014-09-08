@@ -34,9 +34,8 @@
 				<h3 class="header-thin">Uploads</h3>
 				<material-card class="loc inline" ng-repeat="upl in uploads">
 					<!-- Image and Short Description -->
-					<div class="crop crop-sm" ng-click="imgDialog(upl)">
-						<img ng-src="{{upl.url}}"/>
-					</div>
+					<img class="thumb" ng-src="{{upl.thumb}}" ng-click="imgDialog(upl, $event)"/>
+
 					<div class="desc">
 						<div class="desc-title">
 							<span ng-click="test(upl)">{{upl.name | characters: 15}}</span>
@@ -62,9 +61,8 @@
 				<h3 class="header-thin">Favorites</h3>
 				<material-card class="loc inline" ng-repeat="fav in favorites">
 					<!-- Image and Short Description -->
-					<div class="crop crop-sm" ng-click="imgDialog(fav)">
-						<img ng-src="{{fav.url}}"/>
-					</div>
+					<img class="thumb" ng-src="{{fav.thumb}}" ng-click="imgDialog(fav, $event)"/>
+					
 					<div class="desc">
 						<div class="">
 							<span ng-click="test(fav)">{{fav.name | characters: 15}}</span>
