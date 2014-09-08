@@ -188,7 +188,6 @@ module.exports = function(app, passport){
 			// Upload to cloudinary, then save image data to mongoDB databse
 			cloudinary.uploader.upload(req.files.image.path,
 				function(result) {
-					console.log(result);
 				  Image.create({
 						name 				: req.body.name,
 						city				: req.body.city,
