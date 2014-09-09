@@ -11,10 +11,16 @@
 <div ng-show="user">
 	<!-- Heading -->
 	<h1><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</h1>
-	<material-button class="material-button-raised" ng-click="logout()"><span class="fa fa-sign-out"></span> Logout</material-button>
-	<material-button class="material-button-raised" ng-href="/user/{{user._id}}"><span class="fa fa-user"></span> Public Profile</material-button>
-    
-  </material-button>
+
+	<div id="prof-buttons">
+		<material-button class="material-button-raised" ng-click="logout()">
+			<span class="fa fa-sign-out"></span> Logout
+		</material-button>
+		<material-button class="material-button-raised" ng-href="/user/{{user._id}}">
+			<span class="fa fa-user"></span> Public Profile
+		</material-button>
+	</div>
+  
 	<!-- 
 	<button class="btn btn-primary" ng-click="test()">Test</button> 
 	<button class="btn btn-primary" ng-click="reset()">Reset</button> -->
@@ -22,20 +28,22 @@
 	<div class="prof-content">
 
 		<!-- Header tabs -->
-		<material-tabs class="color-3 tabs" flex selected="selectedIndex">
-	    <material-tab ng-click="go(0)">
-	    	<span class="fa fa-image"></span>
-	      My Uploads
-	    </material-tab>
-	    <material-tab ng-click="go(1)">
-	    	<span class="fa fa-star"></span>
-	      My Favorites
-	    </material-tab>
-	    <material-tab ng-click="go(2)">
-	    	<span class="fa fa-info-circle"></span>
-	      My Info
-	    </material-tab>
-	  </material-tabs>
+		<div class="prof-tab-container">
+			<material-tabs nobar class="color-3 prof-tabs prof-tabs-profile" selected="selectedIndex">
+		    <material-tab ng-click="go(0)">
+		    	<span class="fa fa-image"></span>
+		      My Uploads
+		    </material-tab>
+		    <material-tab ng-click="go(1)">
+		    	<span class="fa fa-star"></span>
+		      My Favorites
+		    </material-tab>
+		    <material-tab ng-click="go(2)">
+		    	<span class="fa fa-info-circle"></span>
+		      My Info
+		    </material-tab>
+		  </material-tabs>
+	  </div>
 
 	  <div ng-switch on="selectedIndex">
 

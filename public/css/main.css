@@ -38,8 +38,8 @@ h1{
   background-color: #bf4d28;
   color: white;
 }
-material-tab{ /* Also color 3 */
-  background-color: #bf4d28;
+material-tab, material-tabs .tabs-header-items{ /* Also color 3 */
+  background-color: #bf4d28 !important;
 }
 .color-4{
   background-color: #c0d860; 
@@ -82,7 +82,7 @@ material-tab{ /* Also color 3 */
 
 	padding: 0;
 	margin: 0;
-
+  
 	display: -webkit-box;
 	display: -moz-flex;
 	display: -ms-flexbox;
@@ -139,6 +139,30 @@ material-tabs, material-tab{
 }
 .prof-content .desc{
   color: black;
+}
+#prof-buttons{
+  margin-top: -1em;
+  margin-bottom: 1.5em;
+}
+.prof-tab-container{
+  width: 100%;
+  border-bottom: 1px solid #999999;
+}
+.prof-tabs{
+  padding: 0;
+  border-top: 1px solid #999999;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+}
+.prof-tabs-user{
+  width: 25em;
+}
+.prof-tabs-profile{
+  width: 30em;
+}
+.prof-tabs material-tab{
+  font-size: 0.9em;
+  line-height: 3em;
 }
 
 /* //// IMAGE GALLERY //// */

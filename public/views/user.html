@@ -11,16 +11,18 @@
 <div class="prof-content">
 
 	<!-- Header tabs -->
-	<material-tabs flex selected="selectedIndex" class="color-3 tabs">
-    <material-tab ng-click="go(0)">
-    	<span class="fa fa-image"></span>
-      Uploads
-    </material-tab>
-    <material-tab ng-click="go(1)">
-    	<span class="fa fa-star"></span>
-      Favorites
-    </material-tab>
-  </material-tabs>
+	<div class="prof-tab-container">
+		<material-tabs nobar selected="selectedIndex" class="color-3 prof-tabs prof-tabs-user">
+	    <material-tab ng-click="go(0)">
+	    	<span class="fa fa-image"></span>
+	      Uploads
+	    </material-tab>
+	    <material-tab ng-click="go(1)">
+	    	<span class="fa fa-star"></span>
+	      Favorites
+	    </material-tab>
+	  </material-tabs>
+  </div>
 
   <div ng-switch on="selectedIndex">
 

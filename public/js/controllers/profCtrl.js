@@ -27,7 +27,7 @@ app.controller('profileController', function($scope, $location, $http, $material
 	// Navigate between tabs on profile page
 	$scope.go = function(tab){
 		$scope.selectedIndex = tab;
-		console.log($scope.selectedIndex);
+		//console.log($scope.selectedIndex);
 	};
 
 	// DELETE
