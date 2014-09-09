@@ -1,18 +1,23 @@
 <material-dialog>
   <div class="dialog-content">
     <h1 class="centered dialog-title">{{img.name}}</h1>
+
+    <table>
+      <tr>
+        <td><span class="fa fa-globe"></span> {{img.city}}, {{img.state}}</td>
+        <td><span class="fa fa-user"></span> <a ng-href="/user/{{img.authorId}}" ng-click="close()">{{img.authorName}}</a></td>
+      </tr>
+      <tr>
+        <td><span class="fa fa-clock-o"></span> {{img.dateAdded | date : 'MM/dd/yyyy'}}</td>
+        <td><span class="fa fa-star"></span> {{img.favorites}}</td>
+      </tr>
+      <tr>
+        <td><span class="fa fa-cutlery"></span> <a ng-href="/location/{{img.name}}" ng-click="close()">Location page</a></td>
+      </tr>
+    </table>
+
     <img ng-src="{{img.url}}"/>
-    <!-- 
-    <div class="crop crop-lg">
-      <img ng-src="{{img.url}}"/>
-    </div> -->
-    <p>
-      <div><span class="fa fa-globe"></span> {{img.city}}, {{img.state}}</div>
-      <div><span class="fa fa-user"></span> <a ng-href="/user/{{img.authorId}}" ng-click="close()">{{img.authorName}}</a></div>
-      <div><span class="fa fa-clock-o"></span> {{img.dateAdded | date : 'MM/dd/yyyy'}}</div>
-      <div><span class="fa fa-star"></span> {{img.favorites}}</div>
-      <div><span class="fa fa-cutlery"></span> <a ng-href="/location/{{img.name}}" ng-click="close()">Location page</a></div>
-    </p>
+
   </div>
   <div id="edit-actions" class="dialog-actions" layout="horizontal">
     <material-button class="material-button-raised" ng-click="close()">
