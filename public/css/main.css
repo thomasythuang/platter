@@ -29,7 +29,7 @@ h1{
 
 /* //// COLORS //// */
 .color-1{
-  background-color: #f6f7bd !important;
+  background-color: #f6f7bd;
 }
 .color-2{
   background-color: #e6ac27;
@@ -100,17 +100,6 @@ material-tabs, material-tab{
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
 }
-.well{
-  margin-top: 1em;
-  margin-bottom: 1em;
-  padding: 1em;
-  border-radius: 1.5em;
-  background-color: #d1d1d1;
-  max-width: 40em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 
 /* //// UPLOAD FORM //// */
 .m-label{
@@ -120,6 +109,12 @@ material-tabs, material-tab{
 .m-input{
   width: 100%;
   border-color: #888;
+}
+.form-container{
+  background-color: #fff;
+  width: 30em;
+  margin-left: auto;
+  margin-right: auto;
 }
 #form-body{
   width: 25em;

@@ -3,30 +3,32 @@
 <h1><span class="fa fa-upload"></span>Upload</h4>
 
 <!-- If not logged in -->
-<div ng-hide="user" class="row">
-	<p class="well">Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
-</div>
+<material-card class="form-container" ng-hide="user">
+	<p>Please <a href="/login">login or sign up</a> to be able to upload a picture</p>
+</material-card>
 
-
-<form ng-show="user" name="upForm" id="up-form" novalidate>
-	<div id="form-body" class="left">
-		<material-input-group class="ig material-input-group-theme-orange">
-			<label class="m-label left">Name</label>
-		  <input class="m-input" type="text" name="name" ng-model="formData.name" required>
-		</material-input-group>
-		<material-input-group class="ig material-input-group-theme-orange">
-			<label class="m-label left">City</label>
-		  <input class="m-input" type="text" name="city" ng-model="formData.city" required>
-		</material-input-group>
-		<material-input-group class="ig material-input-group-theme-orange">
-			<label class="m-label left">State</label>
-		  <input class="m-input" type="text" name="state" ng-model="formData.state" required>
-		</material-input-group><br>
-	  <input type="file" id="f-input" name="image" ng-file-select="onFileSelect($files)" required>
-	  <div>We support .jpg, .png, and .gif files up to 2MB large</div>
-	</div>
-	<button class="material-button-raised" ng-click="upload()" ng-disabled="upForm.$invalid || !fileSelected">Submit</button> 
-</form> 
+<material-card class="form-container" ng-show="user">
+	<form name="upForm" id="up-form" novalidate>
+		<h3>Upload an image</h3>
+		<div id="form-body" class="left">
+			<material-input-group class="ig material-input-group-theme-orange">
+				<label class="m-label left">Name</label>
+			  <input class="m-input" type="text" name="name" ng-model="formData.name" required>
+			</material-input-group>
+			<material-input-group class="ig material-input-group-theme-orange">
+				<label class="m-label left">City</label>
+			  <input class="m-input" type="text" name="city" ng-model="formData.city" required>
+			</material-input-group>
+			<material-input-group class="ig material-input-group-theme-orange">
+				<label class="m-label left">State</label>
+			  <input class="m-input" type="text" name="state" ng-model="formData.state" required>
+			</material-input-group><br>
+		  <input type="file" id="f-input" name="image" ng-file-select="onFileSelect($files)" required>
+		  <div>We support .jpg, .png, and .gif files up to 2MB large</div>
+		</div>
+		<button class="material-button-raised" ng-click="upload()" ng-disabled="upForm.$invalid || !fileSelected">Submit</button> 
+	</form> 
+</material-card>
 <!-- 
 <button ng-click="test()">Test</button> -->
 

@@ -2,12 +2,12 @@
 
 <h1><span class="fa fa-sign-in"></span> Login</h1>
 
-<div ng-hide="user">
-	<p class="well">Login or Register with
+<material-card class="form-container" ng-hide="user">
+	<p>Login or Register with
 		<material-button class="material-button-raised material-button-colored btn-fav" ng-click="login()"><span class="fa fa-facebook-square"></span>&nbspFacebook</material-button>
 	</p>
-</div>
+</material-card>
 
-<div ng-show="user">
+<material-card class="form-container" ng-show="user">
 	<p>You are already logged in! Get outta here and go <a href="/">home</a></p>
-</div>
+</material-card>
