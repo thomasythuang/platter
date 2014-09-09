@@ -1,16 +1,17 @@
-<material-toolbar class="material-theme-dark" id="home-bar">
-  <div class="material-toolbar-tools" id="home-bar-container" layout="horizontal">
+<material-toolbar class="color-3" id="home-bar">
+  <div class="material-toolbar-tools limit" layout="horizontal">
     <h1><a href="/">CornCANO</a></h1>
     <span flex></span>
-    <span flex></span>
-    <material-tabs flex nobar selected="selectedIndex" id="home-tabs">
+    <material-tabs nobar class="color-3 tabs" selected="selectedIndex" id="home-tabs">
       <material-tab ng-click="nav('/')">
+        <span class="fa fa-home"></span>
         Home
       </material-tab> <!-- 
       <material-tab noink ng-click="nav('/')">
         Browse
       </material-tab> -->
       <material-tab ng-click="nav('/upload')">
+        <span class="fa fa-upload"></span>
         Upload
       </material-tab>
       <material-tab ng-click="nav('/login')" ng-hide="user">

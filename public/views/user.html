@@ -8,14 +8,16 @@
 <button class="btn btn-primary" ng-click="test()">Test</button> 
 <button class="btn btn-primary" ng-click="reset()">Reset</button> -->
 
-<div class="prof-content material-theme-dark">
+<div class="prof-content">
 
 	<!-- Header tabs -->
-	<material-tabs flex selected="selectedIndex" id="home-tabs">
+	<material-tabs flex selected="selectedIndex" class="color-3 tabs">
     <material-tab ng-click="go(0)">
+    	<span class="fa fa-image"></span>
       Uploads
     </material-tab>
     <material-tab ng-click="go(1)">
+    	<span class="fa fa-star"></span>
       Favorites
     </material-tab>
   </material-tabs>
