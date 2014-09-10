@@ -37,7 +37,8 @@ h1{
   background-color: #ece5ce !important;
 }
 .color-2{
-  background-color: #f1d4af !important;
+  background-color: #3b5998 !important;
+  color: white;
 }
 .color-3{ 
   background-color: #e08e79;
@@ -220,6 +221,11 @@ material-dialog{
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
+#head-table, #head-table td{
+  border: 0px;
+  padding: 0;
+  margin: 0;
+}
 .dialog-content .dialog-title{
   margin-top: 0px;
 }
@@ -229,10 +235,8 @@ material-dialog{
 .dialog-content material-card{
   background-color: #fff;
   margin: 0;
-}
+} 
 material-button.material-button-fab{
-  top: 20px;
-  right: 20px;
-  position: fixed;
+
   font-size: 24px;
-}
+} 
