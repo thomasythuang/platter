@@ -12,7 +12,7 @@
 
 	<!-- Header tabs -->
 	<div class="prof-tab-container">
-		<material-tabs nobar selected="selectedIndex" class="color-3 prof-tabs prof-tabs-user">
+		<material-tabs selected="selectedIndex" class="color-3 prof-tabs prof-tabs-user">
 	    <material-tab ng-click="go(0)">
 	    	<span class="fa fa-image"></span>
 	      Uploads
@@ -34,8 +34,7 @@
 				<img class="thumb" ng-src="{{upl.thumb}}" ng-click="imgDialog(upl, $event)"/>
 				<div class="desc">
 					<div class="">
-						<span ng-click="test(upl)">{{upl.name | characters: 15}}</span>
-						<a ng-href="/location/{{upl.name}}">all</a>
+						<span ng-click="test(upl)">{{upl.name | characters: 20}}</span>
 					</div>
 					<div class="inline">{{upl.city | characters:12 :false}}, {{upl.state | characters: 2}}</div>
 					<material-button class="material-button-raised btn-fav inline" ng-class="{active: checkFav(upl)}" ng-click="modFavs(upl)">
@@ -53,8 +52,7 @@
 				<img class="thumb" ng-src="{{fav.thumb}}" ng-click="imgDialog(fav, $event)"/>
 				<div class="desc">
 					<div class="">
-						<span ng-click="test(fav)">{{fav.name | characters: 15}}</span>
-						<a ng-href="/location/{{fav.name}}">all</a>
+						<span ng-click="test(fav)">{{fav.name | characters: 20}}</span>
 					</div>
 					<div class="inline">{{fav.city | characters:12 :false}}, {{fav.state | characters: 2}}</div>
 					<material-button class="material-button-raised btn-fav inline" ng-class="{active: checkFav(fav)}" ng-click="modFavs(fav)">

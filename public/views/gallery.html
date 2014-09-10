@@ -1,30 +1,32 @@
 <!-- public/views/gallery.html -->
 
-<h1><span class="fa fa-newspaper-o"></span> Gallery</h1>
+<div class="head">
+	<h1><span class="fa fa-newspaper-o"></span> Gallery</h1>
 
-<!-- Gallery Settings -->
-<div>
-	Sort by: 
-	<select ng-model="sortMethod">
-		<option value="-favorites">Most Popular</option>
-		<option value="-dateAdded">Most Recent</option>
-		<option value="name">Name (ascending)</option>
-		<option value="-name">Name (descending)</option>
-		<option value="state">Location</option>
-		<option value="">Corn</option>
-	</select>
-	&nbsp&nbsp&nbsp&nbsp Show 
-	<select ng-model="imgLimit">
-		<option value=10>10</option>
-		<option value=25>25</option>
-		<option value=50>50</option>
-	</select>
-	at a time 
-	<!-- 
-	<material-checkbox ng-model="showTrash" class="inline">
-	  Toggle trash
-	</material-checkbox> 
-	<material-button ng-click="test()">TEST</material-button> -->
+	<!-- Gallery Settings -->
+	<div>
+		Sort by: 
+		<select ng-model="sortMethod">
+			<option value="-favorites">Most Popular</option>
+			<option value="-dateAdded">Most Recent</option>
+			<option value="name">Name (ascending)</option>
+			<option value="-name">Name (descending)</option>
+			<option value="state">Location</option>
+			<option value="">Corn</option>
+		</select>
+		&nbsp&nbsp&nbsp&nbsp Show 
+		<select ng-model="imgLimit">
+			<option value=10>10</option>
+			<option value=25>25</option>
+			<option value=50>50</option>
+		</select>
+		at a time 
+		<!-- 
+		<material-checkbox ng-model="showTrash" class="inline">
+		  Toggle trash
+		</material-checkbox> 
+		<material-button ng-click="test()">TEST</material-button> -->
+	</div>
 </div>
 
 <!-- Image Gallery -->
@@ -34,8 +36,7 @@
 	<img class="thumb" ng-src="{{img.thumb}}" ng-click="imgDialog(img, $event)"/>
 	<div class="desc">
 		<div>
-			<span ng-click="test(img)">{{img.name | characters: 15}}</span>
-			<a ng-href="/location/{{img.name}}">all</a>
+			<span ng-click="test(img)">{{img.name | characters: 20}}</span>
 		</div>
 		<!-- Delete button, debugging purposes only -->
 		<div class="inline" ng-show="showTrash"> 

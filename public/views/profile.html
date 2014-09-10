@@ -13,10 +13,10 @@
 	<h1><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</h1>
 
 	<div id="prof-buttons">
-		<material-button class="material-button-raised" ng-click="logout()">
+		<material-button class="material-button-raised color-4" ng-click="logout()">
 			<span class="fa fa-sign-out"></span> Logout
 		</material-button>
-		<material-button class="material-button-raised" ng-href="/user/{{user._id}}">
+		<material-button class="material-button-raised color-4" ng-href="/user/{{user._id}}">
 			<span class="fa fa-user"></span> Public Profile
 		</material-button>
 	</div>
@@ -28,8 +28,8 @@
 	<div class="prof-content">
 
 		<!-- Header tabs -->
-		<div class="prof-tab-container">
-			<material-tabs nobar class="color-3 prof-tabs prof-tabs-profile" selected="selectedIndex">
+		<div class="prof-tab-container color-5">
+			<material-tabs class="color-3 color-5 prof-tabs prof-tabs-profile" selected="selectedIndex">
 		    <material-tab ng-click="go(0)">
 		    	<span class="fa fa-image"></span>
 		      My Uploads
@@ -55,8 +55,7 @@
 					<img class="thumb" ng-src="{{upl.thumb}}" ng-click="imgDialog(upl, $event)"/>
 					<div class="desc">
 						<div class="desc-title">
-							<span ng-click="test(upl)">{{upl.name | characters: 15}}</span>
-							<a ng-href="/location/{{upl.name}}">all</a>
+							<span ng-click="test(upl)">{{upl.name | characters: 20}}</span>
 							<material-button class="material-button-raised btn-fav" ng-click="openDialog(upl, $event)">Edit</material-button>
 						</div>
 						<!-- Delete button -->
@@ -81,8 +80,7 @@
 					<img class="thumb" ng-src="{{fav.thumb}}" ng-click="imgDialog(fav, $event)"/>
 					<div class="desc">
 						<div class="">
-							<span ng-click="test(fav)">{{fav.name | characters: 15}}</span>
-							<a ng-href="/location/{{fav.name}}">all</a>
+							<span ng-click="test(fav)">{{fav.name | characters: 20}}</span>
 						</div>
 						<div class="inline">{{fav.city | characters:12 :false}}, {{fav.state | characters: 2}}</div>
 						<material-button class="material-button-raised btn-fav inline" ng-class="{active: checkFav(fav)}" ng-click="modFavs(fav)">

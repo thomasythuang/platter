@@ -1,22 +1,29 @@
-<material-dialog>
+<material-dialog class="color-1">
   <div class="dialog-content">
-    <h1 class="centered dialog-title">{{img.name}}</h1>
+    <h1 class="centered dialog-title inline">{{img.name}}</h1>
+
+    <a ng-href="/location/{{img.name}}">
+      <material-button class="material-button-fab color-4" ng-click="close()">
+        <span class="fa fa-external-link"></span>
+      </material-button>
+    </a>
 
     <table>
       <tr>
-        <td><span class="fa fa-globe"></span> {{img.city}}, {{img.state}}</td>
-        <td><span class="fa fa-user"></span> <a ng-href="/user/{{img.authorId}}" ng-click="close()">{{img.authorName}}</a></td>
-      </tr>
-      <tr>
-        <td><span class="fa fa-clock-o"></span> {{img.dateAdded | date : 'MM/dd/yyyy'}}</td>
-        <td><span class="fa fa-star"></span> {{img.favorites}}</td>
-      </tr>
-      <tr>
-        <td><span class="fa fa-cutlery"></span> <a ng-href="/location/{{img.name}}" ng-click="close()">Location page</a></td>
+        <td class="color-5">
+          <span class="fa fa-globe"></span> {{img.city}}, {{img.state}}<br>
+          <span class="fa fa-clock-o"></span> {{img.dateAdded | date : 'MM/dd/yyyy'}}
+        </td>
+        <td class="color-5">
+          <span class="fa fa-user"></span> <a ng-href="/user/{{img.authorId}}" ng-click="close()">{{img.authorName}}</a><br>
+          <span class="fa fa-star"></span> {{img.favorites}}
+        </td>
       </tr>
     </table>
 
-    <img ng-src="{{img.url}}"/>
+    <material-card>
+      <img ng-src="{{img.url}}"/>
+    </material-card>
 
   </div>
   <div id="edit-actions" class="dialog-actions" layout="horizontal">

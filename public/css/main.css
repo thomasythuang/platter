@@ -16,11 +16,16 @@ h1{
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
 }
+.head{
+  border-bottom: 2px solid #774F38; /* Color 5 */
+  padding-bottom: 1em;
+}
 #push, #footer{
   height: 64px;
 }
 #footer{
   width: 100%;
+  box-shadow: 0px 0px 4px 0px;
 }
 #content{
   min-height:100%;
@@ -29,23 +34,24 @@ h1{
 
 /* //// COLORS //// */
 .color-1{
-  background-color: #f6f7bd;
+  background-color: #ece5ce !important;
 }
 .color-2{
-  background-color: #e6ac27;
-}
-.color-3{
-  background-color: #bf4d28;
+  background-color: #3b5998 !important;
   color: white;
 }
+.color-3{ 
+  background-color: #e08e79;
+}
 material-tab, material-tabs .tabs-header-items{ /* Also color 3 */
-  background-color: #bf4d28 !important;
+  background-color: #e08e79 !important;
 }
 .color-4{
-  background-color: #c0d860; 
+  background-color: #c5e0dc !important; 
 }
-.color-text{
-  color: #655643;
+.color-5{
+  border-color: #774F38;
+  border-width: 2px;
 }
 
 /* //// BASIC POSITIONING CLASSES //// */
@@ -72,6 +78,7 @@ material-tab, material-tabs .tabs-header-items{ /* Also color 3 */
 }
 #home-bar{
 	padding-right: 0px;
+  box-shadow: 0px 0px 10px 0px;
 }
 #home-tabs{
   width: 15em;
@@ -146,13 +153,19 @@ material-tabs, material-tab{
 }
 .prof-tab-container{
   width: 100%;
-  border-bottom: 1px solid #999999;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
 }
 .prof-tabs{
   padding: 0;
-  border-top: 1px solid #999999;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
+  box-shadow: 0px 0px 3px;
+   /*
+  border-left-style: solid;
+  border-left-width: 2px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-right-style: solid;
+  border-right-width: 2px; */
 }
 .prof-tabs-user{
   width: 25em;
@@ -213,4 +226,14 @@ material-dialog{
 }
 .dialog-content h3{
   margin-bottom: 0.4em;
+}
+.dialog-content material-card{
+  background-color: #fff;
+  margin: 0;
+}
+material-button.material-button-fab{
+  top: 20px;
+  right: 20px;
+  position: fixed;
+  font-size: 24px;
 }
