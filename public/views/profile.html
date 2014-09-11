@@ -10,7 +10,10 @@
 
 <div ng-show="user">
 	<!-- Heading -->
-	<h1><span class="fa fa-facebook-square"></span> {{user.facebook.name}}</h1>
+	<h1>
+		<material-checkbox ng-model="showAdmin" class="inline" ng-show="checkAdmin()"></material-checkbox> 
+		<span class="fa fa-facebook-square"></span> {{user.facebook.name}}
+	</h1>
 
 	<div id="prof-buttons">
 		<material-button class="material-button-raised color-4" ng-click="logout()">
@@ -21,9 +24,10 @@
 		</material-button>
 	</div>
   
-	<!-- 
-	<button class="btn btn-primary" ng-click="test()">Test</button> 
-	<button class="btn btn-primary" ng-click="reset()">Reset</button> -->
+	<div ng-show="showAdmin">
+		<button ng-click="test()">Test</button> 
+		<button ng-click="reset()">Reset</button> 
+	</div>
 
 	<div class="prof-content">
 

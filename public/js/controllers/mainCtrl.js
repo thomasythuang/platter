@@ -23,7 +23,7 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 
 	$scope.logout = function(){ 
 		window.location.assign('http://platter.herokuapp.com/logout');
-		//window.location.assign('http://localhost:8080/logout');
+	  //window.location.assign('http://localhost:8080/logout');
 	};
 
 	// Watch for route changes and select to correct tab
@@ -137,6 +137,7 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 	// Site admin _id's
 	$scope.admins = [
 		"53cd42ff53ae649f11ff9885",
+		"53c98d6c1724e73d11f47ad0",
 	];
 	
 	// Checks if current user is an admin
