@@ -17,8 +17,8 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 	}
 
 	$scope.login = function(){ 
-		//window.location.assign('http://platter.herokuapp.com/auth/facebook');
-		window.location.assign('http://localhost:8080/auth/facebook');
+		window.location.assign('http://platter.herokuapp.com/auth/facebook');
+		//window.location.assign('http://localhost:8080/auth/facebook');
 	};
 
 	$scope.logout = function(){ 
