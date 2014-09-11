@@ -22,8 +22,8 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 	};
 
 	$scope.logout = function(){ 
-		//window.location.assign('http://platter.herokuapp.com/logout');
-		window.location.assign('http://localhost:8080/logout');
+		window.location.assign('http://platter.herokuapp.com/logout');
+		//window.location.assign('http://localhost:8080/logout');
 	};
 
 	// Watch for route changes and select to correct tab
