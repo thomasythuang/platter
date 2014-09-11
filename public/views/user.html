@@ -3,12 +3,20 @@
 <!-- Public Profile of a user -->
 
 <!-- Heading -->
-<h1><span class="fa fa-facebook-square"></span> {{profile.facebook.name}}</h1>
+<h1>
+	<material-checkbox ng-model="showAdmin" class="inline" ng-show="checkAdmin()"></material-checkbox> 
+	<span class="fa fa-facebook-square"></span> {{profile.facebook.name}}
+</h1>
 <!--
 <button class="btn btn-primary" ng-click="test()">Test</button> 
 <button class="btn btn-primary" ng-click="reset()">Reset</button> -->
 
 <div class="prof-content">
+
+	<material-card class="form-container" ng-show="showAdmin">
+		<p>ID: {{profile._id}}</p>
+		<p>Email: {{profile.facebook.email}}</p>
+	</material-card>
 
 	<!-- Header tabs -->
 	<div class="prof-tab-container color-5">

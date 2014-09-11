@@ -20,11 +20,13 @@
 			<option value=50>50</option>
 		</select>
 		at a time 
-		<!-- 
-		<material-checkbox ng-model="showTrash" class="inline">
+		
+		<!-- Admin controls -->
+		<material-checkbox ng-model="showAdmin" class="inline" ng-show="checkAdmin()">
 		  Toggle trash
 		</material-checkbox> 
-		<material-button ng-click="test()">TEST</material-button> -->
+		<button ng-click="test()">TEST</button> 
+
 	</div>
 </div>
 
@@ -38,7 +40,7 @@
 			<span ng-click="test(img)">{{img.name | characters: 20}}</span>
 		</div>
 		<!-- Delete button, debugging purposes only -->
-		<div class="inline" ng-show="showTrash"> 
+		<div class="inline" ng-show="showAdmin"> 
 			<button type="button" class="btn btn-default" ng-click="deleteImage(img._id)">
 				<span class="fa fa-trash"></span>
 			</button>

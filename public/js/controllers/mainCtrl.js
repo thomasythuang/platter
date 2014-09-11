@@ -92,7 +92,7 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 						img = data;
 						//$scope.images = data;
 					}); 
-			} else {
+			}else{
 				console.log("add");
 				$scope.user.favorites.push(img._id); //This is hacky and should be changed
 				
@@ -103,7 +103,7 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 						//$scope.images = data;
 					}); 
 			}
-		} else {
+		}else{
 			//alert("Sorry! You need to sign in or register to favorite a picture!");
 			$scope.favsDialog();
 		} 
@@ -128,10 +128,29 @@ app.controller('mainController', function($scope, $location, $http, $materialDia
 			var index = $scope.user.favorites.indexOf(img._id);
 			if (index > -1){
 				return true;
-			} else {
+			}else{
 				return false;
 			}
 		}
 	};
+	
+	// Site admin _id's
+	$scope.admins = [
+		"53cd42ff53ae649f11ff9885",
+	];
+	
+	// Checks if current user is an admin
+	$scope.checkAdmin = function(){
+		if ($scope.user){
+			var index = $scope.admins.indexOf($scope.user._id);
+			if (index > -1){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}; 
 
 });
