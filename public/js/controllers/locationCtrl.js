@@ -4,7 +4,7 @@ var app = angular.module('locationController', []);
 
 app.controller('locationController', function($scope, $http, $routeParams) {
 	$scope.sortMethod = "-favorites";
-	$scope.imgLimit = 12;
+	$scope.imgLimit = 10;
 
 	$scope.params = $routeParams;
 

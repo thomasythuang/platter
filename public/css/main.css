@@ -145,7 +145,7 @@ material-tabs, material-tab{
   margin: 0 auto 1.5em auto;
 }
 .prof-content .desc{
-  color: black;
+  color: #444;
 }
 #prof-buttons{
   margin-top: -1em;
