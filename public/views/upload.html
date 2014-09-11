@@ -13,22 +13,24 @@
 	<form name="upForm" id="up-form" novalidate>
 		<h3>Upload an image</h3>
 		<div id="form-body" class="left">
-			<material-input-group class="ig material-input-group-theme-orange">
+			<material-input-group class="ig material-input-group-theme-custom">
 				<label class="m-label left">Name</label>
 			  <input class="m-input" type="text" name="name" ng-model="formData.name" required>
 			</material-input-group>
-			<material-input-group class="ig material-input-group-theme-orange">
+			<material-input-group class="ig material-input-group-theme-custom">
 				<label class="m-label left">City</label>
 			  <input class="m-input" type="text" name="city" ng-model="formData.city" required>
 			</material-input-group>
-			<material-input-group class="ig material-input-group-theme-orange">
+			<material-input-group class="ig material-input-group-theme-custom">
 				<label class="m-label left">State</label>
 			  <input class="m-input" type="text" name="state" ng-model="formData.state" required>
 			</material-input-group><br>
-		  <input type="file" id="f-input" name="image" ng-file-select="onFileSelect($files)" required>
+		  <input type="file" name="image" ng-file-select="onFileSelect($files)" required>
 		  <div>We support .jpg, .png, and .gif files up to 2MB large</div>
 		</div>
-		<button class="material-button-raised" ng-click="upload()" ng-disabled="upForm.$invalid || !fileSelected">Submit</button> 
+		<material-button class="material-button-raised color-4" ng-click="upload()">
+			<span class="fa fa-upload"></span> Submit
+		</material-button>
 	</form> 
 </material-card>
 <!-- 

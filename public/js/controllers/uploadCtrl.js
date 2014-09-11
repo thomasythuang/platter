@@ -46,29 +46,35 @@ app.controller('uploadController', function($scope, $http, $upload, $filter, $ma
 	};
 
 	$scope.upload = function(file){
-		$scope.inProgress = true; 
-		$upload.upload({
-    	url: '/upload',
-    	method: 'POST',
-    	data: {
-      		name: 	$scope.formData.name,
-      		city: 	$scope.formData.city,
-      		state: 	$scope.formData.state,
-    	},
-    	file: $scope.selectedFiles[$scope.selectedFiles.length-1],
-    	fileFormDataName: 'image',
-  	}).progress(function(evt){
-  		$scope.data.progress = parseInt(100.0 * evt.loaded/evt.total);
-  		console.log('Progress: ' + $scope.data.progress);
-  		//console.log(100.0 * evt.loaded/evt.total);
-  	}).success(function(data){
-    	console.log('Upload complete!');
-    	$scope.clearForm();
-    	$scope.uplDialog(data);
-  	}).error(function(err){
-  		$scope.inProgress = false;
-    	$scope.handleError(err);
-  	});
+		if ($scope.upForm.$valid && $scope.fileSelected){
+			$scope.inProgress = true; 
+			$upload.upload({
+	    	url: '/upload',
+	    	method: 'POST',
+	    	data: {
+	      		name: 	$scope.formData.name,
+	      		city: 	$scope.formData.city,
+	      		state: 	$scope.formData.state,
+	    	},
+	    	file: $scope.selectedFiles[$scope.selectedFiles.length-1],
+	    	fileFormDataName: 'image',
+	  	}).progress(function(evt){
+	  		$scope.data.progress = parseInt(100.0 * evt.loaded/evt.total);
+	  		console.log('Progress: ' + $scope.data.progress);
+	  		//console.log(100.0 * evt.loaded/evt.total);
+	  	}).success(function(data){
+	    	console.log('Upload complete!');
+	    	$scope.clearForm();
+	    	$scope.uplDialog(data);
+	  	}).error(function(err){
+	  		$scope.inProgress = false;
+	    	$scope.handleError(err);
+	  	});
+  	}else{
+  		var err = {};
+  		err.code = 204;
+  		$scope.handleError(err);
+  	}
 	};
 
 	// Error handler
@@ -83,6 +89,9 @@ app.controller('uploadController', function($scope, $http, $upload, $filter, $ma
 			var size = $filter('number')(err.size/1000000, 2);
 			head = "Image file too large!";
 			message = "Sorry! The image file you uploaded was too large (" + size + "MB). We support .jpg, .png, and .gif files up to 2MB in size.";
+		}else if(err.code == 204){
+			head = "Form incomplete!";
+			message = "You didn't fully complete the form! Please fill out all text fields and select an image file before uploading";
 		}else{
 			head = "Error";
 			message = "Sorry! The upload failed for an undocumented reason. Please contact an administrator for more assisstance";

@@ -54,6 +54,12 @@ material-tab, material-tabs .tabs-header-items{ /* Also color 3 */
   border-width: 2px;
 }
 
+/* Input group color themes */
+.material-input-group-theme-custom.material-input-has-value input, .material-input-group-theme-custom.material-input-focused input {
+  border-color: #774F38; }
+.material-input-group-theme-custom.material-input-has-value label, .material-input-group-theme-custom.material-input-focused label {
+  color: #774F38; }
+
 /* //// BASIC POSITIONING CLASSES //// */
 .inline{
   display: inline-block;
@@ -238,6 +244,7 @@ material-dialog{
 } 
 material-button.material-button-fab{
   font-size: 24px;
+  color: #774F38;
 } 
 
 /* //// FIREFOX ONLY //// */
