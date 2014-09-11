@@ -237,6 +237,15 @@ material-dialog{
   margin: 0;
 } 
 material-button.material-button-fab{
-
   font-size: 24px;
 } 
+
+/* //// FIREFOX ONLY //// */
+@-moz-document url-prefix() {
+  .m-label{
+    margin-bottom: 10px;
+  }
+  #home-tabs{
+    padding-top: 10px;
+  }
+}
