@@ -84,11 +84,11 @@ app.controller('uploadController', function($scope, $http, $upload, $filter, $ma
 		if (err.code == 415){
 			var format = err.fmt;
 			head = "Unsupported file type!";
-			message = "Sorry! You uploaded an unsupported image type (." + format + "). We support .jpg, .png, and .gif files up to 2MB in size.";
+			message = "Sorry! You uploaded an unsupported image type (." + format + "). We support .jpg, .png, and .gif files up to 3MB large.";
 		}else if(err.code == 413){
 			var size = $filter('number')(err.size/1000000, 2);
 			head = "Image file too large!";
-			message = "Sorry! The image file you uploaded was too large (" + size + "MB). We support .jpg, .png, and .gif files up to 2MB in size.";
+			message = "Sorry! The image file you uploaded was too large (" + size + "MB). We support .jpg, .png, and .gif files up to 3MB large.";
 		}else if(err.code == 204){
 			head = "Form incomplete!";
 			message = "You didn't fully complete the form! Please fill out all text fields and select an image file before uploading";
