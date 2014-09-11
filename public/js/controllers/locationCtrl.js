@@ -2,7 +2,7 @@
 
 var app = angular.module('locationController', []);
 
-app.controller('locationController', function($scope, $http, $routeParams) {
+app.controller('locationController', function($scope, $http, $location, $routeParams) {
 	$scope.sortMethod = "-favorites";
 	$scope.imgLimit = 10;
 
@@ -14,7 +14,7 @@ app.controller('locationController', function($scope, $http, $routeParams) {
 		})
 		.error(function(data){
 			console.log("Location not found");
-			console.log(data);
+			$location.path('/location/404');
 		});
 	
 	$scope.test = function(){

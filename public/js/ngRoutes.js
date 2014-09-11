@@ -33,6 +33,11 @@
 			controller: 'userController',
 		})
 
+		// Location not found
+		.when('/location/404', {
+			templateUrl: '../views/loc-nf.html',
+		})
+
 		// Location 
 		.when('/location/:loc_name', {
 			templateUrl: '../views/location.html', 
