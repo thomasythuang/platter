@@ -86,6 +86,13 @@ material-tab, material-tabs .tabs-header-items{ /* Also color 3 */
 	padding-right: 0px;
   box-shadow: 0px 0px 10px 0px;
 }
+#home-bar img{
+  margin: 0;
+  width: 2em;
+}
+#home-bar h1{
+  font-size: 30px;
+}
 #home-tabs{
   width: 15em;
 }
