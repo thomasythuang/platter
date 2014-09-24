@@ -53,9 +53,6 @@ material-tab, material-tabs .tabs-header-items{ /* Also color 3 */
   border-color: #774F38;
   border-width: 2px;
 }
-.color-fa-fb{
-  color: #3b5998;
-}
 
 /* Input group color themes */
 .material-input-group-theme-custom.material-input-has-value input, .material-input-group-theme-custom.material-input-focused input {
