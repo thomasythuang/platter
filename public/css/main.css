@@ -239,6 +239,9 @@ material-dialog{
   padding: 0;
   margin: 0;
 }
+#head-table img{
+  width: 2em;
+}
 .dialog-content .dialog-title{
   margin-top: 0px;
 }
